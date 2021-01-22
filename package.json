@@ -1,0 +1,17 @@
+{
+  "name": "parker-siroishka-portfolio",
+  "version": "1.0.0",
+  "description": "CPSC 581 Portfolio",
+  "main": "web.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Parker Siroishka",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "engines": {
+    "node": "14.15.4"
+  }
+}
