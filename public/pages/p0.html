@@ -5,20 +5,23 @@
         <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="Describe this page." />
-        <script src="../scripts/p0.js"></script>
+        <script src="../scripts/joy.min.js"></script>
         <link href="../stylesheets/p0.css" rel="stylesheet" />
+        <!-- Bootstrap core CSS -->
+        <link href="../dist/css/bootstrap.min.css" rel="stylesheet" />
+        <!-- Custom CSS -->
+        <link href="../stylesheets/custom.css" rel="stylesheet" />
         <title>Project 0</title>    
     </head>
-    <body>
-        <div class="circle parent">
-            <div class="circle child">
-    
-            </div>
-    </div>
-    
+    <body onload="startGame()">
+
+        <div id="joyDiv" style="width:200px;height:200px;margin-bottom:20px;"></div>
+        Position x:<input id="joyDirectionX" type="text" /><br />
+        Position y:<input id="joyDirectionY" type="text" /><br />
+
     </body>
     <footer>
-
+        <script src="../scripts/p0.js"></script>
     </footer>
 
 <!-- Scripts-->

@@ -1,190 +1,159 @@
-'use strict'
-const touchObj = {
-		$parent: $('.parent'),
-		$target: $('.child'),
-		startX: 0,
-		startY: 0,
-		moveX: 0,
-		moveY: 0,
-		endX: 0,
-		endY: 0,
-		istouchStart: false,
-		boundary({
-				origin,
-				radius
-		}) {
-				const {
-						sin,
-						cos,
-						atan2
-				} = Math
-				const angle = atan2(origin.y, origin.x)
-				const limitX = (cos(angle) + 1) * radius
-				const limitY = (sin(angle) + 1) * radius
+// Create JoyStick object into the DIV 'joyDiv'
+let root = document.documentElement;
+let joy = new JoyStick('joyDiv');
+let joyPosX = document.getElementById('joyDirectionX');
+let joyPosY = document.getElementById('joyDirectionY');
 
-				return {
-						limitX,
-						limitY
-				}
-		},
-		getPos(ev) {
-				const {
-						changedTouches,
-						touches
-				} = ev
-				let posX
-				let posY
-				if (ev.type.indexOf('mouse') >= 0) {
-						posX = ev.pageX
-						posY = ev.pageY
-				} else {
-						const touchData = touches.length ? touches : changedTouches
-						const [{
-								pageX,
-								pageY
-						}] = touchData
-						posX = pageX
-						posY = pageY
-				}
-				return {
-						x: posX,
-						y: posY
-				}
-		},
-		start(ev) {
-				touchObj.$parent = $('.parent')
-				touchObj.$target = $('.child')
-				const {
-						target
-				} = ev
+let character;
+let posX = 0;
+let posY = 0;
 
-				if (touchObj.$target[0] !== target) {
-						return
-				}
-
-				let {
-						getPos
-				} = touchObj
-				const {
-						x,
-						y
-				} = getPos(ev)
-
-				touchObj.startX = x
-				touchObj.startY = y
-
-				touchObj.istouchStart = true
-		},
-		move(ev) {
-				if (!touchObj.istouchStart) {
-						return
-				}
-
-				let {
-						$parent,
-						$target,
-						boundary,
-						getPos
-				} = touchObj
-				const {
-						x,
-						y
-				} = getPos(ev)
-
-				touchObj.moveX = x
-				touchObj.moveY = y
-
-				const {
-						top: $parentOffsetTop,
-						left: $parentOffsetLeft
-				} = $parent.offset()
-				const $parentWidth = parseFloat($parent.css('width'))
-				const $parentR = ($parentWidth / 2)
-				const $parentY = ($parentOffsetTop + $parentR)
-				const $parentX = ($parentOffsetLeft + $parentR)
-
-				const {
-						top: $targetOffsetTop,
-						left: $targetOffsetLeft
-				} = $target.offset()
-				const $targetWidth = parseFloat($target.css('width'))
-				const $targetR = ($targetWidth / 2)
-				const $targetY = ($targetOffsetTop + $targetR)
-				const $targetX = ($targetOffsetLeft + $targetR)
-
-				const $radius = $parentR - $targetR
-
-				const $SquareR =  $radius ** 2
-				const $SquareX = (touchObj.moveX - $parentX) ** 2
-				const $SquareY = (touchObj.moveY - $parentY) ** 2
-
-				const $X = touchObj.moveX - $parentOffsetLeft - $targetR
-				const $Y = touchObj.moveY - $parentOffsetTop - $targetR
-
-				let $targetLeft = $X
-				let $targetTop = $Y
-
-				const {
-						limitX,
-						limitY
-				} = boundary({
-						origin: {
-								x: $X - $parentR + $targetR,
-								y: $Y - $parentR + $targetR
-						},
-						radius: $radius
-				})
-
-				// 圆: 坐标 = (a, b), 半径 = r
-				// 点P: 坐标 = (x1, y1)
-				// 圆上: (x1 - a) ** 2 + (y - b) ** 2 = r ** 2
-				// 圆外: (x1 - a) ** 2 + (y - b) ** 2 > r ** 2
-				// 圆内: (x1 - a) ** 2 + (y - b) ** 2 < r ** 2
-				if (($SquareX + $SquareY) > $SquareR) {
-						console.log('圆外')
-						$targetLeft = limitX
-						$targetTop = limitY
-				}
-
-				$target.css({
-						left: $targetLeft + 'px',
-						top: $targetTop + 'px'
-				})
-		},
-		end(ev) {
-				let {
-						getPos,
-						$target
-				} = touchObj
-
-				const {
-						x,
-						y
-				} = getPos(ev)
-
-				touchObj.endX = x
-				touchObj.endY = y
-
-				$target.css({
-						left: '45px',
-						top: '45px'
-				})
-
-				touchObj.istouchStart = false
-		}
+function startGame() {
+    character = new component(50,50,"yellowgreen", 10, 120);
+    mapArea.start()
 }
 
-let startEvent = 'mousedown', moveEvent = 'mousemove', endEvent = 'mouseup'
-
-const init = ev => {
-		'ontouchstart' in window ? (
-				startEvent = 'touchstart',
-				moveEvent = 'touchmove',
-				endEvent = 'touchend'
-		) : ''
-		window.addEventListener(startEvent, touchObj.start)
-		window.addEventListener(moveEvent, touchObj.move)
-		window.addEventListener(endEvent, touchObj.end)
+var mapArea = {
+    canvas : document.createElement("canvas"),
+    start : function() {
+        this.canvas.width = 480;
+        this.canvas.height = 270;
+        this.context = this.canvas.getContext("2d");
+        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+        this.interval = setInterval(updateGameArea, 20);
+    },
+    clear : function() {
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    }
 }
 
-window.addEventListener('load', init)
+function component(width, height, color, x, y) {
+    this.width = width;
+    this.height = height;
+    this.speedX = 0;
+    this.speedY = 0;
+    this.x = x;
+    this.y = y;    
+    this.update = function() {
+        ctx = mapArea.context;
+        ctx.fillStyle = color;
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+    }
+    this.newPos = function() {
+        this.x += this.speedX;
+        this.y += this.speedY;        
+    }    
+}
+
+setInterval(
+    function(){
+        joyPosX.value=joy.GetX();
+        posX = joy.GetX();
+
+}, 50);
+
+setInterval(
+    function(){
+        joyPosY.value=joy.GetY();
+        posY = joy.GetY();
+
+}, 50);
+
+setInterval(
+    function(){
+
+        
+        if((posY < 50 && posY > -50) && posX > 0){
+            moveRight();
+        }
+
+        if((posY < 50 && posY > -50) && posX < 0){
+            moveLeft();
+        }
+
+        if(posY > 0 && (posX < 50 && posX > -50)){
+            moveUp();
+        }
+
+        if(posY < 0 && (posX < 50 && posX > -50)){
+            moveDown();
+        }
+
+        if(posY > 50 && posX > 0){
+            moveUpRight();
+        }
+       
+
+        if(posY > 50 && posX < 0){
+            moveUpLeft();
+        }
+
+        if(posY < 50 && posX < 0){
+            moveDownLeft();
+        }
+
+        if(posY < 0 && posX > 0){
+            moveDownRight();
+        }
+
+        if(posY == 0 && posX == 0){
+            clearmove();
+        }
+    }, 1
+)
+
+
+function updateGameArea() {
+    mapArea.clear();
+    character.newPos();    
+    character.update();
+}
+
+function moveUp() {
+    character.speedY = -1; 
+}
+
+function moveDown() {
+    character.speedY = 1; 
+}
+
+function moveLeft() {
+    character.speedX = -1; 
+}
+
+function moveRight() {
+    character.speedX = 1; 
+}
+
+
+function moveUpLeft() {
+    character.speedX = -1; 
+    character.speedY = -1; 
+}
+
+function moveDownLeft() {
+    character.speedX = -1; 
+    character.speedY = 1; 
+}
+
+function moveUpRight() {
+    character.speedX = 1; 
+    character.speedY = -1; 
+}
+
+function moveDownRight() {
+    character.speedX = 1; 
+    character.speedY = 1; 
+}
+
+function clearmove() {
+    character.speedX = 0; 
+    character.speedY = 0; 
+}
+
+
+
+let joystickListenerObj = document.getElementById('joyDiv');
+joystickListenerObj.onmouseup(cconsole.log);
+
+// setInterval();
