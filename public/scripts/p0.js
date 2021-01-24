@@ -1,23 +1,21 @@
 // Create JoyStick object into the DIV 'joyDiv'
 let root = document.documentElement;
-let joy = new JoyStick('joyDiv');
-let joyPosX = document.getElementById('joyDirectionX');
-let joyPosY = document.getElementById('joyDirectionY');
+let joy = new JoyStick('joyDiv', {internalFillColor: "#fe201b", internalStrokeColor: "#a70000", internalLineWidth: 4 ,externalLineWidth: 50, externalStrokeColor: "#c8c8d8"});
 
 let character;
 let posX = 0;
 let posY = 0;
 
 function startGame() {
-    character = new component(50,50,"yellowgreen", 10, 120);
+    character = new component(50,50,"yellowgreen", 173, 300);
     mapArea.start()
 }
 
 var mapArea = {
     canvas : document.createElement("canvas"),
     start : function() {
-        this.canvas.width = 480;
-        this.canvas.height = 270;
+        this.canvas.width = 400;
+        this.canvas.height = 400;
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.interval = setInterval(updateGameArea, 20);
@@ -47,14 +45,12 @@ function component(width, height, color, x, y) {
 
 setInterval(
     function(){
-        joyPosX.value=joy.GetX();
         posX = joy.GetX();
 
 }, 50);
 
 setInterval(
     function(){
-        joyPosY.value=joy.GetY();
         posY = joy.GetY();
 
 }, 50);
@@ -67,39 +63,39 @@ setInterval(
             moveRight();
         }
 
-        if((posY < 50 && posY > -50) && posX < 0){
+        else if((posY < 50 && posY > -50) && posX < 0){
             moveLeft();
         }
 
-        if(posY > 0 && (posX < 50 && posX > -50)){
+        else if(posY > 0 && (posX < 50 && posX > -50)){
             moveUp();
         }
 
-        if(posY < 0 && (posX < 50 && posX > -50)){
+        else if(posY < 0 && (posX < 50 && posX > -50)){
             moveDown();
         }
 
-        if(posY > 50 && posX > 0){
+        else if(posY > 50 && posX > 0){
             moveUpRight();
         }
        
 
-        if(posY > 50 && posX < 0){
+        else if(posY > 50 && posX < 0){
             moveUpLeft();
         }
 
-        if(posY < 50 && posX < 0){
+        else if(posY < 50 && posX < 0){
             moveDownLeft();
         }
 
-        if(posY < 0 && posX > 0){
+        else if(posY < 0 && posX > 0){
             moveDownRight();
         }
 
-        if(posY == 0 && posX == 0){
+        else if(posY == 0 && posX == 0){
             clearmove();
         }
-    }, 1
+    }, 50
 )
 
 
@@ -110,40 +106,40 @@ function updateGameArea() {
 }
 
 function moveUp() {
-    character.speedY = -1; 
+    character.speedY = -2; 
 }
 
 function moveDown() {
-    character.speedY = 1; 
+    character.speedY = 2; 
 }
 
 function moveLeft() {
-    character.speedX = -1; 
+    character.speedX = -2; 
 }
 
 function moveRight() {
-    character.speedX = 1; 
+    character.speedX = 2; 
 }
 
 
 function moveUpLeft() {
-    character.speedX = -1; 
-    character.speedY = -1; 
+    character.speedX = -2; 
+    character.speedY = -2; 
 }
 
 function moveDownLeft() {
-    character.speedX = -1; 
-    character.speedY = 1; 
+    character.speedX = -2; 
+    character.speedY = 2; 
 }
 
 function moveUpRight() {
-    character.speedX = 1; 
-    character.speedY = -1; 
+    character.speedX = 2; 
+    character.speedY = -2; 
 }
 
 function moveDownRight() {
-    character.speedX = 1; 
-    character.speedY = 1; 
+    character.speedX = 2; 
+    character.speedY = 2; 
 }
 
 function clearmove() {
@@ -151,9 +147,3 @@ function clearmove() {
     character.speedY = 0; 
 }
 
-
-
-let joystickListenerObj = document.getElementById('joyDiv');
-joystickListenerObj.onmouseup(cconsole.log);
-
-// setInterval();
