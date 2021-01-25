@@ -3,15 +3,29 @@ let root = document.documentElement;
 let joy = new JoyStick('joyDiv', {internalFillColor: "#fe201b", internalStrokeColor: "#a70000", internalLineWidth: 4 ,externalLineWidth: 50, externalStrokeColor: "#c8c8d8"});
 
 let character;
+let superstore;
+let games;
+let friends;
+
+let friendsNote;
+let superstoreNote;
+let gamesNote;
+
 let posX = 0;
 let posY = 0;
 
 function startGame() {
-    character = new component(50,50,"yellowgreen", 173, 300);
-    mapArea.start()
+    character = new component(40,50,"../media/link.png", 173, 300);
+    superstore = new component(110,60,"../media/superstore.png", 250, 100);
+    games = new component(80,60,"../media/games.png", 270, 250);
+    friends = new component(140,80, "../media/friends.png",20, 100)
+    friendsNote = new component(330,300, "../media/friendsNote.png",35, 55)
+    superstoreNote = new component(330,300, "../media/superstoreNote.png",35, 55)
+    gamesNote = new component(330,300, "../media/gamesNote.png",35, 55)
+    mapArea.start();
 }
 
-var mapArea = {
+let mapArea = {
     canvas : document.createElement("canvas"),
     start : function() {
         this.canvas.width = 400;
@@ -25,7 +39,9 @@ var mapArea = {
     }
 }
 
-function component(width, height, color, x, y) {
+function component(width, height, imgSrc, x, y) {
+    this.image = new Image();
+    this.image.src = imgSrc;
     this.width = width;
     this.height = height;
     this.speedX = 0;
@@ -34,13 +50,32 @@ function component(width, height, color, x, y) {
     this.y = y;    
     this.update = function() {
         ctx = mapArea.context;
-        ctx.fillStyle = color;
-        ctx.fillRect(this.x, this.y, this.width, this.height);
+        ctx.drawImage(this.image,
+            this.x,
+            this.y,
+            this.width,
+            this.height);
     }
     this.newPos = function() {
         this.x += this.speedX;
         this.y += this.speedY;        
-    }    
+    }
+    this.bumpInto = function(otherobj) {
+        let myleft = this.x;
+        let myright = this.x + (this.width);
+        let mytop = this.y;
+        let mybottom = this.y + (this.height);
+        let otherleft = otherobj.x;
+        let otherright = otherobj.x + (otherobj.width);
+        let othertop = otherobj.y;
+        let otherbottom = otherobj.y + (otherobj.height);
+        let bump = true;
+        if ((mybottom < othertop) || (mytop > otherbottom) ||
+            (myright < otherleft) || (myleft > otherright)) {
+            bump = false;
+        }
+        return bump;
+    }
 }
 
 setInterval(
@@ -101,45 +136,59 @@ setInterval(
 
 function updateGameArea() {
     mapArea.clear();
+    superstore.update();
+    games.update();  
+    friends.update();
     character.newPos();    
     character.update();
+
+    if(character.bumpInto(friends)) {
+        friendsNote.update();
+    }
+
+    if(character.bumpInto(superstore)) {
+        superstoreNote.update();
+    }
+    if(character.bumpInto(games)) {
+        gamesNote.update();
+    }
 }
 
 function moveUp() {
-    character.speedY = -2; 
+    character.speedY = -1; 
 }
 
 function moveDown() {
-    character.speedY = 2; 
+    character.speedY = 1; 
 }
 
 function moveLeft() {
-    character.speedX = -2; 
+    character.speedX = -1; 
 }
 
 function moveRight() {
-    character.speedX = 2; 
+    character.speedX = 1; 
 }
 
 
 function moveUpLeft() {
-    character.speedX = -2; 
-    character.speedY = -2; 
+    character.speedX = -1; 
+    character.speedY = -1; 
 }
 
 function moveDownLeft() {
-    character.speedX = -2; 
-    character.speedY = 2; 
+    character.speedX = -1; 
+    character.speedY = 1; 
 }
 
 function moveUpRight() {
-    character.speedX = 2; 
-    character.speedY = -2; 
+    character.speedX = 1; 
+    character.speedY = -1; 
 }
 
 function moveDownRight() {
-    character.speedX = 2; 
-    character.speedY = 2; 
+    character.speedX = 1; 
+    character.speedY = 1; 
 }
 
 function clearmove() {

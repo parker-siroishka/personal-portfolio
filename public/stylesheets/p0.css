@@ -2,8 +2,12 @@
 
 body {
 	min-width: 1880px;
-	overflow:auto;
-	background-color: #97745d !important;
+	overflow:hidden;
+	background-image: url("../media/background-img-blur.jpg");
+	background-size: cover;
+	height: 100%;
+	width: 100%;
+	
 
 }
 
@@ -13,8 +17,12 @@ body {
 	left: auto;
 	top: 0;
 	position: absolute;;
-	z-index: 10;
+	z-index: 0;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	user-select: none;
 }
+
 
 #character {
 	width: 50px;
@@ -24,7 +32,7 @@ body {
 
 canvas:not(#joystick) {
 	border: 2px solid #d3d3d3;
-	background-color: #f1f1f1;
+	background-image: url("../media/tv-bg.gif");
 	position: relative; 
 	width: 475px; 
 	height: 390px; 
@@ -41,6 +49,7 @@ canvas:not(#joystick) {
 	border-radius: 5px;
 	padding: 15px;
 	margin-top: 50px;
+	z-index: 1;
 }
 
 .title-img {
@@ -51,6 +60,7 @@ canvas:not(#joystick) {
 	-moz-user-select: none;
 	-webkit-user-select: none;
 	user-select: none;
+	z-index: 1;
 }
 
 .content {
@@ -64,5 +74,11 @@ canvas:not(#joystick) {
     margin-left:auto;
     margin-right:auto;
     width:1750px;
+}
+
+.action-event {
+	width: 350px;
+	height: 350px;
+	background-color: red;
 }
 
