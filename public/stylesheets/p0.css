@@ -1,14 +1,12 @@
 
 
 body {
-	min-width: 1880px;
-	overflow:hidden;
+	overflow: hidden;
 	background-image: url("../media/background-img-blur.jpg");
 	background-size: cover;
+	background-repeat: no-repeat;
 	height: 100%;
 	width: 100%;
-	
-
 }
 
 #tv-frame {
@@ -37,9 +35,9 @@ canvas:not(#joystick) {
 	width: 475px; 
 	height: 390px; 
 	left: 50%; 
-
+	top: 0;
 	margin-left: -300px; /* This is half the width */ 
-	margin-top: 8%;
+	margin-top: 177px;
 	margin-bottom: 1%; /* This is half the height */ 
 }
 

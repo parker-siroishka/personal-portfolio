@@ -1,4 +1,10 @@
 .p0-thumbnail {
     width: 100%;
     height: 225px;
+    object-fit: cover;
+}
+
+.list-group-item.active {
+   background-color: #F5CB5C;
+   border-color: #E6AD0F;
 }
