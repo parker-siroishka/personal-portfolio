@@ -2,6 +2,7 @@
 
 body {
 	overflow:auto;
+	overflow-x: hidden; 
 	background-image: url("../media/background-img-blur.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
