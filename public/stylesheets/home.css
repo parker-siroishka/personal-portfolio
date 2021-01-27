@@ -2,6 +2,11 @@ body {
     background-color: #E8EDDF;
 }
 
+#profile-pic {
+    border-radius: 100%;
+    border: 3px solid #333533;
+    width: 40%;
+}
 
 .card-body {
     background-color: #E7EEEC;
