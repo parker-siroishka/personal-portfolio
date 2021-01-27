@@ -1,6 +1,14 @@
 const URL = location.origin; // root domain
 
+
+
+
 // redirects
+
+$("#ret-home").on("click", e => {
+    window.location.assign(`${URL}/`);
+});
+
 $("#go-p0").on("click", e => {
     window.location.assign(`${URL}/pages/p0.html`);
 });

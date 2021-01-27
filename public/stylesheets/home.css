@@ -1,10 +1,35 @@
+body {
+    background-color: #E8EDDF;
+}
+
+
+.card-body {
+    background-color: #E7EEEC;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #C3D5D0;
+    color: #242423;
+}
+
 .p0-thumbnail {
     width: 100%;
     height: 225px;
     object-fit: cover;
 }
 
-.list-group-item.active {
-   background-color: #F5CB5C;
-   border-color: #E6AD0F;
+.figure-caption {
+    white-space: initial;
+}
+
+.yellow {
+    color: #F5CB5C !important;
+}
+
+p {
+    color: #242423;
+}
+
+body {
+    background-color: #E8EDDF;
 }

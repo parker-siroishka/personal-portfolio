@@ -1,3 +1,58 @@
 #abigayles-creed-title {
     width: 85%;
+    padding-bottom: 5%;
+    padding-top: 5%;
 }
+
+.tasks {
+    text-align: left;
+    font-size: 24px;
+}
+
+.p0-thumbnail-details {
+    height: auto;
+    width: 100%;
+    object-fit: cover;
+}
+
+.list-group-item {
+    background-color: #E7EEEC;
+}
+
+.list-group-item:hover {
+    background-color: #C3D5D0;
+}
+
+.list-group-item.active {
+   background-color: #F5CB5C;
+   border-color: #E6AD0F;
+}
+
+.tab-content {
+    margin-top: 10%;
+}
+
+#carouselExampleIndicators {
+    height: 600px;
+}
+
+.image-block {
+ white-space: nowrap;
+ width: 100%;
+ margin-top: 3%;
+}
+.image-block .figure {
+    display: block;
+    width: 100%;
+}
+
+.figure img {
+    border-radius: 30px !important;
+    border: 3px solid #333533;
+}
+
+/* .image-block .figure img{
+    display: block;
+    width: 100%;
+} */
+
