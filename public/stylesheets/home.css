@@ -2,6 +2,14 @@ body {
     background-color: #E8EDDF;
 }
 
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(245,203,92, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.25rem #F5CB5C;
+}
+
 #profile-pic {
     border-radius: 100%;
     border: 3px solid #333533;
