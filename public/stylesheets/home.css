@@ -16,6 +16,10 @@ body {
     width: 40%;
 }
 
+.card {
+    border: 1px solid #F5CB5C;
+}
+
 .card-body {
     background-color: #E7EEEC;
 }
