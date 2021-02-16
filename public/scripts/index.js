@@ -20,3 +20,8 @@ $("#src-p0").on("click", e => {
 $("#det-p0").on("click", e => {
     window.location.assign(`${URL}/pages/p0Details.html`);
 });
+
+
+$("#go-p1").on("click", e => {
+    window.location.assign(`${URL}/pages/p1.html`);
+});
