@@ -2,9 +2,7 @@
 // let PIC_TAKEN = false;
 // var audioContext;
 
-window.addEventListener('load', (e) => {
-    init();
-})
+
 
 // function init() {
 //     audioContext = new(window.AudioContext || window.webkitAudioContext)();
@@ -83,6 +81,9 @@ window.addEventListener('load', (e) => {
 // }
 
 
+window.addEventListener('load', (e) => {
+    init();
+})
 
 function init() {
     document.body.removeEventListener('click', init)
@@ -158,7 +159,7 @@ function init() {
             console.log('Freq Bin: ' + getIndexOfMax(freqBinDataArray));
             console.log(freqBinDataArray);
             
-            document.getElementById("volume").innerHTML = "Volume: " + VOLUME.toFixed(2);
+            document.getElementById("volume").innerHTML = 12;//"Volume: " + VOLUME.toFixed(2);
             // if(VOLUME > 20) {
             //     takePhoto();
             //     VOLUME = 0
@@ -184,6 +185,9 @@ function getRMS(spectrum) {
 function getIndexOfMax(array) {
     return array.reduce((iMax, x, i, arr) => x > arr[iMax] ? i : iMax, 0);
 }
+
+var volumeText =  document.getElementById("volume");
+
 
 const webcamElement = document.getElementById('webcam');
 const canvasElement = document.getElementById('canvas');
