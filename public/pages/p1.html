@@ -9,16 +9,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
+    <title>CPSC 583 - P1</title>
 </head>
 <body>
-    <video id="video" width="640" height="480" autoplay></video>
+    <!-- <video id="video" width="640" height="480" autoplay></video>
     <button id="snap">Snap Photo</button>
-    <canvas id="canvas" width="640" height="480"></canvas>
+    <button id="micOn">Activate Microphone</button>
+    <canvas id="canvas" width="640" height="480"></canvas> -->
+    <video id="webcam" autoplay playsinline width="640" height="480"></video>
+    <canvas id="canvas" class="d-none"></canvas>
     <h3 id="volume">Volume: 0.0</h3>
+    <button onclick="snapPicture()">snap</button>
+    <button id="cameraFlip">flip cam</button>
+    <a id="download-photo" href="">DOWNLOAD PHOTO</a>
 </body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="../scripts/p1.js"></script>
-<script src="../scripts/mic.js"></script>
 
 </html>
 
