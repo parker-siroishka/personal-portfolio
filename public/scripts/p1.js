@@ -2,9 +2,9 @@
 // let PIC_TAKEN = false;
 // var audioContext;
 
-// window.addEventListener('load', (e) => {
-//     init();
-// })
+window.addEventListener('load', (e) => {
+    init();
+})
 
 // function init() {
 //     audioContext = new(window.AudioContext || window.webkitAudioContext)();
@@ -39,30 +39,30 @@
 //         console.error('getUserMedia unsupported by browser');
 //     }
 
-//     function beginRecording() {
-//         analyser.fftSize = 1024; // power of 2, between 32 and max unsigned integer
-//         var bufferLength = analyser.fftSize;
+    // function beginRecording() {
+    //     analyser.fftSize = 1024; // power of 2, between 32 and max unsigned integer
+    //     var bufferLength = analyser.fftSize;
 
-//         var freqBinDataArray = new Uint8Array(bufferLength);
+    //     var freqBinDataArray = new Uint8Array(bufferLength);
 
-//         var checkAudio = function() {
-//             analyser.getByteFrequencyData(freqBinDataArray);
-//             VOLUME = (VOLUME > 20) ? 0 : getRMS(freqBinDataArray);
-//             console.log(VOLUME);
-//             //console.log('Volume: ' + getRMS(freqBinDataArray));
-//             //console.log('Freq Bin: ' + getIndexOfMax(freqBinDataArray));
-//             //console.log(freqBinDataArray);
+    //     var checkAudio = function() {
+    //         analyser.getByteFrequencyData(freqBinDataArray);
+    //         VOLUME = (VOLUME > 20) ? 0 : getRMS(freqBinDataArray);
+    //         console.log(VOLUME);
+    //         //console.log('Volume: ' + getRMS(freqBinDataArray));
+    //         //console.log('Freq Bin: ' + getIndexOfMax(freqBinDataArray));
+    //         //console.log(freqBinDataArray);
             
-//             document.getElementById("volume").innerHTML = "Volume: " + VOLUME.toFixed(2);
-//             if(VOLUME > 20) {
-//                 takePhoto();
-//                 VOLUME = 0
-//                 audioContext.suspend();
-//             }
-//         }
+    //         document.getElementById("volume").innerHTML = "Volume: " + VOLUME.toFixed(2);
+    //         if(VOLUME > 20) {
+    //             takePhoto();
+    //             VOLUME = 0
+    //             audioContext.suspend();
+    //         }
+    //     }
 
-//         setInterval(checkAudio, 50);
-//     }
+    //     setInterval(checkAudio, 50);
+    // }
 // }
 
 
@@ -84,36 +84,106 @@
 
 
 
+function init() {
+    document.body.removeEventListener('click', init)
+  
+    // Older browsers might not implement mediaDevices at all, so we set an empty object first
+    if (navigator.mediaDevices === undefined) {
+      navigator.mediaDevices = {};
+    }
+  
+  
+    // Some browsers partially implement mediaDevices. We can't just assign an object
+    // with getUserMedia as it would overwrite existing properties.
+    // Here, we will just add the getUserMedia property if it's missing.
+    if (navigator.mediaDevices.getUserMedia === undefined) {
+      navigator.mediaDevices.getUserMedia = function(constraints) {
+  
+        // First get ahold of the legacy getUserMedia, if present
+        var getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+  
+        // Some browsers just don't implement it - return a rejected promise with an error
+        // to keep a consistent interface
+        if (!getUserMedia) {
+          return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
+        }
+  
+        // Otherwise, wrap the call to the old navigator.getUserMedia with a Promise
+        return new Promise(function(resolve, reject) {
+          getUserMedia.call(navigator, constraints, resolve, reject);
+        });
+      }
+    }
 
-// // Grab elements, create settings, etc.
-// var video = document.getElementById('video');
+    var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    var source;
+    var stream;
+    var analyser = audioCtx.createAnalyser();
 
-// // Get access to the camera!
-// if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-//     // Not adding `{ audio: true }` since we only want video now
-//     navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
-//         //video.src = window.URL.createObjectURL(stream);
-//         video.srcObject = stream;
-//         video.play();
-//     });
-// }
+    if (navigator.mediaDevices.getUserMedia) {
+        console.log('getUserMedia supported.');
+        var constraints = {audio: true}
+        navigator.mediaDevices.getUserMedia (constraints)
+           .then(
+             function(stream) {
+                source = audioCtx.createMediaStreamSource(stream);
+                source.connect(analyser);
+                analyser.connect(audioCtx.destination);
+                beginRecording();
+                // source.connect(distortion);
+                // distortion.connect(biquadFilter);
+                // biquadFilter.connect(gainNode);
+                // convolver.connect(gainNode);
+                // gainNode.connect(analyser);
+                
+   
+                
+           })
+           .catch( function(err) { console.log('The following gUM error occured: ' + err);})
+     } else {
+        console.log('getUserMedia not supported on your browser!');
+     }
 
-// // Elements for taking the snapshot
-// var canvas = document.getElementById('canvas');
-// var context = canvas.getContext('2d');
-// var video = document.getElementById('video');
+     function beginRecording() {
+        analyser.fftSize = 1024; // power of 2, between 32 and max unsigned integer
+        var bufferLength = analyser.fftSize;
 
-// // Trigger photo take
-// document.getElementById("snap").addEventListener("click", function() {
-// 	context.drawImage(video, 0, 0, 640, 480);
-// });
+        var freqBinDataArray = new Uint8Array(bufferLength);
 
-// function takePhoto(){
-//     context.drawImage(video, 0, 0, 640, 480);
-// }
+        var checkAudio = function() {
+            analyser.getByteFrequencyData(freqBinDataArray);
+            VOLUME = getRMS(freqBinDataArray);
+            console.log(VOLUME);
+            console.log('Volume: ' + getRMS(freqBinDataArray));
+            console.log('Freq Bin: ' + getIndexOfMax(freqBinDataArray));
+            console.log(freqBinDataArray);
+            
+            document.getElementById("volume").innerHTML = "Volume: " + VOLUME.toFixed(2);
+            // if(VOLUME > 20) {
+            //     takePhoto();
+            //     VOLUME = 0
+            //     audioContext.suspend();
+            // }
+        }
 
-// //setInterval(takePhoto, 500);
+        setInterval(checkAudio, 50);
+    }
+}
 
+
+function getRMS(spectrum) {
+    var rms = 0;
+    for (var i = 0; i < spectrum.length; i++) {
+        rms += spectrum[i] * spectrum[i];
+    }
+    rms /= spectrum.length;
+    rms = Math.sqrt(rms);
+    return rms;
+}
+
+function getIndexOfMax(array) {
+    return array.reduce((iMax, x, i, arr) => x > arr[iMax] ? i : iMax, 0);
+}
 
 const webcamElement = document.getElementById('webcam');
 const canvasElement = document.getElementById('canvas');
@@ -128,9 +198,13 @@ webcam.start()
    });
 
    	
+var picture;
+
 function snapPicture() {
-    webcam.snap();
+    picture = webcam.snap();
+    picture();
 }
+
 
 document.querySelector('#download-photo').href = picture;
 
