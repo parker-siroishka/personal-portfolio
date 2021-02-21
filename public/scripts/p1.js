@@ -119,7 +119,16 @@ function init() {
     var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     var source;
     var stream;
+
     var analyser = audioCtx.createAnalyser();
+    analyser.minDecibels = -90;
+    analyser.maxDecibels = -10;
+    analyser.smoothingTimeConstant = 0.85;
+
+    var distortion = audioCtx.createWaveShaper();
+    var gainNode = audioCtx.createGain();
+    var biquadFilter = audioCtx.createBiquadFilter();
+    var convolver = audioCtx.createConvolver();
 
     if (navigator.mediaDevices.getUserMedia) {
         console.log('getUserMedia supported.');
@@ -128,15 +137,16 @@ function init() {
            .then(
              function(stream) {
                 source = audioCtx.createMediaStreamSource(stream);
+                
+                
+                source.connect(distortion);
+                distortion.connect(biquadFilter);
+                biquadFilter.connect(gainNode);
+                convolver.connect(gainNode);
+                gainNode.connect(analyser);
                 source.connect(analyser);
                 analyser.connect(audioCtx.destination);
                 beginRecording();
-                // source.connect(distortion);
-                // distortion.connect(biquadFilter);
-                // biquadFilter.connect(gainNode);
-                // convolver.connect(gainNode);
-                // gainNode.connect(analyser);
-                
    
                 
            })
@@ -159,7 +169,7 @@ function init() {
             console.log('Freq Bin: ' + getIndexOfMax(freqBinDataArray));
             console.log(freqBinDataArray);
             
-            document.getElementById("volume").innerHTML = 12;//"Volume: " + VOLUME.toFixed(2);
+            document.getElementById("volume").innerHTML = "Volume: " + VOLUME.toFixed(2);
             // if(VOLUME > 20) {
             //     takePhoto();
             //     VOLUME = 0
@@ -169,6 +179,7 @@ function init() {
 
         setInterval(checkAudio, 50);
     }
+
 }
 
 
