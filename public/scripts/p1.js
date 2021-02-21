@@ -169,7 +169,7 @@ function init() {
             console.log('Freq Bin: ' + getIndexOfMax(freqBinDataArray));
             console.log(freqBinDataArray);
             
-            document.getElementById("volume").innerHTML = "Volume: " + VOLUME.toFixed(2);
+            document.getElementById("volume").innerHTML = "Volume: " + freqBinDataArray;//VOLUME.toFixed(2);
             // if(VOLUME > 20) {
             //     takePhoto();
             //     VOLUME = 0
