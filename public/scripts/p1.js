@@ -125,10 +125,7 @@ function init() {
     analyser.maxDecibels = -10;
     analyser.smoothingTimeConstant = 0.85;
 
-    var distortion = audioCtx.createWaveShaper();
     var gainNode = audioCtx.createGain();
-    var biquadFilter = audioCtx.createBiquadFilter();
-    var convolver = audioCtx.createConvolver();
 
     if (navigator.mediaDevices.getUserMedia) {
         console.log('getUserMedia supported.');
@@ -164,7 +161,7 @@ function init() {
             console.log('Freq Bin: ' + getIndexOfMax(freqBinDataArray));
             console.log(freqBinDataArray);
             
-            document.getElementById("volume").innerHTML = "Volume: " + freqBinDataArray;//VOLUME.toFixed(2);
+            document.getElementById("volume").innerHTML = "Volume: " + VOLUME.toFixed(2);
             // if(VOLUME > 20) {
             //     takePhoto();
             //     VOLUME = 0
@@ -208,12 +205,11 @@ webcam.start()
    });
 
    	
-var picture;
 
-function snapPicture() {
-    picture = webcam.snap();
-    picture();
-}
+$("#snapPhoto").click(function () {
+    let picture = webcam.snap();
+    document.querySelector('#download-photo').href = picture;
+});
 
 
 document.querySelector('#download-photo').href = picture;
