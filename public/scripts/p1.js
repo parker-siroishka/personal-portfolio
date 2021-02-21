@@ -81,7 +81,7 @@
 // }
 
 
-window.addEventListener('load', (e) => {
+window.addEventListener('click', (e) => {
     init();
 })
 
@@ -138,11 +138,6 @@ function init() {
              function(stream) {
                 source = audioCtx.createMediaStreamSource(stream);
                 
-                
-                source.connect(distortion);
-                distortion.connect(biquadFilter);
-                biquadFilter.connect(gainNode);
-                convolver.connect(gainNode);
                 gainNode.connect(analyser);
                 source.connect(analyser);
                 analyser.connect(audioCtx.destination);
