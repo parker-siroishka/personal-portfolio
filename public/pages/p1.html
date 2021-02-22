@@ -9,21 +9,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../stylesheets/p1.css">
     <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
     <title>CPSC 583 - P1</title>
 </head>
-<body>
-    <!-- <video id="video" width="640" height="480" autoplay></video>
-    <button id="snap">Snap Photo</button>
-    <button id="micOn">Activate Microphone</button>
-    <canvas id="canvas" width="640" height="480"></canvas> -->
-    <video id="webcam" autoplay playsinline width="640" height="480"></video>
-    <canvas id="canvas" class="d-none"></canvas>
-    <h3 id="volume">Volume: 0.0</h3>
-    <button id="snapPhoto"">snap</button>
-    <button id="cameraFlip">flip cam</button>
-    <a id="download-photo" href="">DOWNLOAD PHOTO</a>
-    <button id="start"> CLICK TO START</button>
+    <div class="center-container">
+        <h1>ActionShot!</h1>
+        <video id="webcam" autoplay playsinline height="480"></video>
+        <canvas id="canvas" class="d-none"></canvas>
+        <h3 id="volume">VOLUME: 0.0</h3>
+        <h2 id="countdown"></h2>
+        <button id="resetCam" onclick="primeCamera()">RESET CAMERA</button>
+        <button id="snapPhoto">TAKE PHOTO</button>
+        <button id="cameraFlip">FLIP CAMERA</button>
+        <a id="download-photo" href=""><Button>DOWNLOAD PHOTO</Button></a>
+        <button id="start"> CLICK TO START</button>
+    </div>
+    
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

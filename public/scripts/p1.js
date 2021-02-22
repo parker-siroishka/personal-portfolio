@@ -1,92 +1,30 @@
-// let VOLUME = 0;
-// let PIC_TAKEN = false;
-// var audioContext;
+/**
+ * 
+ * ActionShot
+ * © 2021 Parker Siroishka
+ * 
+ * UCID: 30024936
+ * 
+ * 
+ * Initial Microphone setup created by Michael Hung 
+ * Teaching Assistant for CPSC 581 - Winter 2021
+ * Website: https://contacts.ucalgary.ca/info/cpsc/profiles/1-8497385
+ */
+
+var VOLUME = 0;
+var GAIN = 1;
+var CAM_PRIMED = true;
+var resetBtn = document.getElementById("resetCam");
+var startBtn = document.getElementById("start");
 
 
 
-// function init() {
-//     audioContext = new(window.AudioContext || window.webkitAudioContext)();
-
-//     document.getElementById("micOn").addEventListener("click", function() {
-//         audioContext.resume();
-//     });
-
-//     setInterval(function(){
-        
-//     }, 250);
-
-
-//     var microphone;
-
-//     var analyser = audioContext.createAnalyser();
-
-//     if (navigator.mediaDevices.getUserMedia) {
-//         console.log('getUserMedia supported.');
-//         var constraints = { audio: true }
-//         navigator.mediaDevices.getUserMedia(constraints)
-//             .then(function(stream) {
-//                 microphone = audioContext.createMediaStreamSource(stream);
-//                 microphone.connect(analyser);
-//                 //analyser.connect(audioContext.destination);
-//                 beginRecording();
-//             })
-//             .catch(function(err) {
-//                 console.error('error: ' + err);
-//             })
-//     } else {
-//         console.error('getUserMedia unsupported by browser');
-//     }
-
-    // function beginRecording() {
-    //     analyser.fftSize = 1024; // power of 2, between 32 and max unsigned integer
-    //     var bufferLength = analyser.fftSize;
-
-    //     var freqBinDataArray = new Uint8Array(bufferLength);
-
-    //     var checkAudio = function() {
-    //         analyser.getByteFrequencyData(freqBinDataArray);
-    //         VOLUME = (VOLUME > 20) ? 0 : getRMS(freqBinDataArray);
-    //         console.log(VOLUME);
-    //         //console.log('Volume: ' + getRMS(freqBinDataArray));
-    //         //console.log('Freq Bin: ' + getIndexOfMax(freqBinDataArray));
-    //         //console.log(freqBinDataArray);
-            
-    //         document.getElementById("volume").innerHTML = "Volume: " + VOLUME.toFixed(2);
-    //         if(VOLUME > 20) {
-    //             takePhoto();
-    //             VOLUME = 0
-    //             audioContext.suspend();
-    //         }
-    //     }
-
-    //     setInterval(checkAudio, 50);
-    // }
-// }
-
-
-
-
-// function getRMS(spectrum) {
-//     var rms = 0;
-//     for (var i = 0; i < spectrum.length; i++) {
-//         rms += spectrum[i] * spectrum[i];
-//     }
-//     rms /= spectrum.length;
-//     rms = Math.sqrt(rms);
-//     return rms;
-// }
-
-// function getIndexOfMax(array) {
-//     return array.reduce((iMax, x, i, arr) => x > arr[iMax] ? i : iMax, 0);
-// }
-
-
-window.addEventListener('click', (e) => {
+startBtn.addEventListener('click', (e) => {
     init();
 })
 
 function init() {
-    document.body.removeEventListener('click', init)
+
   
     // Older browsers might not implement mediaDevices at all, so we set an empty object first
     if (navigator.mediaDevices === undefined) {
@@ -118,14 +56,13 @@ function init() {
 
     var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     var source;
-    var stream;
 
     var analyser = audioCtx.createAnalyser();
     analyser.minDecibels = -90;
     analyser.maxDecibels = -10;
     analyser.smoothingTimeConstant = 0.85;
 
-    var gainNode = audioCtx.createGain();
+    var voiceVolume = audioCtx.createGain();
 
     if (navigator.mediaDevices.getUserMedia) {
         console.log('getUserMedia supported.');
@@ -135,9 +72,8 @@ function init() {
              function(stream) {
                 source = audioCtx.createMediaStreamSource(stream);
                 
-                gainNode.connect(analyser);
-                source.connect(analyser);
-                analyser.connect(audioCtx.destination);
+                //voiceVolume.connect(analyser);
+                source.connect(voiceVolume).connect(analyser).connect(audioCtx.destination);;
                 beginRecording();
    
                 
@@ -154,27 +90,40 @@ function init() {
         var freqBinDataArray = new Uint8Array(bufferLength);
 
         var checkAudio = function() {
+            voiceVolume.gain.setValueAtTime(GAIN, audioCtx.currentTime);
             analyser.getByteFrequencyData(freqBinDataArray);
             VOLUME = getRMS(freqBinDataArray);
-            console.log(VOLUME);
-            console.log('Volume: ' + getRMS(freqBinDataArray));
-            console.log('Freq Bin: ' + getIndexOfMax(freqBinDataArray));
-            console.log(freqBinDataArray);
-            
+            // console.log(VOLUME);
+            // console.log('Volume: ' + getRMS(freqBinDataArray));
+            // console.log(freqBinDataArray);
             document.getElementById("volume").innerHTML = "Volume: " + VOLUME.toFixed(2);
-            // if(VOLUME > 20) {
-            //     takePhoto();
-            //     VOLUME = 0
-            //     audioContext.suspend();
-            // }
+            if(VOLUME > 5) {
+                if(CAM_PRIMED){
+                    snapPhoto();
+                    CAM_PRIMED = !CAM_PRIMED;
+                    resetBtn.style.visibility = "visible";
+                }
+            }
         }
-
-        setInterval(checkAudio, 50);
+        setInterval(checkAudio, 100);
     }
-
 }
 
+function muteThenUnmute(voiceVolume, audioCtx) {
 
+        console.log("muted")
+        snapPhoto();
+        voiceVolume.gain.setValueAtTime(0, audioCtx.currentTime);
+        
+        setTimeout(function(){ 
+            voiceVolume.gain.setValueAtTime(1, audioCtx.currentTime);
+            console.log("Umuted"); 
+        }, 3000);
+        
+    
+}
+
+// Returns Maximum volume from one sample bin
 function getRMS(spectrum) {
     var rms = 0;
     for (var i = 0; i < spectrum.length; i++) {
@@ -185,11 +134,15 @@ function getRMS(spectrum) {
     return rms;
 }
 
-function getIndexOfMax(array) {
-    return array.reduce((iMax, x, i, arr) => x > arr[iMax] ? i : iMax, 0);
-}
 
-var volumeText =  document.getElementById("volume");
+/**
+ * Webcam integrations implemented through the open-source access of 
+ * webcam-easy created by: Benson Ruan
+ * 
+ * Found at: https://github.com/bensonruan/webcam-easy
+ * Article / Tutorial found at: https://bensonruan.com/how-to-access-webcam-and-take-photo-with-javascript/
+ *  
+ */
 
 
 const webcamElement = document.getElementById('webcam');
@@ -204,17 +157,44 @@ webcam.start()
        console.log(err);
    });
 
-   	
 
-$("#snapPhoto").click(function () {
+function snapPhoto() {
     let picture = webcam.snap();
     document.querySelector('#download-photo').href = picture;
+}
+
+function primeCamera() {
+
+    document.getElementById("countdown").style.display = "block";
+    var timeleft = 10;
+    var downloadTimer = setInterval(function(){
+        if(timeleft <= 0){
+            clearInterval(downloadTimer);
+            document.getElementById("countdown").innerHTML = "Camera Primed";
+        } else {
+            document.getElementById("countdown").innerHTML = "Camera Primed in " + timeleft + " seconds";
+        }
+        timeleft -= 1;
+    }, 1000);
+
+    setTimeout(function() {
+        CAM_PRIMED = true;
+        resetBtn.style.visibility = "hidden";
+        document.getElementById("countdown").style.display = "none";
+    }, 11000);
+    
+    
+
+}
+
+
+$("#snapPhoto").click(function () {
+    snapPhoto();
 });
 
-
-document.querySelector('#download-photo').href = picture;
 
 $('#cameraFlip').click(function() {
     webcam.flip();
     webcam.start();  
 });
+
