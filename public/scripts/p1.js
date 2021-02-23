@@ -21,6 +21,7 @@ var startBtn = document.getElementById("start");
 
 startBtn.addEventListener('click', (e) => {
     init();
+    startBtn.style.animation = "none";
 })
 
 function init() {
@@ -101,7 +102,10 @@ function init() {
                 if(CAM_PRIMED){
                     snapPhoto();
                     CAM_PRIMED = !CAM_PRIMED;
+                    canv.style.border = "5px solid #CD5C5C";
+                    canv.style.borderRadius = "5px";
                     resetBtn.style.visibility = "visible";
+                    $('#canvas').hide().fadeIn(2500);
                 }
             }
         }
@@ -109,19 +113,6 @@ function init() {
     }
 }
 
-function muteThenUnmute(voiceVolume, audioCtx) {
-
-        console.log("muted")
-        snapPhoto();
-        voiceVolume.gain.setValueAtTime(0, audioCtx.currentTime);
-        
-        setTimeout(function(){ 
-            voiceVolume.gain.setValueAtTime(1, audioCtx.currentTime);
-            console.log("Umuted"); 
-        }, 3000);
-        
-    
-}
 
 // Returns Maximum volume from one sample bin
 function getRMS(spectrum) {
@@ -187,16 +178,21 @@ function primeCamera() {
 
 }
 
+var canv = document.getElementById("canvas");
 
 $("#snapPhoto").click(function () {
     snapPhoto();
-    document.getElementById("canvas").style.border = "5px solid #CD5C5C";
-    document.getElementById("canvas").style.borderRadius = "5px";
+    canv.style.border = "5px solid #CD5C5C";
+    canv.style.borderRadius = "5px";
+    
     $('#canvas').hide().fadeIn(2500);
 });
 
+var webcamEl = document.getElementById("webcam");
 
 $('#cameraFlip').click(function() {
+    webcamEl.style.transition = "transform 1s";
+    webcamEl.style.transform = "rotateY(180deg)";
     webcam.flip();
     webcam.start();  
 });

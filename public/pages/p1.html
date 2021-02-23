@@ -20,11 +20,18 @@
         <div>
             <h3 id="volume">VOLUME: 0.0</h3>
             <h2 id="countdown"></h2>
-            <button id="resetCam" onclick="primeCamera()">RESET CAMERA</button>
-            <img src="../media/p1/take_photo_icon.png" alt="" id="snapPhoto">
-            <img src="../media/p1/flip_cam_icon.png" alt="" id="cameraFlip">
-            <a id="download-photo" href="" download><Button>DOWNLOAD PHOTO</Button></a>
-            <button id="start"> CLICK TO START</button>
+            <div class=".grid-container">
+                <div class="grid-row">
+                    <img class="grid-item icon" src="../media/p1/take_photo_icon.png" alt="" id="snapPhoto">
+                    <img class="grid-item icon" src="../media/p1/mic_icon.png" alt="" id="start">
+                    <img class="grid-item icon" src="../media/p1/flip_cam_icon.png" alt="" id="cameraFlip">
+                </div>
+                <div class="grid-row">
+                    <img class="grid-item icon" src="../media/p1/reset_icon.png" alt="" onclick="primeCamera()" id="resetCam">
+                    <a class="grid-item" id="download-photo" href="" download><img class="grid-item icon" src="../media/p1/download_icon.png" alt="" id="download-photo"></a>
+                </div>
+            </div>
+            
         </div>
     </div>
     

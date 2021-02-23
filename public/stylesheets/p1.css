@@ -2,8 +2,29 @@ body {
     background-color: #F5CB5C;
 }
 
-button {
-    height: 100px;
+
+.grid-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid-item {
+    /* padding: 2px; */
+    margin: 0;
+}
+
+.grid-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    border-radius: 8px;
+    background-color: #F3C33F;
+    margin-bottom: 5px;
+    max-width: 268px;
+    
 }
 
 #webcam {
@@ -13,19 +34,49 @@ button {
     border: 2px solid #333533;
     border-radius: 5px;
     margin: 5px;
+    background-image: url("../media/p1/loading_animation.gif") ;
+    background-color: #FBEDC5;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    
 }
 
-#cameraFlip {
-    width: 100px;
-    height: 100px;
+.icon {
+    height: 55px;
+    /* margin: 0 auto; */
+    padding: 5px;
 }
 
-#snapPhoto {
-    width: 100px;
-    height: 100px;
+#start {
+    height: 85px;
+    width: 85px;
 }
 
-#cameraFlip:active {
+#start {
+    /* Start the shake animation and make the animation last for 0.5 seconds */
+    animation: shake 2s;
+  
+    /* When the animation is finished, start again */
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-1px, 0px) rotate(1deg); }
+    30% { transform: translate(1px, 1px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 1px) rotate(-1deg); }
+    60% { transform: translate(-1px, 1px) rotate(0deg); }
+    70% { transform: translate(1px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 1px) rotate(0deg); }
+    100% { transform: translate(1px, -1px) rotate(-1deg); }
+  }
+
+
+.icon:active {
     filter: brightness(200%);
 }
 
