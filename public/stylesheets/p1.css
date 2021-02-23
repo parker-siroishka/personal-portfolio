@@ -1,17 +1,22 @@
+body {
+    background-color: #F5CB5C;
+}
+
 button {
-    height: 75px;
+    height: 100px;
 }
 
 #webcam {
     width: 100%;
     max-width: 500px;
+    height: 50%;
 }
 
 #canvas {
   background-color: transparent;
   position: relative;
   width: 100%;
-  height: 380px;
+  height: 50%;
   margin: auto;
   top: 0;
   left: 0;
@@ -21,7 +26,8 @@ button {
 }
 
 .center-container {
-    height: auto;
-    width: 500px;
+    max-height: 100vh;
+    width: auto;
     margin: 0 auto;
+    max-width: 500px;
 }
