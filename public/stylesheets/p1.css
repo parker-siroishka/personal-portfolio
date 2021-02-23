@@ -95,11 +95,13 @@ body {
 }
 
 .center-container {
-    max-height: 100vh;
-    /* margin: 0 auto; */
+    /* max-height: 100vh; */
+    margin: 0;
+    height: 100%;
     width: 100%;
-    display: table;
-    justify-content: center;
-    align-items: center;
+    display: flex;           /* establish flex container */
+    flex-direction: column;  /* make main axis vertical */
+    justify-content: center; /* center items vertically, in this case */
+    align-items: center;     /* center items horizontally, in this case */
     max-width: 500px;
 }
