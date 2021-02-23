@@ -190,6 +190,9 @@ function primeCamera() {
 
 $("#snapPhoto").click(function () {
     snapPhoto();
+    document.getElementById("canvas").style.border = "5px solid #CD5C5C";
+    document.getElementById("canvas").style.borderRadius = "5px";
+    $('#canvas').hide().fadeIn(2500);
 });
 
 

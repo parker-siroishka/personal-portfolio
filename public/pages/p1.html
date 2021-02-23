@@ -14,16 +14,18 @@
     <title>CPSC 583 - P1</title>
 </head>
     <div class="center-container">
-        <h1>ActionShot!</h1>
-        <video id="webcam" autoplay playsinline height="480"></video>
+        <img src="../media/p1/actionshot_logo.png" alt="">
+        <video  id="webcam" autoplay playsinline height="480"></video>
         <canvas id="canvas" class="d-none"></canvas>
-        <h3 id="volume">VOLUME: 0.0</h3>
-        <h2 id="countdown"></h2>
-        <button id="resetCam" onclick="primeCamera()">RESET CAMERA</button>
-        <button id="snapPhoto">TAKE PHOTO</button>
-        <button id="cameraFlip">FLIP CAMERA</button>
-        <a id="download-photo" href="" download><Button>DOWNLOAD PHOTO</Button></a>
-        <button id="start"> CLICK TO START</button>
+        <div>
+            <h3 id="volume">VOLUME: 0.0</h3>
+            <h2 id="countdown"></h2>
+            <button id="resetCam" onclick="primeCamera()">RESET CAMERA</button>
+            <img src="../media/p1/take_photo_icon.png" alt="" id="snapPhoto">
+            <img src="../media/p1/flip_cam_icon.png" alt="" id="cameraFlip">
+            <a id="download-photo" href="" download><Button>DOWNLOAD PHOTO</Button></a>
+            <button id="start"> CLICK TO START</button>
+        </div>
     </div>
     
 </body>
