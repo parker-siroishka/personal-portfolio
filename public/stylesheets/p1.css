@@ -99,6 +99,7 @@ body {
     margin: 0;
     height: 100%;
     width: 100%;
+    max-width: 500px;
     display: flex;           /* establish flex container */
     flex-direction: column;  /* make main axis vertical */
     justify-content: center; /* center items vertically, in this case */
