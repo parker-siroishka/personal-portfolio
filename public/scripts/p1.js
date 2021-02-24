@@ -176,6 +176,9 @@ function snapPhoto() {
 }
 
 function primeCamera() {
+    $('html, body').animate({
+        scrollTop: $("#logo").offset().top
+    }, 1000);
     cntdwn.style.visibility = "visible";
     if(TAKEN_WITH_MIC) {
         if(!CANVAS_FILLED) {
