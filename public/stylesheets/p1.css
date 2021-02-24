@@ -132,6 +132,10 @@ ul {
     margin-bottom: 15px;
  }
 
+ #top-list {
+     margin-bottom: 8px;
+ }
+
  li {
     float: left;
     display: flex;

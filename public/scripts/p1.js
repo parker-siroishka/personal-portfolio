@@ -26,6 +26,7 @@ var cntdwn = document.getElementById("countdown");
 actionPromptText.style.display = "none";
 canv.style.display = "none"
 cntdwn.style.visibility = "hidden";
+cntdwn.style.marginTop = "0px;"
 
 function actionPrompt(){
     if(CANVAS_FILLED) {
@@ -193,6 +194,7 @@ function primeCamera() {
             document.getElementById("countdown").innerHTML = "";
             document.getElementById("countdown").style.display = "block";
             document.getElementById("countdown").style.color = "#CD5C5C";
+            document.getElementById("countdown").style.marginTop = "0px";
             var timeleft = 10;
             var downloadTimer = setInterval(function(){
                 if(timeleft <= 0){
