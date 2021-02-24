@@ -16,7 +16,9 @@ var GAIN = 1;
 var CAM_PRIMED = true;
 var resetBtn = document.getElementById("resetCam");
 var startBtn = document.getElementById("start");
+var canv = document.getElementById("canvas");
 
+canv.style.display = "none"
 
 
 startBtn.addEventListener('click', (e) => {
@@ -98,7 +100,7 @@ function init() {
             // console.log('Volume: ' + getRMS(freqBinDataArray));
             // console.log(freqBinDataArray);
             document.getElementById("volume").innerHTML = "Volume: " + VOLUME.toFixed(2);
-            if(VOLUME > 5) {
+            if(VOLUME > 30) {
                 if(CAM_PRIMED){
                     snapPhoto();
                     CAM_PRIMED = !CAM_PRIMED;
@@ -155,7 +157,7 @@ function snapPhoto() {
 }
 
 function primeCamera() {
-
+    canv.style.display = "none";
     document.getElementById("countdown").style.display = "block";
     var timeleft = 10;
     var downloadTimer = setInterval(function(){
@@ -170,7 +172,7 @@ function primeCamera() {
 
     setTimeout(function() {
         CAM_PRIMED = true;
-        resetBtn.style.visibility = "hidden";
+        //resetBtn.style.visibility = "hidden";
         document.getElementById("countdown").style.display = "none";
     }, 11000);
     
@@ -178,7 +180,7 @@ function primeCamera() {
 
 }
 
-var canv = document.getElementById("canvas");
+
 
 $("#snapPhoto").click(function () {
     snapPhoto();

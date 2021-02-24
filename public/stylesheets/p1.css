@@ -1,5 +1,5 @@
 body {
-    background-color: #F5CB5C;
+    background-color: #f3d06e;
 }
 
 
@@ -31,7 +31,7 @@ body {
     width: auto;
     max-width: 95%;
     height: 50%;
-    max-height: 300px;
+    max-height: 350px;
     border: 2px solid #333533;
     border-radius: 5px;
     margin: 5px;
@@ -46,7 +46,7 @@ body {
 .icon {
     height: 55px;
     /* margin: 0 auto; */
-    padding: 5px;
+    padding: 15px;
 }
 
 #start {
@@ -87,6 +87,7 @@ body {
   width: 95%;
   height: 50%;
   margin: auto;
+  margin-top: 5px;
   top: 0;
   left: 0;
   right: 0;
@@ -106,3 +107,27 @@ body {
     align-items: center;     /* center items horizontally, in this case */
     max-width: 500px;
 }
+
+ul {
+    height: 95px;
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #F3C33F;
+    border-radius: 8px;
+    justify-content: center;
+    flex-direction: initial;
+    align-items: center;
+    margin-bottom: 15px;
+ }
+
+ li {
+    float: left;
+    display: flex;
+ }
+
+ li:nth-child(2) {
+    border-right: 2px solid #f3d06e;
+    border-left: 2px solid #f3d06e;
+ }

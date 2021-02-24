@@ -16,21 +16,19 @@
     <div class="center-container">
         <img src="../media/p1/actionshot_logo.png" alt="">
         <video  id="webcam" autoplay playsinline height="480"></video>
+        <h3 id="volume">VOLUME: 0.0</h3>
+        <ul id="top-list">
+            <li><img class="grid-item icon" src="../media/p1/take_photo_icon.png" alt="" id="snapPhoto"></li>
+            <li> <img class="grid-item icon" src="../media/p1/mic_icon.png" alt="" id="start"></li>
+            <li><img class="grid-item icon" src="../media/p1/flip_cam_icon.png" alt="" id="cameraFlip"></li>
+         </ul>
         <canvas id="canvas" class="d-none"></canvas>
+        <h2 id="countdown"></h2>
         <div>
-            <h3 id="volume">VOLUME: 0.0</h3>
-            <h2 id="countdown"></h2>
-            <div class=".grid-container">
-                <div class="grid-row">
-                    <img class="grid-item icon" src="../media/p1/take_photo_icon.png" alt="" id="snapPhoto">
-                    <img class="grid-item icon" src="../media/p1/mic_icon.png" alt="" id="start">
-                    <img class="grid-item icon" src="../media/p1/flip_cam_icon.png" alt="" id="cameraFlip">
-                </div>
-                <div class="grid-row">
-                    <img class="grid-item icon" src="../media/p1/reset_icon.png" alt="" onclick="primeCamera()" id="resetCam">
-                    <a class="grid-item" id="download-photo" href="" download><img class="grid-item icon" src="../media/p1/download_icon.png" alt="" id="download-photo"></a>
-                </div>
-            </div>
+            <ul>
+                <li><img class="grid-item icon" src="../media/p1/reset_icon.png" alt="" onclick="primeCamera()" id="resetCam"></li>
+                <li><a class="grid-item" id="download-photo" href="" download><img class="grid-item icon" src="../media/p1/download_icon.png" alt="" id="download-photo"></a></li>
+             </ul>
             
         </div>
     </div>
