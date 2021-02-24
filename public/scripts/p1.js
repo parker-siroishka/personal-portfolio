@@ -154,6 +154,7 @@ webcam.start()
 function snapPhoto() {
     let picture = webcam.snap();
     document.querySelector('#download-photo').href = picture;
+    $('body').scrollTo('#download-photo');
 }
 
 function primeCamera() {
