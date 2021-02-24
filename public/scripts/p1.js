@@ -173,6 +173,9 @@ function snapPhoto() {
     let picture = webcam.snap();
     document.querySelector('#download-photo').href = picture;
     CANVAS_FILLED = true;
+    $('html, body').animate({
+        scrollTop: $("#resetCam").offset().top
+    }, 1000);
 }
 
 function primeCamera() {
@@ -230,9 +233,7 @@ $("#snapPhoto").click(function () {
     TAKEN_WITH_MIC = false;
     canv.style.border = "5px solid #CD5C5C";
     canv.style.borderRadius = "5px";
-    $('html, body').animate({
-        scrollTop: $("#resetCam").offset().top
-    }, 1000);
+    
     $('#canvas').hide().fadeIn(2500);
 });
 

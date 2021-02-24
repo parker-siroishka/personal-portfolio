@@ -10,6 +10,7 @@ p {
 
 p #countdown {
     color: #CD5C5C;
+    margin-top: 0;
 }
 
 .grid-container {
