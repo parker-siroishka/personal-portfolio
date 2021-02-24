@@ -10,20 +10,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../stylesheets/p1.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap" rel="stylesheet">
     <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
     <title>CPSC 583 - P1</title>
 </head>
     <div class="center-container">
         <img src="../media/p1/actionshot_logo.png" alt="">
         <video  id="webcam" autoplay playsinline height="480"></video>
-        <h3 id="volume">VOLUME: 0.0</h3>
+        <p id="volume">Volume: 0.00</p>
         <ul id="top-list">
-            <li><img class="grid-item icon" src="../media/p1/take_photo_icon.png" alt="" id="snapPhoto"></li>
+            <li><img class="grid-item icon" src="../media/p1/take_photo_icon.png" alt="" id="snapPhoto" ></li>
             <li> <img class="grid-item icon" src="../media/p1/mic_icon.png" alt="" id="start"></li>
             <li><img class="grid-item icon" src="../media/p1/flip_cam_icon.png" alt="" id="cameraFlip"></li>
          </ul>
         <canvas id="canvas" class="d-none"></canvas>
-        <h2 id="countdown"></h2>
+        <p id="countdown">&nbsp</p>
+        <p id="action-prompt">Save or delete photo before restarting microphone</p>
         <div>
             <ul>
                 <li><img class="grid-item icon" src="../media/p1/reset_icon.png" alt="" onclick="primeCamera()" id="resetCam"></li>

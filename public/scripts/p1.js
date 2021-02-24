@@ -14,15 +14,35 @@
 var VOLUME = 0;
 var GAIN = 1;
 var CAM_PRIMED = true;
+var CLICK_COUNT = 0;
+var CANVAS_FILLED = false;
+var TAKEN_WITH_MIC = false;
 var resetBtn = document.getElementById("resetCam");
 var startBtn = document.getElementById("start");
 var canv = document.getElementById("canvas");
+var actionPromptText = document.getElementById("action-prompt");
+var cntdwn = document.getElementById("countdown");
 
+actionPromptText.style.display = "none";
 canv.style.display = "none"
+cntdwn.style.visibility = "hidden";
 
+function actionPrompt(){
+    if(CANVAS_FILLED) {
+        actionPromptText.style.display = "block";
+        $('#action-prompt').fadeOut(4000);
+    $('html, body').animate({
+        scrollTop: $("#resetCam").offset().top
+    }, 1000);
+    }
+    
+}
 
 startBtn.addEventListener('click', (e) => {
-    init();
+    CLICK_COUNT += 1;
+    console.log(CLICK_COUNT);
+    var func_to_call = (CLICK_COUNT === 1) ? init:actionPrompt;
+    func_to_call();
     startBtn.style.animation = "none";
 })
 
@@ -95,15 +115,13 @@ function init() {
         var checkAudio = function() {
             voiceVolume.gain.setValueAtTime(GAIN, audioCtx.currentTime);
             analyser.getByteFrequencyData(freqBinDataArray);
-            VOLUME = getRMS(freqBinDataArray);
-            // console.log(VOLUME);
-            // console.log('Volume: ' + getRMS(freqBinDataArray));
-            // console.log(freqBinDataArray);
+            VOLUME = (CAM_PRIMED) ? getRMS(freqBinDataArray) : 0;
             document.getElementById("volume").innerHTML = "Volume: " + VOLUME.toFixed(2);
             if(VOLUME > 30) {
                 if(CAM_PRIMED){
                     snapPhoto();
                     CAM_PRIMED = !CAM_PRIMED;
+                    TAKEN_WITH_MIC = true;
                     canv.style.border = "5px solid #CD5C5C";
                     canv.style.borderRadius = "5px";
                     resetBtn.style.visibility = "visible";
@@ -154,28 +172,49 @@ webcam.start()
 function snapPhoto() {
     let picture = webcam.snap();
     document.querySelector('#download-photo').href = picture;
-    $('body').scrollTo('#download-photo');
+    CANVAS_FILLED = true;
 }
 
 function primeCamera() {
-    canv.style.display = "none";
-    document.getElementById("countdown").style.display = "block";
-    var timeleft = 10;
-    var downloadTimer = setInterval(function(){
-        if(timeleft <= 0){
-            clearInterval(downloadTimer);
-            document.getElementById("countdown").innerHTML = "Camera Primed";
+    cntdwn.style.visibility = "visible";
+    if(TAKEN_WITH_MIC) {
+        if(!CANVAS_FILLED) {
+            document.getElementById("countdown").innerHTML = "No photo to delete";
+            $('#countdown').fadeOut(4000);
         } else {
-            document.getElementById("countdown").innerHTML = "Camera Primed in " + timeleft + " seconds";
+            canv.style.display = "none";
+            CANVAS_FILLED = false;
+            document.getElementById("countdown").innerHTML = "";
+            document.getElementById("countdown").style.display = "block";
+            document.getElementById("countdown").style.color = "#CD5C5C";
+            var timeleft = 10;
+            var downloadTimer = setInterval(function(){
+                if(timeleft <= 0){
+                    clearInterval(downloadTimer);
+                    document.getElementById("countdown").innerHTML = "Microphone Ready";
+                } else {
+                    document.getElementById("countdown").innerHTML = "Microphone Primed in " + timeleft + " seconds";
+                }
+                timeleft -= 1;
+            }, 1000);
+        
+    
+            setTimeout(function() {
+                CAM_PRIMED = true;
+                //resetBtn.style.visibility = "hidden";
+                document.getElementById("countdown").style.visibility = "hidden";
+            }, 11000);
         }
-        timeleft -= 1;
-    }, 1000);
-
-    setTimeout(function() {
-        CAM_PRIMED = true;
-        //resetBtn.style.visibility = "hidden";
-        document.getElementById("countdown").style.display = "none";
-    }, 11000);
+    } else {
+        if(!CANVAS_FILLED) {
+            document.getElementById("countdown").innerHTML = "No photo to delete";
+            $('#countdown').fadeOut(4000);
+        } else {
+            document.getElementById("countdown").style.visibility = "hidden";
+            canv.style.display = "none";
+        }
+    }
+    
     
     
 
@@ -185,9 +224,12 @@ function primeCamera() {
 
 $("#snapPhoto").click(function () {
     snapPhoto();
+    TAKEN_WITH_MIC = false;
     canv.style.border = "5px solid #CD5C5C";
     canv.style.borderRadius = "5px";
-    
+    $('html, body').animate({
+        scrollTop: $("#resetCam").offset().top
+    }, 1000);
     $('#canvas').hide().fadeIn(2500);
 });
 

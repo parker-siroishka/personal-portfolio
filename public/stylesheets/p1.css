@@ -2,6 +2,15 @@ body {
     background-color: #f3d06e;
 }
 
+p {
+    font-family: 'RocknRoll One', sans-serif;
+    text-align: center;
+    color: #333533;
+}
+
+p #countdown {
+    color: #CD5C5C;
+}
 
 .grid-container {
     width: 100%;
@@ -115,7 +124,7 @@ ul {
     margin: 0;
     padding: 0;
     background-color: #F3C33F;
-    border-radius: 8px;
+    border-radius: 15px;
     justify-content: center;
     flex-direction: initial;
     align-items: center;
