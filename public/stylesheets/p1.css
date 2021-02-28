@@ -74,7 +74,17 @@ p #countdown {
   }
 
 #volume {
-    margin: 10px 0 0 0;
+    margin: 20px 0 0 0;
+    float: left;
+}
+
+#floatRight {
+    width: 90%;
+}
+#flashPhoto {
+    height: 60px;
+    float: right;
+    margin-top: -10px;
 }
 
 #barContainer {
