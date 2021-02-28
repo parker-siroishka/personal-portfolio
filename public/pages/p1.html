@@ -13,12 +13,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap" rel="stylesheet">
     <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
+    <script src="../scripts/gauge.js"></script>
     <title>CPSC 583 - P1</title>
 </head>
     <div class="center-container">
         <img id="logo"src="../media/p1/actionshot_logo.png" alt="">
         <video  id="webcam" autoplay playsinline height="480"></video>
-        <p id="volume">Volume: 0.00boobs</p>
+        <!-- <p id="volume">Volume: 0.00</p>
+        <div id="volumeProgress">
+            <div id="volumeBar"></div>
+        </div> -->
+
+        <p id="volume">Volume</p>
+        <div id="volumeGauge" class="gauge-container"></div>
+        
         <ul id="top-list">
             <li><img class="grid-item icon" src="../media/p1/take_photo_icon.png" alt="" id="snapPhoto" ></li>
             <li> <img class="grid-item icon" src="../media/p1/mic_icon.png" alt="" id="start"></li>

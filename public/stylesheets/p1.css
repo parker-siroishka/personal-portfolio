@@ -13,6 +13,18 @@ p #countdown {
     margin-top: 0;
 }
 
+#volumeProgress {
+    width: 90%;
+    background-color: #333533;
+    transition: width 1s;
+}
+
+#volumeBar {
+    width: 50%;
+    height: 25px;
+    background-color: firebrick;
+}
+
 .grid-container {
     width: 100%;
     display: flex;
@@ -35,6 +47,34 @@ p #countdown {
     margin-bottom: 5px;
     max-width: 268px;
     
+}
+
+.gauge-container {
+    width: 60%;
+    height: 140px;
+    display: block;
+    padding: 0px 10px 10px 10px;
+  }
+  .gauge-container > .gauge .dial {
+    stroke: #eee;
+    stroke-width: 5;
+    fill: rgba(0,0,0,0);
+    border-radius: 5px;
+  }
+  .gauge-container > .gauge .value {
+    stroke: rgb(47, 227, 255);
+    stroke-width: 5;
+    fill: rgba(0,0,0,0);
+  }
+  .gauge-container > .gauge .value-text {
+    fill: #333533;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 1em;
+  }
+
+#volume {
+    margin: 10px 0 0 0;
 }
 
 #webcam {

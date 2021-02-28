@@ -1,6 +1,7 @@
 
 
 var path = require('path'); 		// some convenient dir/path functions
+const Gauge = require("svg-gauge");
 var express = require('express');	// use the express module
 var app = express();			// this is our express.js instance
 const PORT = process.env.PORT || 5000 // Port should be 5000 by default
