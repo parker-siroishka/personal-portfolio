@@ -23,6 +23,7 @@ var startBtn = document.getElementById("start");
 var canv = document.getElementById("canvas");
 var actionPromptText = document.getElementById("action-prompt");
 var cntdwn = document.getElementById("countdown");
+var volumeBar = document.getElementById("volumeBar");
 var container = document.getElementById("barContainer");
 
 var bar = new ProgressBar.Line(container, {
@@ -43,6 +44,26 @@ var bar = new ProgressBar.Line(container, {
   bar.animate(1.0);  // Number from 0.0 to 1.0
 
 
+var volumeGauge = Gauge(
+    document.getElementById("volumeGauge"), {
+      min: 0,
+      max: 30,
+      dialStartAngle: 180,
+      dialEndAngle: 0,
+      value: 0,
+       color: function(value) {
+          if(value < 10) {
+            return "#659D32";
+          }else if(value < 20) {
+            return "#FF8C00";
+          }else if(value < 30) {
+            return "#B22222";
+          }else {
+            return "#333533";
+          }
+        }
+    }
+  );
 
 actionPromptText.style.display = "none";
 canv.style.display = "none"
@@ -68,6 +89,10 @@ startBtn.addEventListener('click', (e) => {
     startBtn.style.animation = "none";
 })
 
+function moveBar(vlm) {
+    var width = 1;
+    volumeBar.style.width = (vlm * 3.333) + "%";
+}
 
 function init() {
 
@@ -137,9 +162,12 @@ function init() {
             voiceVolume.gain.setValueAtTime(GAIN, audioCtx.currentTime);
             analyser.getByteFrequencyData(freqBinDataArray);
             VOLUME = (CAM_PRIMED) ? getRMS(freqBinDataArray) : 0;
+            moveBar(VOLUME);
+            volumeGauge.setValueAnimated(VOLUME, 0.25);
             bar.animate(VOLUME/30, {
-                duration: 250
+                duration: 100
             });
+            document.getElementById("volume").innerHTML = "Volume: " + VOLUME.toFixed(2);
             if(VOLUME > 30) {
                 if(CAM_PRIMED){
                     snapPhoto();
