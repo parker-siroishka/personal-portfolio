@@ -220,10 +220,6 @@ function primeCamera() {
             canv.style.display = "none";
         }
     }
-    
-    
-    
-
 }
 
 
