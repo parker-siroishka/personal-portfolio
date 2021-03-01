@@ -85,6 +85,7 @@ p #countdown {
     height: 60px;
     float: right;
     margin-top: -10px;
+    opacity: 0;
 }
 
 #barContainer {

@@ -41,10 +41,6 @@ var bar = new ProgressBar.Line(container, {
       }
   });
   
-  bar.animate(1.0);  // Number from 0.0 to 1.0
-
-
-
 actionPromptText.style.display = "none";
 canv.style.display = "none"
 cntdwn.style.visibility = "hidden";
