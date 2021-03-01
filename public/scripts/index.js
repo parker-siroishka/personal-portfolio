@@ -29,3 +29,11 @@ $("#go-p1").on("click", e => {
 $("#det-p1").on("click", e => {
     window.location.assign(`${URL}/pages/p1Details.html`);
 });
+
+$("#src-p1").on("click", e => {
+    window.location.assign(`https://drive.google.com/file/d/1mfmX1FTgTr_CaiX3CXfjiq1QPZaq5X4K/view?usp=sharing`);
+});
+
+
+
+
