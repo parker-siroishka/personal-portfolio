@@ -2,6 +2,7 @@ p {
     font-family: 'DotGothic16', sans-serif;
 }
 
-iframe {
-    max-height: 400px;
+#p1-vid {
+    max-height: 320px;
+    margin-top: 10%;
 }
