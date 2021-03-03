@@ -68,6 +68,7 @@ startBtn.addEventListener('click', (e) => {
 
 function init() {
 
+    
     // Older browsers might not implement mediaDevices at all, so we set an empty object first
     if (navigator.mediaDevices === undefined) {
       navigator.mediaDevices = {};
@@ -152,6 +153,7 @@ function init() {
         }
         setInterval(checkAudio, 100);
     }
+    mutePage();
 }
 
 // Returns Maximum volume from one sample bin
@@ -263,3 +265,9 @@ $('#cameraFlip').click(function() {
     webcam.start();  
 });
 
+// Try to mute all video and audio elements on the page
+function mutePage() {
+    var elems = document.querySelectorAll("video, audio");
+
+    [].forEach.call(elems, function(elem) { muteMe(elem); });
+}
