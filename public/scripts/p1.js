@@ -113,15 +113,16 @@ function init() {
            .then(
              function(stream) {
                 source = audioCtx.createMediaStreamSource(stream);
+                //source.connect(gainNode);
+                source.connect(analyser);
+                source.connect(audioCtx.destination);
            })
            .catch( function(err) { console.log('The following gUM error occured: ' + err);})
      } else {
         console.log('getUserMedia not supported on your browser!');
      }
 
-    //source.connect(gainNode);
-    source.connect(analyser);
-    gainNode.connect(audioCtx.destination);
+    
     
     beginRecording();
 
