@@ -265,9 +265,13 @@ $('#cameraFlip').click(function() {
     webcam.start();  
 });
 
+// Mute a singular HTML5 element
+function muteMe(elem) {
+    elem.muted = true;
+    elem.pause();
+}
+
 // Try to mute all video and audio elements on the page
 function mutePage() {
-    var elems = document.querySelectorAll("video, audio");
-
-    [].forEach.call(elems, function(elem) { muteMe(elem); });
+    document.querySelectorAll("video, audio").forEach( elem => muteMe(elem) );
 }
