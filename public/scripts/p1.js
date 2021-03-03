@@ -96,7 +96,6 @@ function init() {
     }
 
     var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    var gainNode = audioCtx.createGain();
     var source;
 
     var analyser = audioCtx.createAnalyser();
@@ -104,7 +103,7 @@ function init() {
     analyser.maxDecibels = -10;
     analyser.smoothingTimeConstant = 0.85;
 
-    
+    var voiceVolume = audioCtx.createGain();
 
     if (navigator.mediaDevices.getUserMedia) {
         console.log('getUserMedia supported.');
@@ -114,7 +113,9 @@ function init() {
              function(stream) {
                 source = audioCtx.createMediaStreamSource(stream);
                 
-                
+                //voiceVolume.connect(analyser);
+                source.connect(voiceVolume).connect(analyser).connect(audioCtx.destination);;
+                beginRecording();
    
                 
            })
@@ -123,11 +124,6 @@ function init() {
         console.log('getUserMedia not supported on your browser!');
      }
 
-    source.connect(gainNode);
-    source.connect(analyser);
-    gainNode.connect(audioCtx.destination);
-    beginRecording();
-
      function beginRecording() {
         analyser.fftSize = 1024; // power of 2, between 32 and max unsigned integer
         var bufferLength = analyser.fftSize;
@@ -135,7 +131,7 @@ function init() {
         var freqBinDataArray = new Uint8Array(bufferLength);
 
         var checkAudio = function() {
-            gainNode.gain.setValueAtTime(GAIN, audioCtx.currentTime);
+            voiceVolume.gain.setValueAtTime(GAIN, audioCtx.currentTime);
             analyser.getByteFrequencyData(freqBinDataArray);
             VOLUME = (CAM_PRIMED) ? getRMS(freqBinDataArray) : 0;
             bar.animate(VOLUME/30, {
