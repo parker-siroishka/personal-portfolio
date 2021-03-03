@@ -9,8 +9,9 @@
   "author": "Parker Siroishka",
   "license": "ISC",
   "dependencies": {
+    "buffer-writer": "^2.0.0",
     "express": "^4.17.1",
-    "pg": "^8.5.1",
+    "packet-reader": "^1.0.0",
     "progressbar.js": "^1.1.0",
     "svg-gauge": "^1.0.6"
   },
