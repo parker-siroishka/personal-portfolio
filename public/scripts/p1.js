@@ -113,29 +113,24 @@ function init() {
            .then(
              function(stream) {
                 source = audioCtx.createMediaStreamSource(stream);
-                
-                
-   
-                
            })
            .catch( function(err) { console.log('The following gUM error occured: ' + err);})
      } else {
         console.log('getUserMedia not supported on your browser!');
      }
 
-    source.connect(gainNode);
+    //source.connect(gainNode);
     source.connect(analyser);
     gainNode.connect(audioCtx.destination);
+    
     beginRecording();
 
      function beginRecording() {
         analyser.fftSize = 1024; // power of 2, between 32 and max unsigned integer
         var bufferLength = analyser.fftSize;
-
         var freqBinDataArray = new Uint8Array(bufferLength);
 
         var checkAudio = function() {
-            gainNode.gain.setValueAtTime(GAIN, audioCtx.currentTime);
             analyser.getByteFrequencyData(freqBinDataArray);
             VOLUME = (CAM_PRIMED) ? getRMS(freqBinDataArray) : 0;
             bar.animate(VOLUME/30, {
@@ -195,11 +190,15 @@ webcam.start()
 
 function snapPhoto() {
     let picture = webcam.snap();
+    gainNode.gain.setValueAtTime(1, audioCtx.currentTime);
     document.querySelector('#download-photo').href = picture;
     CANVAS_FILLED = true;
     $('html, body').animate({
         scrollTop: $("#resetCam").offset().top
     }, 1000);
+    setTimeout(function(){
+        gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+    },1000);
 }
 
 function primeCamera() {
