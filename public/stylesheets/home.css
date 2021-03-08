@@ -61,6 +61,25 @@ p {
     color: #242423;
 }
 
+.header-content {
+    z-index: 1;
+}
+
+#particles-js{ 
+    position: sticky;
+    top: 0;
+    margin-bottom: -50.5%;
+    width: auto;
+    height: auto;
+    left: 0;
+    z-index: -1;
+    background-color: #E8EDDF; 
+    background-image: url(""); 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-position: 50% 50%; 
+  } 
+
 body {
     background-color: #E8EDDF;
 }
