@@ -68,7 +68,7 @@ p {
 #particles-js{ 
     position: sticky;
     top: 0;
-    margin-bottom: -50.5%;
+    /* margin-bottom: -50.5%; */
     width: auto;
     height: auto;
     left: 0;
@@ -79,6 +79,12 @@ p {
     background-size: cover; 
     background-position: 50% 50%; 
   } 
+
+canvas {
+    position: absolute;
+    top: 0;
+    z-index: -1;
+}
 
 body {
     background-color: #E8EDDF;
