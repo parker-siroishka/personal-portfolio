@@ -18,7 +18,8 @@ body {
 
 .card {
     border: 1px solid #F5CB5C;
-    max-width: 500px;
+    /* max-width: 500px; */
+    margin-bottom: 5%;
 }
 
 .card-body {
@@ -38,11 +39,20 @@ body {
 }
 
 .card-header {
-    background-color: #F5CB5C;
+    background-color: rgb(33, 37, 41);
 }
 
 .card-text {
     color: #333533;
+}
+
+.card-text.lead {
+    color: #333533;
+    font-size: 1.3em;
+}
+
+.lead {
+    font-size: 1.3em;
 }
 
 .job-heading {
@@ -65,6 +75,10 @@ h1, h3, h4, .card-header {
  
 }
 
+.card-header {
+    color: #F5CB5C;
+}
+
 .fw-light {
     margin-bottom: 3%;
 }
@@ -80,6 +94,7 @@ h5.card-title {
 
 .job-description {
     margin-left: 5%;
+    padding-bottom: 2%;
 }
 
 .internship {
@@ -141,3 +156,23 @@ canvas {
 body {
     background-color: #E8EDDF;
 }
+
+.ml6 {
+    position: relative;
+    font-weight: 900;
+    font-size: 3.3em;
+  }
+  
+  .ml6 .text-wrapper {
+    position: relative;
+    display: inline-block;
+    padding-top: 0.2em;
+    padding-right: 0.05em;
+    padding-bottom: 0.1em;
+    overflow: hidden;
+  }
+  
+  .ml6 .letter {
+    display: inline-block;
+    line-height: 1em;
+  }

@@ -63,7 +63,11 @@
         <div class="row py-lg-5">
           <div class="col-lg-6 col-md-8 mx-auto header-content">
             <img src="../media/profile_picture.jpg" id="profile-pic">
-            <h1 class="fw-light">Howdy!</h1>
+            <h1 class="ml6">
+              <span class="text-wrapper">
+                <span class="letters">Howdy!</span>
+              </span>
+            </h1>
             <p class="lead text-muted">
               My name's Parker and I'm a Computer Science student with about 1 year of professional experience. I never let a challenge slow me down and I pride myself on my abilities as a quick self-directed
               learner and developer. I have a natural curiosity for tech so I can pick up and enjoy just about any programming language or framework with pleasure! <br><br> While I do love the nitty-gritty programming
@@ -76,32 +80,32 @@
       </section>
       <section class="py-5 container">
         <h1 class="fw-light text-center">Experience</h1>
-        <div class="d-flex justify-content-around">
-          <div class="col">
-            <div class="card shadow-sm">
-              <h5 class="card-header">Software Developer</h5>
-              <div class="card-body d-inline-flex p-2">
-                <img src="../media/experience/arcurve.png" class="card-title company-img" alt="">
-                <div class="job-description">
-                  <div class="job-heading d-flex align-items-center">
-                    <div class>
-                      <h5 class="card-title">Arcurve</h5>
-                      <h6 class="card-title internship">Internship</h6>
-                      <h6 class="card-title duration">June 2020 - Present</h6>
-                    </div>
+        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-2">
+          <div class="col"> <div class="card shadow-sm">
+            <h5 class="card-header">Software Developer</h5>
+            <div class="card-body d-inline-flex p-2">
+              <img src="../media/experience/arcurve.png" class="card-title company-img" alt="">
+              <div class="job-description">
+                <div class="job-heading d-flex align-items-center">
+                  <div class>
+                    <h5 class="card-title">Arcurve</h5>
+                    <h6 class="card-title internship">Internship</h6>
+                    <h6 class="card-title duration">June 2020 - Present</h6>
                   </div>
-                  
-                  <ul class="card-text lead">
-                    <li>Designed, developed, and deployed new company website <a href="https://www.arcurve.com/">arcurve.com</a></li>
-                    <li>Worked closely with UX and UI designers in carrying out extensive user research and design planning to maximize contacts with potential clients by creating personas and journey mappings</li>
-                    <li>Shifted company to new CMS and consolidated all dynamic content uploaded to website into one easily operated form</li>
-                    <li>Recieved an offer and transitioned to a permanent part-time position over the 2020-2021 school year</li>
-                  </ul>
                 </div>
                 
+                <ul class="card-text lead">
+                  <li>Designed, developed, and deployed new company website <a href="https://www.arcurve.com/">arcurve.com</a></li>
+                  <li>Worked closely with UX and UI designers in carrying out extensive user research and design planning to maximize contacts with potential clients by creating personas and journey mappings</li>
+                  <li>Shifted company to new CMS and consolidated all dynamic content uploaded to website into one easily operated form</li>
+                  <li>Recieved an offer and transitioned to a permanent part-time position over the 2020-2021 school year</li>
+                </ul>
               </div>
+              
             </div>
-          </div>
+          </div></div>
+
+
           <div class="col">
             <div class="card shadow-sm">
               <h5 class="card-header">Software Engineer</h5>
@@ -127,13 +131,12 @@
               </div>
             </div>
           </div>
-          
         </div>
-        
-        
       </section>
+      
 
       <div class="album py-5 ">
+        <h1 class="fw-light text-center">Projects</h1>
         <div class="container">
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <div class="col">
@@ -286,6 +289,22 @@
     <script src="../dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> 
     <script src="../scripts/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script>
+      // Wrap every letter in a span
+var textWrapper = document.querySelector('.ml6 .letters');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+anime.timeline({loop: false})
+  .add({
+    targets: '.ml6 .letter',
+    translateY: ["1.1em", 0],
+    translateZ: 0,
+    duration: 750,
+    delay: (el, i) => 350 * i
+  });
+  
+    </script>
     
   </body>
 </html>
