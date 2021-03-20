@@ -63,11 +63,7 @@
         <div class="row py-lg-5">
           <div class="col-lg-6 col-md-8 mx-auto header-content">
             <img src="../media/profile_picture.jpg" id="profile-pic">
-            <h1 class="ml6">
-              <span class="text-wrapper">
-                <span class="letters">Howdy!</span>
-              </span>
-            </h1>
+            <h1 class="fw-light text-center">Howdy!</h1>
             <p class="lead text-muted">
               My name's Parker and I'm a Computer Science student with about 1 year of professional experience. I never let a challenge slow me down and I pride myself on my abilities as a quick self-directed
               learner and developer. I have a natural curiosity for tech so I can pick up and enjoy just about any programming language or framework with pleasure! <br><br> While I do love the nitty-gritty programming
@@ -289,22 +285,7 @@
     <script src="../dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> 
     <script src="../scripts/index.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-    <script>
-      // Wrap every letter in a span
-var textWrapper = document.querySelector('.ml6 .letters');
-textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
-anime.timeline({loop: false})
-  .add({
-    targets: '.ml6 .letter',
-    translateY: ["1.1em", 0],
-    translateZ: 0,
-    duration: 750,
-    delay: (el, i) => 350 * i
-  });
-  
-    </script>
     
   </body>
 </html>
