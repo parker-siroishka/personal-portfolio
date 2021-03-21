@@ -13,7 +13,8 @@
     "express": "^4.17.1",
     "packet-reader": "^1.0.0",
     "progressbar.js": "^1.1.0",
-    "svg-gauge": "^1.0.6"
+    "svg-gauge": "^1.0.6",
+    "ws": "^7.4.4"
   },
   "engines": {
     "node": "14.15.4"
