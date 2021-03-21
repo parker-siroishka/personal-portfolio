@@ -15,13 +15,13 @@ const peerConnectionConfig = {
         { urls: "stun:stun.stunprotocol.org:3478" },
         { urls: "stun:stun.l.google.com:19302" },
         { urls: "stun:stun1.l.google.com:19302" },
-        // { urls: "stun:stun2.l.google.com:19302" },
-        // { urls: "stun:stun3.l.google.com:19302" },
-        // { urls: "stun:stun4.l.google.com:19302" },
-        // { urls: "stun:stun.ekiga.net" },
-        // { urls: "stun:stun.fwdnet.net" },
-        // { urls: "stun:stun.ideasip.com" },
-        // { urls: "stun:stun.iptel.org" },
+        { urls: "stun:stun2.l.google.com:19302" },
+        { urls: "stun:stun3.l.google.com:19302" },
+        { urls: "stun:stun4.l.google.com:19302" },
+        { urls: "stun:stun.ekiga.net" },
+        { urls: "stun:stun.fwdnet.net" },
+        { urls: "stun:stun.ideasip.com" },
+        { urls: "stun:stun.iptel.org" },
     ],
 };
 
@@ -35,7 +35,7 @@ const MessageType = {
 btn1.on("click", () => {
     getWebcam();
     btn2.prop("disabled", true);
-    destination = "wss://" + location.host + "/client1";
+    destination = "ws://" + location.host + "/client1";
     serverConnection = new WebSocket(destination);
     serverConnection.onmessage = handleMessage;
 });
@@ -43,7 +43,7 @@ btn1.on("click", () => {
 btn2.on("click", () => {
     getWebcam();
     btn1.prop("disabled", true);
-    destination = "wss://" + location.host + "/client2";
+    destination = "ws://" + location.host + "/client2";
     serverConnection = new WebSocket(destination);
     serverConnection.onmessage = handleMessage;
 });
@@ -96,24 +96,6 @@ function getWebcam() {
      } else {
         console.log('getUserMedia not supported on your browser!');
      }
-    // if (navigator.getUserMedia) {
-    //     navigator.getUserMedia({
-    //             video: true,
-    //             audio: true,
-    //         },
-    //         (stream) => {
-    //             // success
-    //             localStream = stream;
-    //             localVid.prop("srcObject", stream);
-    //         },
-    //         (error) => {
-    //             // error
-    //             console.error(error);
-    //         }
-    //     );
-    // } else {
-    //     alert("Your browser does not support getUserMedia API");
-    // }
 }
 
 function start(isCaller) {
