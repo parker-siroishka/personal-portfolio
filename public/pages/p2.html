@@ -4,22 +4,46 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Describe this page." />
-    <title>Tutorial 6</title>
+    <link rel="stylesheet" href="../stylesheets/p2.css">
+    <link href="../dist/css/bootstrap.min.css" rel="stylesheet" />
+    <title>Peek-a-Boo with You</title>
   </head>
   <body>
-  <div>
-    <video id="localVideo" autoplay muted style="width:40%;"></video>
-    <video id="remoteVideo" autoplay style="width:40%;"></video>
-  </div>
-  <div>
-    <button id="btn-client1">Connect as Rhys</button>
-    <button id="btn-client2">Connect as Oma & Oppa</button>
-  </div>
-
-    <div>
+    <div class="video-elements">
+      <div class="call-buttons d-flex justify-content-center">
+        <button id="btn-client1">Connect as Rhys</button>
+        <button id="btn-client2">Connect as Oma & Oppa</button>
         <button id="btn-call">Call</button>
+      </div>
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-2">
+            <video id="localVideo" autoplay muted></video>
+          </div>
+          <div class="col-8 col-md">
+            <video id="remoteVideo" autoplay ></video>
+          </div>
+          <div class="col-2">
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="d-flex justify-content-center">
+    <div id="rhys-view">
+      <h3>Rhys's View</h3>
+    </div>
+    <div id="gparent-view">
+      <h3>Gparents's View</h3>
+    </div>
+  </div>
+  
+
+  <div class="d-flex justify-content-center">
+    
     <div id="msgDiv"></div>
+  </div>
+    
     
   </body>
   <footer></footer>

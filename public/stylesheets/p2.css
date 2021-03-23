@@ -1,0 +1,27 @@
+#rhys-view {
+    display: none;
+}
+
+#gparent-view {
+    display: none;
+}
+
+#localVideo {
+    width: 100%;
+    display: none;
+}
+
+#remoteVideo {
+    width: 100%;
+    display: none;
+}
+
+.video-elements {
+    padding-top: 1%;
+}
+
+.call-buttons {
+    padding-bottom: 2%;
+}
+
+
