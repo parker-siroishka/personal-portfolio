@@ -1,3 +1,7 @@
+body {
+    background-color: #138E90 !important;
+}
+
 #rhys-view {
     display: none;
 }
@@ -9,11 +13,21 @@
 #localVideo {
     width: 100%;
     display: none;
+    box-shadow: 5px 10px 8px 10px #888888;
+    /* border: 2px solid #474973; */
 }
 
 #remoteVideo {
     width: 100%;
     display: none;
+    /* border: 2px solid #474973; */
+    background-image: url("../media/p2/p2_images/loading-icon-transparent-background-3.jpg");
+    background-size: 25%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #15A0A2;
+    padding-top: 5%;
+    
 }
 
 .video-elements {
@@ -22,6 +36,29 @@
 
 .call-buttons {
     padding-bottom: 2%;
+}
+
+#btn-client1 {
+    height: 60px;
+    width: 150px;
+    border-radius: 15px;
+    margin: 5px;
+    background-color: #81EDEF;
+}
+
+#btn-client2 {
+    height: 60px;
+    border-radius: 15px;
+    margin: 5px;
+    background-color: #FAC6C6;
+}
+
+#btn-call {
+    background-color: #BEEF69;
+    height: 60px;
+    width: 75px;
+    margin: 5px;
+    border-radius: 15px;
 }
 
 
