@@ -26,8 +26,12 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-color: #15A0A2;
-    padding-top: 5%;
+    /* margin-top: 5%; */
     
+}
+
+.leftHand {
+    position: absolute;
 }
 
 .video-elements {

@@ -2,13 +2,27 @@ var localVid = $("#localVideo");
 var remoteVid = $("#remoteVideo");
 var btn1 = $("#btn-client1");
 var btn2 = $("#btn-client2");
+var gparentsHide = $("#gparents-hide");
 var theInput = $("#msgInput");
 var callBtn = $("#btn-call");
 var msgDiv = $("#msgDiv");
+var concealer = $("#concealer");
+
+concealer.css("display", "none");
+
+let leftHandAnimation = anime({
+    targets: '.leftHand',
+    translateX: 250,
+    endDelay: 1000,
+    direction: 'alternate',
+    autoplay: false
+  });
 
 var localStream;
 var peerConnection;
 var serverConnection;
+
+var isHiding = false;
 
 const peerConnectionConfig = {
     iceServers: [
@@ -27,15 +41,15 @@ const peerConnectionConfig = {
 
 const MessageType = {
     SERVER_INFO: 0,
-    CLIENT1: 1,
-    CLIENT2: 2,
+    RHYS: 1,
+    GPARENT: 2,
     CALL_REQUEST: 3,
 };
 
 btn1.on("click", () => {
     getWebcam();
     btn2.prop("disabled", true);
-    destination = "wss://" + location.host + "/client1";
+    destination = "ws://" + location.host + "/rhys";
     serverConnection = new WebSocket(destination);
     serverConnection.onmessage = handleMessage;
 });
@@ -43,13 +57,28 @@ btn1.on("click", () => {
 btn2.on("click", () => {
     getWebcam();
     btn1.prop("disabled", true);
-    destination = "wss://" + location.host + "/client2";
+    destination = "ws://" + location.host + "/gparent";
     serverConnection = new WebSocket(destination);
     serverConnection.onmessage = handleMessage;
 });
 
 callBtn.on("click", () => {
     start(true);
+});
+
+gparentsHide.on("click", () => {
+    if(gparentsHide.text() == "Hide"){
+        gparentsHide.html("Hiding");
+    }
+    else{
+        gparentsHide.html("Hide");
+    }
+    serverConnection.send(
+        JSON.stringify({
+            type: MessageType.GPARENT,
+            message: "hiding",
+        })
+    );
 });
 
 function getWebcam() {
@@ -142,6 +171,7 @@ function gotRemoteStream(event) {
     console.log("got remote stream");
     remoteVid.prop("srcObject", event.streams[0]);
     msgDiv.html("Connected to peer.");
+    callBtn.css("display", "none");
 }
 
 function handleMessage(mEvent) {
@@ -152,12 +182,20 @@ function handleMessage(mEvent) {
             msgDiv.html(msg.message);
             break;
 
-            // Message came from Client 1, Handle as Client2
-        case MessageType.CLIENT1:
+            // Message came from Rhys, Handle as gparent
+        case MessageType.RHYS:
+            
             break;
 
-            // Message came from Client 2, Handle as Client1
-        case MessageType.CLIENT2:
+            // Message came from gparent, Handle as Rhys
+        case MessageType.GPARENT:
+            switch(msg.message) {
+                case "hiding":
+                    leftHandAnimation.play();
+                    isHiding = !isHiding;
+                    var hidingProp = (isHiding) ? "block" : "none";
+                    concealer.css("display", hidingProp);
+            }
             break;
 
         case MessageType.CALL_REQUEST:

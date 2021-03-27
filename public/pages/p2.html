@@ -20,9 +20,16 @@
         <div class="row">
           <div class="col-2">
             <video id="localVideo"class="shadow" autoplay muted></video>
+            <div class="gparent-view">
+              <h5>Play Peek-a-Boo!</h3>
+              <button id="gparents-hide">Hide</button>
+            </div>
           </div>
           <div class="col-8 col-md">
             <video id="remoteVideo"autoplay ></video>
+            <div class="rhys-view">
+              <img src="../media/p2/p2_images/leftHand.png" class="leftHand"alt="">
+            </div>
           </div>
           <div class="col-2">
           </div>
@@ -30,10 +37,11 @@
       </div>
     </div>
     <div class="d-flex justify-content-center">
-    <div id="rhys-view">
+    <div class="rhys-view">
       <h3>Rhys's View</h3>
+      <h1 id="concealer">Gparents are hiding!</h1>
     </div>
-    <div id="gparent-view">
+    <div class="gparent-view">
       <h3>Gparents's View</h3>
     </div>
   </div>
@@ -50,6 +58,7 @@
 
   <!-- Scripts-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
   <script src="../scripts/p2-Sockets.js"> </script>
   <script src="../scripts/p2-UI.js"> </script>
 </html>

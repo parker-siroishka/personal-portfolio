@@ -8,8 +8,8 @@ var app = express();			// this is our express.js instance
 
 const MessageType = {
     SERVER_INFO: 0,
-    CLIENT1: 1,
-    CLIENT2: 2,
+    RHYS: 1,
+    GPARENT: 2,
     CALL_REQUEST: 3
 };
 
@@ -40,10 +40,10 @@ var clients = {};
 wsServer.on("connection", (socket, request) => {
     // route to endpoint handlers
     switch (request.url) {
-        case "/client1":
-            if (!clients.client1) {
-                console.log("Client 1 Connected");
-                clients.client1 = socket;
+        case "/rhys":
+            if (!clients.rhys) {
+                console.log("Rhys Connected");
+                clients.rhys = socket;
                 socket.send(
                     JSON.stringify({
                         type: MessageType.SERVER_INFO,
@@ -51,14 +51,14 @@ wsServer.on("connection", (socket, request) => {
                     })
                 );
             } else {
-                socket.close(1013, "Client 1 already taken. Try again later.");
+                socket.close(1013, "Rhys already taken. Try again later.");
             }
             break;
 
-        case "/client2":
-            if (!clients.client2) {
-                console.log("Client 2 Connected");
-                clients.client2 = socket;
+        case "/gparent":
+            if (!clients.gparent) {
+                console.log("Gparent Connected");
+                clients.gparent = socket;
                 socket.send(
                     JSON.stringify({
                         type: MessageType.SERVER_INFO,
@@ -66,7 +66,7 @@ wsServer.on("connection", (socket, request) => {
                     })
                 );
             } else {
-                socket.close(1013, "Client 2 already taken. Try again later.");
+                socket.close(1013, "gparent already taken. Try again later.");
             }
             break;
 
@@ -80,31 +80,31 @@ wsServer.on("connection", (socket, request) => {
     socket.onmessage = (mEvent) => {
         var msg = JSON.parse(mEvent.data);
         switch (request.url) {
-            case "/client1": //tut5exB
-                if (clients.client2 != undefined) { // clients2 exists, forward the message
-                    console.log("Forwarded message from Client 1 to Client 2");
+            case "/rhys": //tut5exB
+                if (clients.gparent != undefined) { // clients2 exists, forward the message
+                    console.log("Forwarded message from Rhys to gparent");
                     console.log(msg);
-                    clients.client2.send(JSON.stringify(msg));
+                    clients.gparent.send(JSON.stringify(msg));
                 } else {
-                    clients.client1.send(
+                    clients.rhys.send(
                         JSON.stringify({
                             type: MessageType.SERVER_INFO,
-                            message: "Waiting for Client2 to connect..."
+                            message: "Waiting for gparent to connect..."
                         })
                     );
                 }
                 break;
 
-            case "/client2": //tut5exc
-                if (clients.client1 != undefined) {
-                    console.log("Forwarded message from Client 2 to Client 1");
+            case "/gparent": //tut5exc
+                if (clients.rhys != undefined) {
+                    console.log("Forwarded message from gparent to rhys");
                     console.log(msg);
-                    clients.client1.send(JSON.stringify(msg)); // clients1 exists, forward the message
+                    clients.rhys.send(JSON.stringify(msg)); // rhys exists, forward the message
                 } else {
-                    clients.client2.send(
+                    clients.gparent.send(
                         JSON.stringify({
                             type: MessageType.SERVER_INFO,
-                            message: "Waiting for Client1 to connect..."
+                            message: "Waiting for Rhsy to connect..."
                         })
                     );
                 }
