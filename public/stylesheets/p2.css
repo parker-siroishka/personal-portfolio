@@ -1,9 +1,19 @@
 body {
     background-color: #138E90 !important;
+    min-width: none;
 }
 
 #rhys-view {
     display: none;
+    position: absolute;
+    width: 100%;
+    top: 12%;
+}
+
+.hand-container {
+    position: absolute;
+    width: 100%;
+    top: 12%;
 }
 
 #gparent-view {
@@ -30,8 +40,17 @@ body {
     
 }
 
-.leftHand {
-    position: absolute;
+.hands {
+
+}
+
+#leftHand {
+    position: relative;
+}
+
+#rightHand {
+    position: relative;
+    transform: scaleX(-1);
 }
 
 .video-elements {
@@ -64,5 +83,4 @@ body {
     margin: 5px;
     border-radius: 15px;
 }
-
 

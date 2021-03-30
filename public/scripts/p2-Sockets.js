@@ -7,16 +7,11 @@ var theInput = $("#msgInput");
 var callBtn = $("#btn-call");
 var msgDiv = $("#msgDiv");
 var concealer = $("#concealer");
+var leftHand = $('#leftHand');
+var rightHand = $('#rightHand');
 
 concealer.css("display", "none");
 
-let leftHandAnimation = anime({
-    targets: '.leftHand',
-    translateX: 250,
-    endDelay: 1000,
-    direction: 'alternate',
-    autoplay: false
-  });
 
 var localStream;
 var peerConnection;
@@ -191,8 +186,9 @@ function handleMessage(mEvent) {
         case MessageType.GPARENT:
             switch(msg.message) {
                 case "hiding":
-                    leftHandAnimation.play();
                     isHiding = !isHiding;
+                    leftHand.animate({left: '30%'});
+                    rightHand.animate({right: '30%'});
                     var hidingProp = (isHiding) ? "block" : "none";
                     concealer.css("display", hidingProp);
             }
