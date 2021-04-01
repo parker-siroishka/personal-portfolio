@@ -44,7 +44,7 @@ const MessageType = {
 btn1.on("click", () => {
     getWebcam();
     btn2.prop("disabled", true);
-    destination = "ws://" + location.host + "/rhys";
+    destination = "wss://" + location.host + "/rhys";
     serverConnection = new WebSocket(destination);
     serverConnection.onmessage = handleMessage;
 });
@@ -52,7 +52,7 @@ btn1.on("click", () => {
 btn2.on("click", () => {
     getWebcam();
     btn1.prop("disabled", true);
-    destination = "ws://" + location.host + "/gparent";
+    destination = "wss://" + location.host + "/gparent";
     serverConnection = new WebSocket(destination);
     serverConnection.onmessage = handleMessage;
 });
