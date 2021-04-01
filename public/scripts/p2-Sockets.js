@@ -10,6 +10,8 @@ var concealer = $("#concealer");
 var leftHand = $('#leftHand');
 var rightHand = $('#rightHand');
 
+leftHand.css("display", "none");
+rightHand.css("display", "none");
 concealer.css("display", "none");
 
 
@@ -44,7 +46,7 @@ const MessageType = {
 btn1.on("click", () => {
     getWebcam();
     btn2.prop("disabled", true);
-    destination = "wss://" + location.host + "/rhys";
+    destination = "ws://" + location.host + "/rhys";
     serverConnection = new WebSocket(destination);
     serverConnection.onmessage = handleMessage;
 });
@@ -52,7 +54,7 @@ btn1.on("click", () => {
 btn2.on("click", () => {
     getWebcam();
     btn1.prop("disabled", true);
-    destination = "wss://" + location.host + "/gparent";
+    destination = "ws://" + location.host + "/gparent";
     serverConnection = new WebSocket(destination);
     serverConnection.onmessage = handleMessage;
 });
@@ -188,8 +190,19 @@ function handleMessage(mEvent) {
                 case "hiding":
                     isHiding = !isHiding;
                     var handDirection = (isHiding) ? "30%" : "0%";
-                    leftHand.animate({left: handDirection});
-                    rightHand.animate({right: handDirection});
+                    if(isHiding){
+                        leftHand.fadeIn(50);
+                        rightHand.fadeIn(50);
+                        leftHand.animate({left: handDirection});
+                        rightHand.animate({right: handDirection});
+                    } else{
+                        leftHand.animate({left: handDirection});
+                        rightHand.animate({right: handDirection});
+                        leftHand.fadeOut(50);
+                        rightHand.fadeOut(50);
+                    }
+                    
+                    
                     var hidingProp = (isHiding) ? "block" : "none";
                     concealer.css("display", hidingProp);
             }

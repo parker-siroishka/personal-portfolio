@@ -37,6 +37,7 @@ body {
     background-position: center;
     background-color: #15A0A2;
     /* margin-top: 5%; */
+    max-height: 75%;
     
 }
 
@@ -46,11 +47,13 @@ body {
 
 #leftHand {
     position: relative;
+    width: 26%;
 }
 
 #rightHand {
     position: relative;
     transform: scaleX(-1);
+    width: 26%;
 }
 
 .video-elements {
