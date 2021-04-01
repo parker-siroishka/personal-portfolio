@@ -187,8 +187,9 @@ function handleMessage(mEvent) {
             switch(msg.message) {
                 case "hiding":
                     isHiding = !isHiding;
-                    leftHand.animate({left: '30%'});
-                    rightHand.animate({right: '30%'});
+                    var handDirection = (isHiding) ? "30%" : "0%";
+                    leftHand.animate({left: handDirection});
+                    rightHand.animate({right: handDirection});
                     var hidingProp = (isHiding) ? "block" : "none";
                     concealer.css("display", hidingProp);
             }
