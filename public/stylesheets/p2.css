@@ -1,6 +1,7 @@
 body {
     background-color: #138E90 !important;
-    min-width: 800;
+    margin: 0;
+    height: 100vh;
 }
 
 #rhys-view {
@@ -14,10 +15,17 @@ body {
     position: absolute;
     width: 100%;
     top: 12%;
+    left: 0%;
+}
+
+#logo {
+    width: 500px;
+    padding-bottom: 5%;
 }
 
 #gparent-view {
     display: none;
+    position: absolute;
 }
 
 #localVideo {
@@ -41,6 +49,13 @@ body {
     
 }
 
+.container {
+    max-height: 75%;
+}
+
+.row {min-width: 75%;}
+
+
 .hands {
 
 }
@@ -61,10 +76,11 @@ body {
 }
 
 .call-buttons {
-    padding-bottom: 2%;
+    padding-bottom: 5%;
+    min-width: 600px;
 }
 
-#btn-client1 {
+/* #btn-client1 {
     height: 60px;
     width: 150px;
     border-radius: 15px;
@@ -77,13 +93,273 @@ body {
     border-radius: 15px;
     margin: 5px;
     background-color: #FAC6C6;
-}
+} */
 
-#btn-call {
-    background-color: #BEEF69;
-    height: 60px;
-    width: 75px;
-    margin: 5px;
-    border-radius: 15px;
-}
 
+
+:root {
+    --backgroundColor: rgba(246, 241, 209);
+    --colorShadeA: rgb(106, 163, 137);
+    --colorShadeB: rgb(121, 186, 156);
+    --colorShadeC: rgb(150, 232, 195);
+    --colorShadeD: rgb(187, 232, 211);
+    --colorShadeE: rgb(205, 255, 232);
+  }
+  
+  @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700");
+  * {
+    box-sizing: border-box;
+  }
+  *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'OpenSans', sans-serif;
+    font-size: 1rem;
+    line-height: 2;
+    display: flex;
+            align-items: center;
+            justify-content: center;
+    margin: 0;
+    min-height: 100vh;
+    background: var(--backgroundColor);
+  }
+  button {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    font-size: 1.5rem;
+      
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: inherit;
+  }
+  
+  button.big-button {
+    color:var(--colorShadeA);
+     padding: 1em 2em;
+     border: 2px solid var(--colorShadeA);
+    border-radius: 1em;
+    background: var(--colorShadeE);
+  transform-style: preserve-3d;
+     transition: all 175ms cubic-bezier(0, 0, 1, 1);
+  }
+  
+  button.big-button::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--colorShadeC);
+    border-radius: inherit;
+      box-shadow: 0 0 0 2px var(--colorShadeB), 0 0.75em 0 0 var(--colorShadeA);
+   transform: translate3d(0, 0.75em, -1em);
+       transition: all 175ms cubic-bezier(0, 0, 1, 1);
+  }
+  
+  
+  button.big-button:hover {
+    background: var(--colorShadeD);
+    transform: translate(0, 0.375em);
+  }
+  
+  button.big-button:hover::before {
+    transform: translate3d(0, 0.75em, -1em);
+  }
+  
+  button.big-button:active {
+              transform: translate(0em, 0.75em);
+  }
+  
+  button.big-button:active::before {
+    transform: translate3d(0, 0, -1em);
+    
+        box-shadow: 0 0 0 2px var(--colorShadeB), 0 0.25em 0 0 var(--colorShadeB);
+  
+  }
+
+  :root {
+    --backgroundColor2: rgba(246, 241, 209);
+    --colorShadeA2: #ec6262;
+    --colorShadeB2: #f39c9c;
+    --colorShadeC2: #F7B5B5;
+    --colorShadeD2: #F8B4B4;
+    --colorShadeE2: #f5cccc;
+  }
+  
+  @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700");
+  * {
+    box-sizing: border-box;
+  }
+  *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'OpenSans', sans-serif;
+    font-size: 1rem;
+    line-height: 2;
+    display: flex;
+            align-items: center;
+            justify-content: center;
+    margin: 0;
+    min-height: 100vh;
+    background: var(--backgroundColor2);
+  }
+  button {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    font-size: 1.5rem;
+      
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: inherit;
+  }
+  
+  button.big-button2 {
+    color:var(--colorShadeA2);
+     padding: 1em 2em;
+     border: 2px solid var(--colorShadeA2);
+    border-radius: 1em;
+    background: var(--colorShadeE2);
+    transform-style: preserve-3d;
+     transition: all 175ms cubic-bezier(0, 0, 1, 1);
+  }
+  
+  button.big-button2::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--colorShadeC2);
+    border-radius: inherit;
+      box-shadow: 0 0 0 2px var(--colorShadeB2), 0 0.75em 0 0 var(--colorShadeA2);
+   transform: translate3d(0, 0.75em, -1em);
+       transition: all 175ms cubic-bezier(0, 0, 1, 1);
+  }
+  
+  
+  button.big-button2:hover {
+    background: var(--colorShadeD2);
+    transform: translate(0, 0.375em);
+  }
+  
+  button.big-button2:hover::before {
+    transform: translate3d(0, 0.75em, -1em);
+  }
+  
+  button.big-button2:active {
+              transform: translate(0em, 0.75em);
+  }
+  
+  button.big-button2:active::before {
+    transform: translate3d(0, 0, -1em);
+    
+        box-shadow: 0 0 0 2px var(--colorShadeB2), 0 0.25em 0 0 var(--colorShadeB2);
+  
+  }
+
+  :root {
+    --backgroundColor3: rgba(246, 241, 209);
+    --colorShadeA3: #4ca12d;
+    --colorShadeB3: #4ca32d;
+    --colorShadeC3: #5ace24;
+    --colorShadeD3: #5cc735;
+    --colorShadeE3: #57e423 ;
+  }
+  
+  @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700");
+  * {
+    box-sizing: border-box;
+  }
+  *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'OpenSans', sans-serif;
+    font-size: 1rem;
+    line-height: 2;
+    display: flex;
+            align-items: center;
+            justify-content: center;
+    margin: 0;
+    min-height: 100vh;
+    background: var(--backgroundColor3);
+  }
+  button {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    font-size: 1.5rem;
+      
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: inherit;
+  }
+  
+  button.big-button3 {
+    color:var(--colorShadeA3);
+     padding: 1em 2em;
+     border: 2px solid var(--colorShadeA3);
+    border-radius: 1em;
+    background: var(--colorShadeE3);
+    transform-style: preserve-3d;
+     transition: all 175ms cubic-bezier(0, 0, 1, 1);
+  }
+  
+  button.big-button3::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--colorShadeC3);
+    border-radius: inherit;
+      box-shadow: 0 0 0 2px var(--colorShadeB3), 0 0.75em 0 0 var(--colorShadeA3);
+   transform: translate3d(0, 0.75em, -1em);
+       transition: all 175ms cubic-bezier(0, 0, 1, 1);
+  }
+  
+  
+  button.big-button3:hover {
+    background: var(--colorShadeD3);
+    transform: translate(0, 0.375em);
+  }
+  
+  button.big-button3:hover::before {
+    transform: translate3d(0, 0.75em, -1em);
+  }
+  
+  button.big-button3:active {
+              transform: translate(0em, 0.75em);
+  }
+  
+  button.big-button3:active::before {
+    transform: translate3d(0, 0, -1em);
+    
+        box-shadow: 0 0 0 2px var(--colorShadeB3), 0 0.25em 0 0 var(--colorShadeB3);
+  
+  }

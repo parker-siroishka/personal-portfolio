@@ -5,8 +5,6 @@ var rhysViewItems = document.getElementsByClassName('rhys-view');
 var gparentViewItems = document.getElementsByClassName('gparent-view');
 var localVideo = document.getElementById('localVideo');
 var remoteVideo = document.getElementById('remoteVideo');
-var leftHand = $('#leftHand');
-var rightHand = $('#rightHand');
 
 for(var i=0; i<rhysViewItems.length; i++){
     rhysViewItems[i].style.display = "none";
@@ -25,8 +23,6 @@ function showRhysUI(){
     }
     localVideo.style.display = "block";
     remoteVideo.style.display = "block";
-    // leftHand.css("display", "none");
-    // rightHand.css("display", "none");
 }
 
 function showGparentUI(){

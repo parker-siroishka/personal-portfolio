@@ -12,7 +12,7 @@ var rightHand = $('#rightHand');
 
 leftHand.css("display", "none");
 rightHand.css("display", "none");
-concealer.css("display", "none");
+concealer.css("visibility", "hidden");
 
 
 var localStream;
@@ -49,6 +49,7 @@ btn1.on("click", () => {
     destination = "ws://" + location.host + "/rhys";
     serverConnection = new WebSocket(destination);
     serverConnection.onmessage = handleMessage;
+    btn1.css("display", "none");
 });
 
 btn2.on("click", () => {
@@ -57,6 +58,7 @@ btn2.on("click", () => {
     destination = "ws://" + location.host + "/gparent";
     serverConnection = new WebSocket(destination);
     serverConnection.onmessage = handleMessage;
+    btn2.css("display", "none");
 });
 
 callBtn.on("click", () => {
@@ -203,8 +205,8 @@ function handleMessage(mEvent) {
                     }
                     
                     
-                    var hidingProp = (isHiding) ? "block" : "none";
-                    concealer.css("display", hidingProp);
+                    var hidingProp = (isHiding) ? "visible" : "hidden";
+                    concealer.css("visibility", hidingProp);
             }
             break;
 
