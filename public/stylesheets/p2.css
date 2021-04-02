@@ -4,6 +4,7 @@ body {
     height: 100vh;
 }
 
+
 #rhys-view {
     display: none;
     position: absolute;
@@ -80,20 +81,13 @@ body {
     min-width: 600px;
 }
 
-/* #btn-client1 {
-    height: 60px;
-    width: 150px;
-    border-radius: 15px;
-    margin: 5px;
-    background-color: #81EDEF;
+#btn-client1 {
+    margin-right: 15px;
 }
 
 #btn-client2 {
-    height: 60px;
-    border-radius: 15px;
-    margin: 5px;
-    background-color: #FAC6C6;
-} */
+    margin-right: 15px;
+}
 
 
 
