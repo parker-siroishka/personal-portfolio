@@ -65,7 +65,16 @@ h3, h5, p {
     max-height: 75%;
 }
 
-.row {min-width: 75%;}
+.row {
+  min-width: 75%;
+}
+
+.hand-container-small {
+  position: absolute;
+  width: 100%;
+  top: 12%;
+  left: 0%;
+}
 
 
 #leftHand {
@@ -73,10 +82,21 @@ h3, h5, p {
     width: 26%;
 }
 
+#leftHandSmall {
+  position: relative;
+  width: 50px;
+}
+
 #rightHand {
     position: relative;
     transform: scaleX(-1);
     width: 26%;
+}
+
+#rightHandSmall {
+  position: relative;
+  transform: scaleX(-1);
+  width: 50px;
 }
 
 .video-elements {
