@@ -6,6 +6,10 @@ var gparentViewItems = document.getElementsByClassName('gparent-view');
 var localVideo = document.getElementById('localVideo');
 var remoteVideo = document.getElementById('remoteVideo');
 var logo = document.getElementById('logo');
+var call = document.getElementById('btn-call');
+
+
+call.style.display = "none";
 
 for(var i=0; i<rhysViewItems.length; i++){
     rhysViewItems[i].style.display = "none";
@@ -16,6 +20,7 @@ for(var i=0; i<gparentViewItems.length; i++){
 }
 
 function showRhysUI(){
+    call.style.display = "block";
     logo.style.display = "none";
     isRhys.innerText = "Connected as Rhys";
     isRhys.disabled = true;
@@ -25,9 +30,11 @@ function showRhysUI(){
     }
     localVideo.style.display = "block";
     remoteVideo.style.display = "block";
+    remoteVideo.style.maxHeight = "85%";
 }
 
 function showGparentUI(){
+    call.style.display = "block";
     logo.style.display = "none";
     isGparent.innerText = "Connected as Oma & Opa";
     isGparent.disabled = true;
@@ -38,6 +45,7 @@ function showGparentUI(){
 
     localVideo.style.display = "block";
     remoteVideo.style.display = "block";
+    remoteVideo.style.maxHeight = "85%";
 }
 
 isRhys.addEventListener('click', showRhysUI);
