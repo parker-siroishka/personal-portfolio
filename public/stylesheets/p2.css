@@ -3,7 +3,7 @@
 body {
     background-color: #138E90 !important;
     margin: 0;
-    height: 100vh;
+    height: auto;
 }
 
 h3, h5, p {
@@ -14,6 +14,10 @@ h3, h5, p {
 audio {
   height: 0;
   width: 0;
+}
+
+.anti-squish {
+  /* min-height: 85vh; */
 }
 
 
@@ -91,6 +95,11 @@ audio {
 
 .video-elements {
     padding-top: 1%;
+    min-width: 844px;
+}
+
+.mid-col {
+  position: relative;
 }
 
 .call-buttons {
