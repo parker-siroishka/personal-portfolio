@@ -11,6 +11,11 @@ h3, h5, p {
   color: rgb(205, 255, 232);
 }
 
+audio {
+  height: 0;
+  width: 0;
+}
+
 
 #rhys-view {
     display: none;
@@ -69,23 +74,12 @@ h3, h5, p {
   min-width: 75%;
 }
 
-.hand-container-small {
-  position: absolute;
-  width: 100%;
-  top: 12%;
-  left: 0%;
-}
-
 
 #leftHand {
     position: relative;
     width: 26%;
 }
 
-#leftHandSmall {
-  position: relative;
-  width: 50px;
-}
 
 #rightHand {
     position: relative;
@@ -93,11 +87,7 @@ h3, h5, p {
     width: 26%;
 }
 
-#rightHandSmall {
-  position: relative;
-  transform: scaleX(-1);
-  width: 50px;
-}
+
 
 .video-elements {
     padding-top: 1%;
@@ -133,6 +123,10 @@ h3, h5, p {
 }
 
 .peekaboo {
+  margin-top: 20%;
+}
+
+.get-attention {
   margin-top: 20%;
 }
 

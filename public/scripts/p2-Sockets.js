@@ -8,10 +8,10 @@ var callBtn = $("#btn-call");
 var msgDiv = $("#msgDiv");
 var concealer = $("#concealer");
 var leftHand = $('#leftHand');
-var leftHandSmall = $('');
-var rightHandSmall = $('');
 var rightHand = $('#rightHand');
 var buttonsDiv = $('#buttonsDiv');
+var getAttention = $('#get-attention');
+var audioFiles = document.getElementsByTagName("audio");
 
 leftHand.css("display", "none");
 rightHand.css("display", "none");
@@ -49,7 +49,7 @@ const MessageType = {
 btn1.on("click", () => {
     getWebcam();
     btn2.prop("disabled", true);
-    destination = "ws://" + location.host + "/rhys";
+    destination = "wss://" + location.host + "/rhys";
     serverConnection = new WebSocket(destination);
     serverConnection.onmessage = handleMessage;
     btn1.css("display", "none");
@@ -58,16 +58,26 @@ btn1.on("click", () => {
 btn2.on("click", () => {
     getWebcam();
     btn1.prop("disabled", true);
-    destination = "ws://" + location.host + "/gparent";
+    destination = "wss://" + location.host + "/gparent";
     serverConnection = new WebSocket(destination);
     serverConnection.onmessage = handleMessage;
     btn2.css("display", "none");
+
 });
 
 callBtn.on("click", () => {
     start(true);
     buttonsDiv.css("display", "none");
     
+});
+
+getAttention.on("click", () => {
+    serverConnection.send(
+        JSON.stringify({
+            type: MessageType.GPARENT,
+            message: "attention",
+        })
+    );
 });
 
 gparentsHide.on("click", () => {
@@ -212,6 +222,11 @@ function handleMessage(mEvent) {
                     
                     var hidingProp = (isHiding) ? "visible" : "hidden";
                     concealer.css("visibility", hidingProp);
+                    break;
+                case "attention":
+                    console.log(audioFiles);
+                    var currentSound = audioFiles[Math.floor(Math.random() * audioFiles.length)];
+                    currentSound.play();
             }
             break;
 

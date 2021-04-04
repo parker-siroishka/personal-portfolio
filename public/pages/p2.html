@@ -11,6 +11,12 @@
     <title>Peek-a-Boo with You</title>
   </head>
   <body>
+    <audio src="../media/p2/p2_music/babynoise.mp3"></audio>
+    <audio src="../media/p2/p2_music/bikebell.mp3"></audio>
+    <audio src="../media/p2/p2_music/clownhonk1.mp3"></audio>
+    <audio src="../media/p2/p2_music/clownhonk2.mp3"></audio>
+    <audio src="../media/p2/p2_music/jinglebells.mp3"></audio>
+    <audio src="../media/p2/p2_music/ukelele.mp3"></audio>
     <div class="video-elements">
       <div class="text-center" id="buttonsDiv">
         <img src="../media/p2/p2_images/logo-inviz.png" alt="" id="logo">
@@ -25,16 +31,14 @@
       <div class="container">
         <div class="row">
           <div class="col-2 text-center">
-            <div class="gparent-view hand-container-small">
-              <div class="hands d-flex justify-content-between">
-                <img src="../media/p2/p2_images/leftHand.png" id="leftHandSmall"alt="">
-                <img src="../media/p2/p2_images/leftHand.png" id="rightHandSmall"alt="">
-              </div>
-            </div>
             <video id="localVideo"class="shadow" autoplay muted></video>
             <div class="gparent-view peekaboo">
-              <h5>Play Peek-a-Boo!</h3>
+              <h5>Play Peek-a-Boo</h3>
               <button id="gparents-hide">Hide</button>
+            </div>
+            <div class="gparent-view get-attention" id="get-attention">
+              <h5>Rhys Distracted?</h3>
+              <button id="gparents-hide">Grab Attention!</button>
             </div>
           </div>
           <div class="col-8 col-md">
@@ -76,6 +80,7 @@
   <!-- Scripts-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
-  <script src="../scripts/p2-Sockets.js"> </script>
   <script src="../scripts/p2-UI.js"> </script>
+  <script src="../scripts/p2-Sockets.js"> </script>
+  
 </html>
