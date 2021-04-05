@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="../stylesheets/p2.css">
     <link href="../dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
     <title>Peek-a-Boo with You</title>
   </head>
   <body>
@@ -31,15 +32,29 @@
       <div class="container ">
         <div class="row">
           <div class="col-2 text-center">
-            <video id="localVideo"class="shadow" autoplay muted></video>
-            <div class="gparent-view peekaboo">
-              <h5>Play Peek-a-Boo</h3>
-              <button id="gparents-hide">Hide</button>
+
+            <div class="card gparent-view rhys-view">
+              <div class="card-body">
+                <video id="localVideo"class="shadow" autoplay muted></video>
+                <div class="gparent-view peekaboo">
+                  <h5 class="card-title">Play Peek-a-Boo</h3>
+                  <button id="gparents-hide">Hide</button>
+                </div>
+                <div class="gparent-view get-attention" id="get-attention">
+                  <h5>Rhys Distracted?</h3>
+                  <button id="gparents-hide">Grab Attention!</button>
+                </div>
+              </div>
+              
             </div>
-            <div class="gparent-view get-attention" id="get-attention">
-              <h5>Rhys Distracted?</h3>
-              <button id="gparents-hide">Grab Attention!</button>
+            <div class="rhys-view">
+              <img src="../media/p2/p2_images/beaver.png" alt="" id="beaver">
+              <img src="../media/p2/p2_images/fox.png" alt="" id="fox">
+              <img src="../media/p2/p2_images/turtle.png" alt="" id="turtle">
+              <img src="../media/p2/p2_images/wolf.png" alt="" id="wolf">
             </div>
+            
+
           </div>
           <div class="col-8 col-md mid-col">
             <video id="remoteVideo"autoplay ></video>
@@ -51,21 +66,31 @@
             </div>
             <div class="d-flex justify-content-center">
               <div class="text-center rhys-view">
-                <h3>Rhys's View</h3>
                 <h1 id="concealer">Gparents are hiding!</h1>
               </div>
-              <div class="gparent-view">
-                <h3>Gparents's View</h3>
-              </div>
+              
             </div>
           
-            <div class="d-flex justify-content-center">
-              
-              <div id="msgDiv"></div>
+            
             </div>
+          <div class="col-2 text-center">
+            <img src="../media/p2/p2_images/logo-inviz.png" class="gparent-view rhys-view logo-small" alt="" id="logo-small">
+            <div class="card gparent-view rhys-view">
+              <div class="card-body">
+                <h3 style="text-decoration: underline;" class="viewing-as gparent-view rhys-view"><strong>Viewing as</strong></h3>
+                <div class="gparent-view">
+                  <h3 class="oma-opa-color">Oma & Opa!</h3>
+                </div>
+                <div class="rhys-view">
+                  <h3 class="oma-opa-color">Rhys!</h3>
+                </div>
+                <div class="d-flex justify-content-center">
+                  
+                  <div id="msgDiv"></div>
+                </div>
+              </div>
             </div>
-          <div class="col-2">
-            <img src="../media/p2/p2_images/logo-inviz.png" class="gparent-view rhys-view" alt="" id="logo-small">
+            
           </div>
         </div>
         

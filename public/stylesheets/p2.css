@@ -4,6 +4,7 @@ body {
     background-color: #138E90 !important;
     margin: 0;
     height: auto;
+    overflow: hidden;
 }
 
 h3, h5, p {
@@ -14,10 +15,6 @@ h3, h5, p {
 audio {
   height: 0;
   width: 0;
-}
-
-.anti-squish {
-  /* min-height: 85vh; */
 }
 
 
@@ -31,8 +28,13 @@ audio {
 .hand-container {
     position: absolute;
     width: 100%;
-    top: 12%;
+    top: 0%;
     left: 0%;
+    height: 100%;
+}
+
+.hands {
+  height: 84%;
 }
 
 #logo {
@@ -42,6 +44,7 @@ audio {
 
 #logo-small {
   width: 200px;
+  margin-bottom: 5%;
 }
 
 #gparent-view {
@@ -72,25 +75,57 @@ audio {
 
 .container {
     max-height: 75%;
+    width: 100% !important;
 }
 
 .row {
   min-width: 75%;
 }
 
-
 #leftHand {
     position: relative;
-    width: 26%;
+    width: 50%;
+    margin-left: -230px;
+    z-index: 2;
 }
+
 
 
 #rightHand {
     position: relative;
     transform: scaleX(-1);
-    width: 26%;
+    width: 50%;
+    margin-right: -230px;
+    z-index: 2;
 }
 
+#beaver, #fox, #wolf {
+  height: 450px;
+  position: relative;
+  z-index: 100;
+}
+
+#turtle {
+  width: 450px;
+  position: relative;
+  z-index: 100;
+}
+
+.oma-opa-color{
+  color: #F8B4B4;
+}
+
+.card {
+  background-color: #15A0A2;
+  border: none !important;
+  border-radius: 20px !important;
+}
+
+.card-body {
+  background-color: #15A0A2;
+  border: none;
+  border-radius: 15px !important;
+}
 
 
 .video-elements {

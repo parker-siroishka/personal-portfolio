@@ -12,9 +12,18 @@ var rightHand = $('#rightHand');
 var buttonsDiv = $('#buttonsDiv');
 var getAttention = $('#get-attention');
 var audioFiles = document.getElementsByTagName("audio");
+var beaver = $('#beaver');
+var fox = $('#fox');
+var turtle = $('#turtle');
+var wolf = $('#wolf');
+var animals = [beaver, fox, turtle, wolf];
 
 leftHand.css("display", "none");
 rightHand.css("display", "none");
+beaver.css("display", "none");
+fox.css("display", "none");
+turtle.css("display", "none");
+wolf.css("display", "none");
 concealer.css("visibility", "hidden");
 
 
@@ -23,6 +32,7 @@ var peerConnection;
 var serverConnection;
 
 var isHiding = false;
+var shakingAnimal = false;
 
 const peerConnectionConfig = {
     iceServers: [
@@ -72,6 +82,7 @@ callBtn.on("click", () => {
 });
 
 getAttention.on("click", () => {
+    shakingAnimal = true;
     serverConnection.send(
         JSON.stringify({
             type: MessageType.GPARENT,
@@ -224,9 +235,31 @@ function handleMessage(mEvent) {
                     concealer.css("visibility", hidingProp);
                     break;
                 case "attention":
-                    console.log(audioFiles);
                     var currentSound = audioFiles[Math.floor(Math.random() * audioFiles.length)];
+                    if(shakingAnimal){
+                    }
+                    var currentAnimal = animals[Math.floor(Math.random() * animals.length)];
+                    currentAnimal.fadeIn(100);
                     currentSound.play();
+                    var rotateAngle = 30;
+                    for (let i = 0; i < 6; i++) {
+                        currentAnimal.animate({  transform: rotateAngle }, {
+                            step: function(now,fx) {
+                                $(this).css({
+                                    '-webkit-transform':'rotate('+now+'deg)', 
+                                    '-moz-transform':'rotate('+now+'deg)',
+                                    'transform':'rotate('+now+'deg)'
+                                });
+                            }
+                        });
+
+                        rotateAngle = -rotateAngle;
+                    }
+                    currentAnimal.fadeOut(200);
+                    shakingAnimal = false;
+
+                    
+                    
             }
             break;
 

@@ -47,7 +47,7 @@ wsServer.on("connection", (socket, request) => {
                 socket.send(
                     JSON.stringify({
                         type: MessageType.SERVER_INFO,
-                        message: "Connected to server. Waiting for peer..."
+                        message: "Connected to server. Waiting for Oma & Opa..."
                     })
                 );
             } else {
@@ -62,7 +62,7 @@ wsServer.on("connection", (socket, request) => {
                 socket.send(
                     JSON.stringify({
                         type: MessageType.SERVER_INFO,
-                        message: "Connected to server. Waiting for peer..."
+                        message: "Connected to server. Waiting for Rhys..."
                     })
                 );
             } else {
