@@ -24,7 +24,6 @@
         <div class="call-buttons d-flex justify-content-center">
         <button class="big-button btn-client1" id="btn-client1">Connect as Rhys</button>
         <button class="big-button2 btn-client2" id="btn-client2">Connect as Oma & Opa</button>
-        <button class="big-button3 btn-call" id="btn-call">Video Call</button>
       </div>
       </div>
       
@@ -43,6 +42,11 @@
                 <div class="gparent-view get-attention" id="get-attention">
                   <h5>Rhys Distracted?</h3>
                   <button id="gparents-hide">Grab Attention!</button>
+                </div>
+                <div class="gparent-view snap-picture">
+                  <h5>Capture Photo</h5>
+                  <button id="snap">Take a Picture!</button>
+                  <canvas class="shadow" id="screenshot"></canvas>
                 </div>
               </div>
               
@@ -85,15 +89,16 @@
                   <h3 class="oma-opa-color">Rhys!</h3>
                 </div>
                 <div class="d-flex justify-content-center">
-                  
                   <div id="msgDiv"></div>
+                </div>
+                <div class="d-flex justify-content-center">
+                  <button id="btn-call">Call</button>
+                  <button id="btn-end">End</button>
                 </div>
               </div>
             </div>
-            
           </div>
         </div>
-        
       </div>
       
       

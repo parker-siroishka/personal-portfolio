@@ -1,3 +1,5 @@
+
+
 p {
     font-family: 'DotGothic16', sans-serif;
 }
@@ -8,3 +10,34 @@ p {
     max-width: 98%;
 }
 
+.slide {
+    margin: auto;
+    max-height: 600px;
+}
+
+.slider {
+    background-color: #CFDBD5;
+    border-radius: 10px;
+}
+
+.carousel-indicators {
+    bottom: -50px;
+}
+
+.carousel-caption {
+    background-color: #F5CB5C;
+    opacity: 0.65;
+    border-radius: 50px;
+}
+
+.carousel-caption h5, .carousel-caption h5 {
+    color: Black;
+}
+
+.carousel-control-prev, .carousel-control-next {
+    margin: auto;
+    height: 11%;
+    width: 5%;
+    background-color: #696868;
+    border-radius: 50px;
+}

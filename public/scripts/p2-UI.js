@@ -7,9 +7,11 @@ var localVideo = document.getElementById('localVideo');
 var remoteVideo = document.getElementById('remoteVideo');
 var logo = document.getElementById('logo');
 var call = document.getElementById('btn-call');
+var end = document.getElementById('btn-end');
 
 
 call.style.display = "none";
+end.style.display = "none"
 
 for(var i=0; i<rhysViewItems.length; i++){
     rhysViewItems[i].style.display = "none";

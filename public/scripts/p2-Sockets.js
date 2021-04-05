@@ -5,6 +5,8 @@ var btn2 = $("#btn-client2");
 var gparentsHide = $("#gparents-hide");
 var theInput = $("#msgInput");
 var callBtn = $("#btn-call");
+var endBtn = $("#btn-end");
+var snapBtn = $("#snap");
 var msgDiv = $("#msgDiv");
 var concealer = $("#concealer");
 var leftHand = $('#leftHand');
@@ -16,6 +18,10 @@ var beaver = $('#beaver');
 var fox = $('#fox');
 var turtle = $('#turtle');
 var wolf = $('#wolf');
+var canvas = document.querySelector('canvas');
+var canvasJQ = $("#screenshot");
+var context = canvas.getContext('2d');
+Rvideo = document.getElementById('remoteVideo');
 var animals = [beaver, fox, turtle, wolf];
 
 leftHand.css("display", "none");
@@ -25,6 +31,8 @@ fox.css("display", "none");
 turtle.css("display", "none");
 wolf.css("display", "none");
 concealer.css("visibility", "hidden");
+canvas.style.display = "none";
+
 
 
 var localStream;
@@ -33,6 +41,10 @@ var serverConnection;
 
 var isHiding = false;
 var shakingAnimal = false;
+var whoami = "";
+var w;
+var h;
+var ratio;
 
 const peerConnectionConfig = {
     iceServers: [
@@ -58,6 +70,7 @@ const MessageType = {
 
 btn1.on("click", () => {
     getWebcam();
+    whoami = "rhys";
     btn2.prop("disabled", true);
     destination = "ws://" + location.host + "/rhys";
     serverConnection = new WebSocket(destination);
@@ -67,6 +80,7 @@ btn1.on("click", () => {
 
 btn2.on("click", () => {
     getWebcam();
+    whoami = "gparent";
     btn1.prop("disabled", true);
     destination = "ws://" + location.host + "/gparent";
     serverConnection = new WebSocket(destination);
@@ -77,8 +91,30 @@ btn2.on("click", () => {
 
 callBtn.on("click", () => {
     start(true);
-    buttonsDiv.css("display", "none");
+    // buttonsDiv.css("display", "block");
+    callBtn.css("display", "none");
+    endBtn.css("display", "block");
     
+});
+
+endBtn.on("click", () => {
+    if(whoami == "gparent"){
+        serverConnection.send(
+            JSON.stringify({
+                type: MessageType.GPARENT,
+                message: "endcall",
+            })
+        );
+    } else if(whoami == "rhys"){
+        serverConnection.send(
+            JSON.stringify({
+                type: MessageType.RHYS,
+                message: "endcall",
+            })
+        );
+    }
+    peerConnection.close();
+    remoteVid.fadeOut("slow");
 });
 
 getAttention.on("click", () => {
@@ -104,6 +140,22 @@ gparentsHide.on("click", () => {
             message: "hiding",
         })
     );
+});
+
+Rvideo.addEventListener('loadedmetadata', function() {
+    ratio = Rvideo.videoWidth / Rvideo.videoHeight;
+    w = Rvideo.videoWidth - 100;
+    h = parseInt(w / ratio, 10);
+    canvas.width = w;
+    canvas.height = h;
+}, false);
+
+snapBtn.on("click", () => {
+    context.fillRect(0, 0, w, h);
+    context.drawImage(Rvideo, 0, 0, w, h);
+    //canvas.style.display = "block";
+    canvasJQ.fadeIn(1500);
+    
 });
 
 function getWebcam() {
@@ -234,7 +286,8 @@ function handleMessage(mEvent) {
                     var hidingProp = (isHiding) ? "visible" : "hidden";
                     concealer.css("visibility", hidingProp);
                     break;
-                case "attention":
+                
+                    case "attention":
                     var currentSound = audioFiles[Math.floor(Math.random() * audioFiles.length)];
                     if(shakingAnimal){
                     }
@@ -257,6 +310,13 @@ function handleMessage(mEvent) {
                     }
                     currentAnimal.fadeOut(200);
                     shakingAnimal = false;
+                
+                    break;
+                
+                case "endcall":
+                    console.log("ENDING CALL");
+                    peerConnection.close();
+                    remoteVid.fadeOut("slow");
 
                     
                     
