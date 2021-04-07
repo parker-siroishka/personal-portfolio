@@ -4,6 +4,14 @@ p {
     font-family: 'DotGothic16', sans-serif;
 }
 
+.carousel-caption {
+    transition: 0.5s;
+}
+
+.carousel-caption:hover {
+    opacity: 0;
+}
+
 #p1-vid {
     max-height: 320px;
     margin-top: 10%;
@@ -26,8 +34,10 @@ p {
 
 .carousel-caption {
     background-color: #F5CB5C;
-    opacity: 0.65;
+    opacity: 0.85;
     border-radius: 50px;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
 }
 
 .carousel-caption h5, .carousel-caption h5 {
