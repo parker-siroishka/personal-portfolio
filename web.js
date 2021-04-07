@@ -123,6 +123,9 @@ wsServer.on("connection", (socket, request) => {
         if (e.code == 1001) {
             // code 1001: client closed socket, disconnect all clients and delete them
             for (var s in clients) {
+                if(clients[s] == undefined){
+                    continue;
+                }
                 clients[s].close(4000, "Peer disconnected");
                 clients[s] = undefined;
             }
