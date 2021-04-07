@@ -8,10 +8,12 @@ var remoteVideo = document.getElementById('remoteVideo');
 var logo = document.getElementById('logo');
 var call = document.getElementById('btn-call');
 var end = document.getElementById('btn-end');
+var attentionCurtain = document.getElementById('attention-curtain');
 
 
 call.style.display = "none";
 end.style.display = "none"
+attentionCurtain.style.display = "none";
 
 for(var i=0; i<rhysViewItems.length; i++){
     rhysViewItems[i].style.display = "none";
@@ -22,6 +24,7 @@ for(var i=0; i<gparentViewItems.length; i++){
 }
 
 function showRhysUI(){
+    $('body').css('background-image', 'url("../media/p2/p2_images/rhys-background.jpg")');
     call.style.display = "block";
     logo.style.display = "none";
     isRhys.innerText = "Connected as Rhys";

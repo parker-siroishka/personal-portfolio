@@ -12,7 +12,7 @@ var concealer = $("#concealer");
 var leftHand = $('#leftHand');
 var rightHand = $('#rightHand');
 var buttonsDiv = $('#buttonsDiv');
-var getAttention = $('#get-attention');
+var getAttention = $('#get-attention-btn');
 var audioFiles = document.getElementsByTagName("audio");
 var beaver = $('#beaver');
 var fox = $('#fox');
@@ -21,7 +21,8 @@ var wolf = $('#wolf');
 var canvas = document.querySelector('canvas');
 var canvasJQ = $("#screenshot");
 var context = canvas.getContext('2d');
-Rvideo = document.getElementById('remoteVideo');
+var attentionCurtain = $("#attention-curtain");
+var Rvideo = document.getElementById('remoteVideo');
 var animals = [beaver, fox, turtle, wolf];
 
 leftHand.css("display", "none");
@@ -72,7 +73,7 @@ btn1.on("click", () => {
     getWebcam();
     whoami = "rhys";
     btn2.prop("disabled", true);
-    destination = "ws://" + location.host + "/rhys";
+    destination = "wss://" + location.host + "/rhys";
     serverConnection = new WebSocket(destination);
     serverConnection.onmessage = handleMessage;
     btn1.css("display", "none");
@@ -82,7 +83,7 @@ btn2.on("click", () => {
     getWebcam();
     whoami = "gparent";
     btn1.prop("disabled", true);
-    destination = "ws://" + location.host + "/gparent";
+    destination = "wss://" + location.host + "/gparent";
     serverConnection = new WebSocket(destination);
     serverConnection.onmessage = handleMessage;
     btn2.css("display", "none");
@@ -118,6 +119,7 @@ endBtn.on("click", () => {
 });
 
 getAttention.on("click", () => {
+    getAttention.html("Getting Attention..");
     shakingAnimal = true;
     serverConnection.send(
         JSON.stringify({
@@ -125,6 +127,11 @@ getAttention.on("click", () => {
             message: "attention",
         })
     );
+    getAttention.prop('disabled', true);
+    setTimeout(function(){
+        getAttention.prop('disabled', false);
+        getAttention.html("Grab Attention!");
+    }, 3*1000);
 });
 
 gparentsHide.on("click", () => {
@@ -151,6 +158,7 @@ Rvideo.addEventListener('loadedmetadata', function() {
 }, false);
 
 snapBtn.on("click", () => {
+    canvasJQ.fadeOut(5);
     context.fillRect(0, 0, w, h);
     context.drawImage(Rvideo, 0, 0, w, h);
     //canvas.style.display = "block";
@@ -292,6 +300,7 @@ function handleMessage(mEvent) {
                     if(shakingAnimal){
                     }
                     var currentAnimal = animals[Math.floor(Math.random() * animals.length)];
+                    attentionCurtain.fadeIn(200);
                     currentAnimal.fadeIn(100);
                     currentSound.play();
                     var rotateAngle = 30;
@@ -309,6 +318,10 @@ function handleMessage(mEvent) {
                         rotateAngle = -rotateAngle;
                     }
                     currentAnimal.fadeOut(200);
+                    setTimeout(function(){ 
+                        attentionCurtain.fadeOut(200); 
+                    }, 2500);
+                     
                     shakingAnimal = false;
                 
                     break;
