@@ -82,8 +82,6 @@ wsServer.on("connection", (socket, request) => {
         switch (request.url) {
             case "/rhys": //tut5exB
                 if (clients.gparent != undefined) { // clients2 exists, forward the message
-                    console.log("Forwarded message from Rhys to gparent");
-                    console.log(msg);
                     clients.gparent.send(JSON.stringify(msg));
                 } else {
                     clients.rhys.send(
@@ -97,14 +95,12 @@ wsServer.on("connection", (socket, request) => {
 
             case "/gparent": //tut5exc
                 if (clients.rhys != undefined) {
-                    console.log("Forwarded message from gparent to rhys");
-                    console.log(msg);
                     clients.rhys.send(JSON.stringify(msg)); // rhys exists, forward the message
                 } else {
                     clients.gparent.send(
                         JSON.stringify({
                             type: MessageType.SERVER_INFO,
-                            message: "Waiting for Rhsy to connect..."
+                            message: "Waiting for Rhys to connect..."
                         })
                     );
                 }
