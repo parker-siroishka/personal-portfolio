@@ -176,6 +176,19 @@ button:focus {
   color: #b34848;
 }
 
+#download {
+  text-decoration: none;
+  font-family: 'system-ui';
+  font-weight: 700;
+  width: 100%;
+  background-color: #F8B4B4;
+  border-radius: 0.8em;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #ec6262; 
+  color: #b34848;
+}
+
 #snap:focus {
   outline: none;
 }
@@ -387,8 +400,8 @@ button {
     font-size: 1rem;
     line-height: 2;
     display: flex;
-            align-items: center;
-            justify-content: center;
+    align-items: center;
+    justify-content: center;
     margin: 0;
     min-height: 100vh;
     /* background: var(--backgroundColor2); */

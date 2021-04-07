@@ -24,6 +24,7 @@ var context = canvas.getContext('2d');
 var attentionCurtain = $("#attention-curtain");
 var Rvideo = document.getElementById('remoteVideo');
 var animals = [beaver, fox, turtle, wolf];
+var downloadBtn = $("#download");
 
 leftHand.css("display", "none");
 rightHand.css("display", "none");
@@ -33,6 +34,7 @@ turtle.css("display", "none");
 wolf.css("display", "none");
 concealer.css("visibility", "hidden");
 canvas.style.display = "none";
+downloadBtn.css("display", "none");
 
 
 
@@ -157,14 +159,22 @@ Rvideo.addEventListener('loadedmetadata', function() {
     canvas.height = h;
 }, false);
 
+
 snapBtn.on("click", () => {
     canvasJQ.fadeOut(5);
     context.fillRect(0, 0, w, h);
     context.drawImage(Rvideo, 0, 0, w, h);
     //canvas.style.display = "block";
     canvasJQ.fadeIn(1500);
+    downloadBtn.fadeIn(2500);
     
 });
+
+download_img = function(el) {
+    console.log("clocked");
+    var image = canvas.toDataURL("image/jpg");
+    el.href = image;
+}
 
 function getWebcam() {
 
