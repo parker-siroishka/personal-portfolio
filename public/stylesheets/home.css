@@ -16,6 +16,23 @@ body {
     width: 40%;
 }
 
+.tech-img {
+    width: 70%;
+    opacity: 80%;
+}
+
+strong {
+    font-weight: 500;
+}
+
+.tech-box {
+    width: 20%;
+    /* max-width: 50px; */
+}
+.tech-list {
+    width: 100%;
+}
+
 .card {
     border: 1px solid #F5CB5C;
     /* max-width: 500px; */

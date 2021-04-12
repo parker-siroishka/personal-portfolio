@@ -42,6 +42,18 @@ $("#det-p2").on("click", e => {
   window.location.assign(`${URL}/pages/p2Details.html`);
 });
 
+$("#go-arcurve").on("click", e => {
+  window.location.assign(`https://www.arcurve.com/`);
+})
+
+$("#go-pokemon").on("click", e => {
+  window.location.assign(`https://github.com/parker-siroishka/Pokemon-Data-Dashboard`);
+})
+
+$("#go-olb").on("click", e => {
+  window.location.assign(`https://github.com/openLeaderboard/olb-ios`);
+})
+
 
 particlesJS("particles-js", 
 {
