@@ -77,6 +77,10 @@ strong {
         margin-bottom: 5% !important;
     }
 
+    #slideshow > div > img {
+        max-height: 240px;
+    }
+
     .tech-list {
         width: 100%;
     }
