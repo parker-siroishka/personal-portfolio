@@ -1,5 +1,14 @@
 const URL = location.origin; // root domain
 
+$(document).ready(function() {
+  $("#profile-pic").animate({ //be sure to change the class of your element to "header"
+      left:'250px',
+      opacity:'1.0',
+      height:'248px',
+      width:'248px'
+  }, 1000);
+});
+
 
 
 
@@ -112,7 +121,7 @@ particlesJS("particles-js",
       },
       "move": {
         "enable": true,
-        "speed": 6,
+        "speed": 4,
         "direction": "none",
         "random": false,
         "straight": false,
@@ -167,6 +176,17 @@ particlesJS("particles-js",
     "retina_detect": true
   });
 
+
+  $("#slideshow > div:gt(0)").hide();
+
+  setInterval(function() { 
+    $('#slideshow > div:first')
+    .fadeOut(1000)
+    .next()
+    .fadeIn(1000)
+    .end()
+    .appendTo('#slideshow');
+  }, 3000);
 
 
 

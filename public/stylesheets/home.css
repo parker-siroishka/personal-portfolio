@@ -2,6 +2,7 @@ body {
     background-color: #E8EDDF;
 }
 
+
 .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(245,203,92, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important;
 }
@@ -13,7 +14,12 @@ body {
 #profile-pic {
     border-radius: 100%;
     border: 3px solid #333533;
-    width: 40%;
+    width: 0px;
+    height: 0px;
+}
+
+#greeting {
+    visibility: visible;
 }
 
 .tech-img {
@@ -26,12 +32,10 @@ strong {
 }
 
 .tech-box {
-    width: 20%;
+    /* width: 20%; */
     /* max-width: 50px; */
 }
-.tech-list {
-    width: 100%;
-}
+
 
 .card {
     border: 1px solid #F5CB5C;
@@ -42,6 +46,52 @@ strong {
 .card-body {
     background-color: #E7EEEC;
 }
+
+.d-inline-flex {
+    display: inline-flex !important;
+}
+
+@media (max-width: 992px) {
+
+    .d-inline-flex {
+        display: block !important;
+    }
+
+    .job-point {
+        margin-bottom: 5%;
+    }
+
+    .company-img {
+        display: none;
+    }
+
+    .company-img-long {
+        display: block;
+        width: 90%;
+        margin: auto;
+        margin-bottom: 5%;
+    }
+
+    #slideshow{
+        margin-top: 5% !important;
+        margin-bottom: 5% !important;
+    }
+
+    .tech-list {
+        width: 100%;
+    }
+}
+
+@media (min-width: 992px) {
+    .company-img-long {
+        display: none;
+    }
+
+    .tech-list {
+        width: 90%;
+    }
+}
+
 
 .company-img {
     max-width: 75px;
@@ -88,6 +138,10 @@ strong {
 .job-heading .card-title{
     margin-bottom: 0;
     margin-bottom: 2%;
+}
+
+.jobs-grid {
+    justify-content: center;
 }
 
 
@@ -153,6 +207,28 @@ p {
 .header-content {
     z-index: 1;
 }
+
+#slideshow { 
+    margin: 5px auto; 
+    position: relative; 
+    width: 240px; 
+    height: 240px; 
+    padding: 10px; 
+    border-radius: 5px;
+  }
+  
+  #slideshow > div { 
+    position: absolute;  
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    border-radius: 5px;
+  }
+
+  #slideshow > div > img {
+      width: 100%;
+      object-fit: cover;
+      height: fit-content;
+      
+  }
 
 #particles-js{ 
     position: sticky;
