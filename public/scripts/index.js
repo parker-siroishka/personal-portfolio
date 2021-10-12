@@ -10,8 +10,6 @@ $(document).ready(function() {
 });
 
 
-
-
 // redirects
 
 $("#ret-home").on("click", e => {
@@ -64,6 +62,7 @@ $("#go-olb").on("click", e => {
 })
 
 
+// Particle JS specs
 particlesJS("particles-js", 
 {
     "particles": {
@@ -177,6 +176,7 @@ particlesJS("particles-js",
   });
 
 
+  // Education slideshow slide change animations
   $("#slideshow > div:gt(0)").hide();
 
   setInterval(function() { 
@@ -188,5 +188,91 @@ particlesJS("particles-js",
     .appendTo('#slideshow');
   }, 3000);
 
+
+// Medium Blog api
+const MdFetch = async (username) => {
+  const res = await fetch(
+    `https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/${username}`
+  );
+  return await res.json();
+}
+
+const data = MdFetch('@parkersiroishka_25031');
+
+
+/**
+ * <div class="col">
+              <div class="card shadow-sm">
+                <img class ="p0-thumbnail" src="../media/p2_details/p2-thumbnail.JPG">
+                <div class="card-body">
+                  <h3>Peek-a-Boo with You</h3>
+                  <p class="card-text">
+                    A two-way video conferencing application that is designed to foster a closer relationship between those who can't be together in person. Designed specifically
+                    with the COVID-19 pandemic in mind, this application allows grandparents to interact in a meaningful way with their young grandchildren.
+                    <br>  <strong>Made with: JavaScript, WebRTC, HTML/CSS.</strong> 
+                  </p>
+ */
+
+data.then(function(res){
+
+  blogDiv = document.getElementById('blog-container');
+  res.items.forEach(post => {
+    // console.log([post.title]);
+    // var postDiv = document.createElement('div');
+    // postDiv.appendChild(document.createTextNode(post.title));
+    // thumbnail = document.createElement('img');
+    // thumbnail.src = post.thumbnail;
+    // thumbnail.style.width = "100%";
+    // postDiv.appendChild(thumbnail);
+    // postDiv.style.width = "33.3%";
+    // blogDiv.appendChild(postDiv);
+
+    var col = document.createElement('div');
+    col.classList.add('col');
+
+    var card = document.createElement('div');
+    card.classList.add('shadow-sm', 'card');
+
+    var cardBody = document.createElement('div');
+    cardBody.classList.add('card-body');
+
+    var thumbnail = document.createElement('img');
+    thumbnail.classList.add('p0-thumbnail');
+    thumbnail.src = post.thumbnail;
+    thumbnail.style.width = '100%';
+
+    var title = document.createElement('h3');
+    title.textContent = post.title;
+    title.style.borderBottom = '2px solid rgb(33, 37, 41)'
+    title.style.paddingBottom = '10px';
+
+    var date = document.createElement('strong');
+    date.classList.add('card-text');
+    date.textContent = post.pubDate;
+    date.style.st
+
+    var link = document.createElement('a');
+    link.href = post.link;
+    link.style.textDecoration = 'none';
+
+    var teaser = document.createElement('p');
+    var str = post.content;
+    if(str.length > 250) str = (str.substring(0,250) + '...');
+    teaser.innerHTML = str;
+    teaser.width = '100%';
+
+    link.appendChild(card);
+    card.appendChild(thumbnail);
+    cardBody.appendChild(title);
+    cardBody.appendChild(teaser);
+    cardBody.appendChild(date);
+    
+
+    card.appendChild(cardBody);
+    col.appendChild(link);
+    blogDiv.appendChild(col);
+
+  });
+})
 
 

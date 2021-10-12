@@ -96,6 +96,16 @@ strong {
     }
 }
 
+@media (max-width: 481px){
+    .links {
+        /* border: 1px solid ; */
+    }
+    .name {
+        border-bottom: 1.5px solid;
+        margin-bottom: 5px;
+    }
+    
+}
 
 .company-img {
     max-width: 75px;
@@ -202,6 +212,14 @@ h5.card-title {
 
 .yellow {
     color: #F5CB5C !important;
+}
+
+figure {
+    width: 100%;
+}
+
+figure, img {
+    width: 100%;
 }
 
 p {

@@ -17,48 +17,27 @@
     <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
   </head>
   <body id="particles-js">
-    <div ></div> 
-    <header>
-      <div class="collapse bg-dark" id="navbarHeader">
+      <div class="navbar navbar-dark bg-dark shadow-sm sticky-top" id="top">
         <div class="container">
-          <div class="row">
-            <div class="col-sm-8 col-md-7 py-4">
-              <h4 class="text-white">About Me</h4>
-              <p class="text-muted">
-                An analytical and logical guy with a passion for creative design. I love complex algorithmic programming just as much as finding a nice and pretty colour scheme for a UI. <br><br>
-                Got Questions? Email me!
-              </p>
-            </div>
-            <div class="col-sm-4 offset-md-1 py-4">
-              <h4 class="text-white">Contact</h4>
-              <ul class="list-unstyled">
-                <li><a href="https://github.com/parker-siroishka" class="text-white">GitHub</a></li>
-                <li><a href="https://www.linkedin.com/in/parker-siroishka/" class="text-white">LinkedIn</a></li>
-                <li><a href="mailto:parker.siroishka@gmail.com" class="text-white">Email Me</a></li>
-              </ul>
-            </div>
+          <a href="#top" class="navbar-brand d-flex align-items-center yellow name">
+            <strong>Parker Siroishka</strong>
+          </a>
+          <div class="d-flex align-items-center">
+            <a href="#education" class="navbar-brand yellow links" style="font-size: medium;">
+              Education
+            </a>
+            <a href="#experience" class="navbar-brand d-flex align-items-center yellow links" style="font-size: medium;">
+              Experience
+            </a>
+            <a href="#projects" class="navbar-brand d-flex align-items-center yellow links" style="font-size: medium;">
+              Projects
+            </a>
+            <a href="#blog" class="navbar-brand d-flex align-items-center yellow links" style="font-size: medium;">
+              Blog
+            </a>
           </div>
         </div>
       </div>
-      <div class="navbar navbar-dark bg-dark shadow-sm">
-        <div class="container">
-          <a href="#" class="navbar-brand d-flex align-items-center yellow">
-            <strong>Parker Siroishka</strong>
-          </a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarHeader"
-            aria-controls="navbarHeader"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </div>
-      </div>
-    </header>
 
     <main>
       <section class="py-5 text-center container">
@@ -77,12 +56,12 @@
         </div>
       </section>
       <section class="py-5 container">
-        <h1 class="fw-light text-center">Education</h1>
+        <h1 class="fw-light text-center" id="education">Education</h1>
         <div class="row row-cols-12 row-cols-sm-12 row-cols-md-12 row-cols-lg-12 row-cols-xl-12">
           <div class="col"> <div class="card shadow-sm">
             <h5 class="card-header">University of Calgary</h5>
             <div class="card-body d-inline-flex p-3">
-              <img src="../media/University-Of-Calgary-Logo.png" class="card-title company-img" alt="" style="height: 80px; max-width: none;
+              <img src="../media/University-Of-Calgary-Logo.png" class="card-title company-img" alt="" style="height: 80px;
               max-height: none;">
               <img src="../media/education/university-of-calgary-long.png" class="card-title company-img-long">
               <div class="job-description">
@@ -128,7 +107,7 @@
       </section>
 
       <section class="py-5 container">
-        <h1 class="fw-light text-center">Experience</h1>
+        <h1 class="fw-light text-center" id="experience">Experience</h1>
         <div class="jobs-grid row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-2">
           <div class="col">
             <div class="card shadow-sm">
@@ -255,7 +234,7 @@
       </section>
 
 
-      <div class="album py-5 ">
+      <div class="album py-5" id="projects">
         <h1 class="fw-light text-center">Projects</h1>
         <div class="container">
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -460,6 +439,14 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div class="album py-5" id="blog">
+        <h1 class="fw-light text-center">Blog</h1>
+        <div class="container">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="blog-container">
+          </div>
+
         </div>
       </div>
     </main>
