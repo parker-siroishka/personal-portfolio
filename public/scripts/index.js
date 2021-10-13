@@ -243,7 +243,7 @@ data.then(function(res){
 
     var title = document.createElement('h3');
     title.textContent = post.title;
-    title.style.borderBottom = '2px solid rgb(33, 37, 41)'
+    title.style.borderBottom = '2px solid #F5CB5C';
     title.style.paddingBottom = '10px';
 
     var date = document.createElement('strong');
