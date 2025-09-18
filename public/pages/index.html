@@ -13,483 +13,432 @@
     <!-- Custom CSS -->
     <link href="../stylesheets/custom.css" rel="stylesheet" />
     <link href="../stylesheets/home.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   </head>
-  <body id="particles-js">
-      <div class="navbar navbar-dark bg-dark shadow-sm sticky-top" id="top">
+  <body>
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="top">
         <div class="container">
-          <a href="#top" class="navbar-brand d-flex align-items-center yellow name">
+          <a href="#top" class="navbar-brand">
             <strong>Parker Siroishka</strong>
           </a>
-          <div class="d-flex align-items-center">
-            <a href="#education" class="navbar-brand yellow links" style="font-size: medium;">
-              Education
-            </a>
-            <a href="#experience" class="navbar-brand d-flex align-items-center yellow links" style="font-size: medium;">
-              Experience
-            </a>
-            <a href="#projects" class="navbar-brand d-flex align-items-center yellow links" style="font-size: medium;">
-              Projects
-            </a>
-            <a href="#blog" class="navbar-brand d-flex align-items-center yellow links" style="font-size: medium;">
-              Blog
-            </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="navbar-nav ms-auto">
+              <a href="#education" class="nav-link">Education</a>
+              <a href="#experience" class="nav-link">Experience</a>
+              <a href="#projects" class="nav-link">Projects</a>
+              <a href="#blog" class="nav-link">Blog</a>
+            </div>
           </div>
         </div>
-      </div>
+      </nav>
 
     <main>
-      <section class="py-5 text-center container">
-        <div class="row py-lg-5">
-          <div class="col-lg-6 col-md-8 mx-auto header-content">
-            <img src="../media/profile_picture.jpg" id="profile-pic">
-            <h1 class="fw-light text-center" id="greeting">Hey!</h1>
-            <p class="lead text-muted text-bg">
-              My name is Parker and I'm a Software Developer from Calgary. I never let a challenge slow me down and I pride myself on my abilities as a quick, self-directed
-              learner and developer. I have a natural curiosity for tech so I can pick up and enjoy just about any programming language or framework with pleasure! <br><br> While I do love the nitty-gritty programming
-              side of things, I do have a soft spot for design and making things functional yet beautiful. I've had professional experience creating user interface design sketches, wireframes, and prototypes and
-              executing on them through clean front end development to create a valued product that looks and feels quite dandy.
-            </p>
-            <p></p>
+      <section class="hero-section">
+        <div class="container">
+          <div class="row py-lg-5">
+            <div class="col-lg-8 col-md-10 mx-auto">
+              <div class="hero-content text-center">
+                <img src="../media/profile_picture.jpg" id="profile-pic" alt="Parker Siroishka">
+                <h1 id="greeting">Hey! I'm Parker</h1>
+                <p class="hero-description">
+                  I'm a passionate Software Developer from Calgary who thrives on challenges and continuous learning. 
+                  With a natural curiosity for technology, I can quickly pick up and master any programming language or framework. 
+                  While I love the technical side of development, I also have a keen eye for design, creating beautiful and functional 
+                  user interfaces that deliver exceptional user experiences.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
-      <section class="py-5 container">
-        <h1 class="fw-light text-center" id="education">Education</h1>
-        <div class="row row-cols-12 row-cols-sm-12 row-cols-md-12 row-cols-lg-12 row-cols-xl-12">
-          <div class="col"> <div class="card shadow-sm">
-            <h5 class="card-header">University of Calgary</h5>
-            <div class="card-body d-inline-flex p-3">
-              <img src="../media/University-Of-Calgary-Logo.png" class="card-title company-img" alt="" style="height: 80px;
-              max-height: none;">
-              <img src="../media/education/university-of-calgary-long.png" class="card-title company-img-long">
-              <div class="job-description">
-                <div class="job-heading d-flex align-items-center">
-                  <div class>
-                    <h5 class="card-title">Bachelor of Science - B.Sc</h5>
-                    <h6 class="card-title duration">Computer Science, Minor in Data Science</h6>
-                    <h6 class="card-title duration">September 2016 - April 2022</h6>
+      <section class="section" id="education">
+        <div class="container">
+          <h1 class="section-title">Education</h1>
+          <div class="row">
+            <div class="col-lg-10 mx-auto">
+              <div class="education-card card">
+                <h5 class="card-header">University of Calgary</h5>
+                <div class="card-body d-inline-flex p-4">
+                  <img src="../media/University-Of-Calgary-Logo.png" class="company-img" alt="University of Calgary Logo">
+                  <img src="../media/education/university-of-calgary-long.png" class="company-img-long" alt="University of Calgary">
+                  <div class="job-description">
+                    <div class="job-heading">
+                      <h5 class="card-title">Bachelor of Science - B.Sc</h5>
+                      <h6 class="card-title duration">Computer Science, Minor in Data Science</h6>
+                      <h6 class="card-title duration">September 2016 - April 2022</h6>
+                    </div>
+                    
+                    <ul class="card-text lead">
+                      <li><a href="https://godinos.com/news/2020/12/1/athletics-news-record-210-dinos-earn-2019-20-academic-honours.aspx" target="_blank" rel="noopener">Academic All-Canadian</a> Student Athlete (2018 - 2021)</li>
+                      <li><a href="https://godinos.com/news/2014/4/3/GEN_0403145857.aspx" target="_blank" rel="noopener">Dinos LEAD</a> - Leadership Development Course (2019)</li>
+                      <li>Varsity Athlete - Men's Volleyball</li>
+                      <li>Summer Volleyball Coach and Camp Leader</li>
+                      <li>Competitive Programming Club Member</li>
+                    </ul>
                   </div>
-                </div>
-                
-                <ul class="card-text lead">
-                  <li><a href="https://godinos.com/news/2020/12/1/athletics-news-record-210-dinos-earn-2019-20-academic-honours.aspx">Academic All-Canadian</a> Student Athlete. (2018 - 2021)</li>
-                  <li><a href="https://godinos.com/news/2014/4/3/GEN_0403145857.aspx">Dinos LEAD</a> - Leadership Development Course (2019)</li>
-                  <li>Varsity Athlete - Men's Volleyball</li>
-                  <li>Summer Volleyball Coach and Camp Leader</li>
-                  <li>Competitive Programming Club Member</li>
-                </ul>
-              </div>
-              <div id="slideshow">
-                <div>
-                  <img src="../media/education/academic-all-canadian.jpg">
-                </div>
-                <div>
-                  <img src="../media/education/vball_4.jpg">
-                </div>
-                <div>
-                  <img src="../media/education/vball_5.jpg">
-                </div>
-                <div>
-                  <img src="../media/education/vball_3.jpg">
-                </div>
-                <div>
-                  <img src="../media/education/vball_2.jpg">
-                </div>
-                <div>
-                  <img src="../media/education/vball_1.jpg">
+                  <div id="slideshow">
+                    <div>
+                      <img src="../media/education/academic-all-canadian.jpg" alt="Academic All-Canadian">
+                    </div>
+                    <div>
+                      <img src="../media/education/vball_4.jpg" alt="Volleyball Action">
+                    </div>
+                    <div>
+                      <img src="../media/education/vball_5.jpg" alt="Volleyball Team">
+                    </div>
+                    <div>
+                      <img src="../media/education/vball_3.jpg" alt="Volleyball Match">
+                    </div>
+                    <div>
+                      <img src="../media/education/vball_2.jpg" alt="Volleyball Training">
+                    </div>
+                    <div>
+                      <img src="../media/education/vball_1.jpg" alt="Volleyball Team Photo">
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div></div>
+          </div>
         </div>
       </section>
 
-      <section class="py-5 container">
-        <h1 class="fw-light text-center" id="experience">Experience</h1>
-        <div class="jobs-grid row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-2">
-          <div class="col">
-            <div class="card shadow-sm">
-              <h5 class="card-header">Software Developer</h5>
-              <div class="card-body d-inline-flex p-3">
-                <img src="../media/experience/arcurve.png" class="card-title company-img" alt="">
-                <img src="../media/experience/arcurve-long.png" class="card-title company-img-long" alt="">
-                <div class="job-description">
-                  <div class="job-heading d-flex align-items-center">
-                    <div class>
+      <section class="section" id="experience">
+        <div class="container">
+          <h1 class="section-title">Experience</h1>
+          
+          <!-- Arcurve - Software Developer -->
+          <div class="row">
+            <div class="col">
+              <div class="experience-card card">
+                <h5 class="card-header">Software Developer</h5>
+                <div class="card-body d-inline-flex p-4">
+                  <img src="../media/experience/arcurve.png" class="company-img" alt="Arcurve Logo">
+                  <img src="../media/experience/arcurve-long.png" class="company-img-long" alt="Arcurve">
+                  <div class="job-description">
+                    <div class="job-heading">
                       <h5 class="card-title">Arcurve</h5>
                       <h6 class="card-title internship">Fulltime</h6>
-                      <h6 class="card-title duration">September 2022 - Present</h6>
+                      <h6 class="card-title duration">September 2022 - July 2025</h6>
                     </div>
-                  </div>
-                  
-                  <ul class="card-text lead">
-                    <li class="job-point">Front end development using React, Redux, and Node.js on a client facing application for a national telecommunication company with over 900,000 subscribers</li>
-                  </ul>
-                  <h6 class="card-title">Technologies</h6>
-                  <div class="tech-list d-flex justify-content-between">
-                    <div class="tech-box d-flex align-items-center">
-                      <img class="tech-img" src="../media/experience/technologies/React-icon.png" alt="" style="height:40px; width: auto;">
-                    </div>
-                    <div class="tech-box d-flex align-items-center">
-                      <img class="tech-img" src="../media/experience/technologies/redux.svg" alt="" style="height:50px; width: auto;">
-                    </div>
-                    <div class="tech-box d-flex align-items-center">
-                      <img class="tech-img" src="../media/experience/technologies/js.png" alt="" style="height: 50px; width: auto;">
-                    </div>
-                    <div class="tech-box d-flex align-items-center">
-                      <img class="tech-img" src="../media/experience/technologies/Node.png" alt="" style="height: 50px; width: auto;">
+                    
+                    <h6 class="card-title">September 2022 - May 2024 (Shaw/Rogers)</h6>
+                    <ul class="card-text lead">
+                      <li class="job-point">Implemented a major re-branding initiative, overhauling the UI of the flagship Shaw Communications web application to Rogers branding. Ensuring zero bugs or app downtime during post-acquisition launch</li>
+                      <li class="job-point">Implemented a highly visible modal feature aimed at facilitating the transition from paper billing to electronic billing. Eliminating paper billing for thousands of customers</li>
+                      <li class="job-point">Migrated codebase from Enzyme to React Testing Library. Increasing testing coverage by 11% and decreasing testing build runtime by 20%</li>
+                      <li class="job-point">Modernized legacy Redux application by migrating to Redux Toolkit, React hooks and functional components. Reducing boilerplate code and improving maintainability and extensibility</li>
+                      <li class="job-point">Refactored applications to ensure full application legal compliance with Web Content Accessibility Guidelines. Eliminating 100% of A and AA accessibility issues</li>
+                      <li class="job-point">Upgraded flagship application's Node major version by researching major dependency issues and resolving breaking changes. Guaranteeing app compatibility and avoiding End-of-Life library dependencies and security vulnerabilities</li>
+                    </ul>
+                    
+                    <h6 class="card-title">March 2023 - May 2023 (Internal Project)</h6>
+                    <ul class="card-text lead">
+                      <li class="job-point">Full Stack development using C#, Blazor, Mudblazor, and .NET 6 on an internal project management portal</li>
+                      <li class="job-point">Spearheaded the shift to more extensive unit testing, creating a more robust and fault tolerant application</li>
+                    </ul>
+                    <h6 class="card-title">Technologies</h6>
+                    <div class="tech-list">
+                      <div class="tech-box">
+                        <img class="tech-img" src="../media/experience/technologies/React-icon.png" alt="React">
+                      </div>
+                      <div class="tech-box">
+                        <img class="tech-img" src="../media/experience/technologies/redux.svg" alt="Redux">
+                      </div>
+                      <div class="tech-box">
+                        <img class="tech-img" src="../media/experience/technologies/js.png" alt="JavaScript">
+                      </div>
+                      <div class="tech-box">
+                        <img class="tech-img" src="../media/experience/technologies/Node.png" alt="Node.js">
+                      </div>
+                      <div class="tech-box">
+                        <img class="tech-img" src="../media/experience/technologies/Csharp_Logo.png" alt="C#">
+                      </div>
+                      <div class="tech-box">
+                        <img class="tech-img" src="../media/experience/technologies/net.png" alt=".NET">
+                      </div>
                     </div>
                   </div>
                 </div>
-                
               </div>
             </div>
           </div>
-          <div class="col">
-            <div class="card shadow-sm">
-              <h5 class="card-header">Full Stack Developer Intern</h5>
-              <div class="card-body d-inline-flex p-3">
-                <img src="../media/experience/showpass.webp" class="card-title company-img" alt="">
-                <img src="../media/experience/showpass-long.svg" class="card-title company-img-long" alt="">
-                <div class="job-description">
-                  <div class="job-heading d-flex align-items-center">
-                    <div class>
+
+          <!-- Showpass - Full Stack Developer Intern -->
+          <div class="row">
+            <div class="col">
+              <div class="experience-card card">
+                <h5 class="card-header">Full Stack Developer Intern</h5>
+                <div class="card-body d-inline-flex p-4">
+                  <img src="../media/experience/showpass.webp" class="company-img" alt="Showpass Logo">
+                  <img src="../media/experience/showpass-long.svg" class="company-img-long" alt="Showpass">
+                  <div class="job-description">
+                    <div class="job-heading">
                       <h5 class="card-title">Showpass</h5>
                       <h6 class="card-title internship">Internship</h6>
-                      <h6 class="card-title duration">May 2021 - August 2021</h6>
+                      <h6 class="card-title duration">May 2021 - Aug 2021 · 4 mos</h6>
                     </div>
-                  </div>
-                  
-                  <ul class="card-text lead">
-                    <li class="job-point">Developed RESTful API webservices using Python Django REST framework</li>
-                    <li class="job-point">Created a custom SQL query that reduced load time of event calendar widget by 85% (5s to 0.75s)</li>
-                    <li class="job-point">Automated the process of cloning event templates to allow the Client Success team to mass produce templates</li>
-                    <li class="job-point">Assisted production deployment and provided post-production support and troubleshooting on an on-call basis</li>
-                  </ul>
-                  <h6 class="card-title">Technologies</h6>
-                  <div class="tech-list d-flex justify-content-between">
-                    <div class="tech-box d-flex align-items-center">
-                      <img class="tech-img" src="../media/experience/technologies/python.png" alt="" style="height:40px; width: auto;">
+                    
+                    <ul class="card-text lead">
+                      <li class="job-point">Developed RESTful API webservices using Python Django REST framework</li>
+                      <li class="job-point">Created custom SQL query that was utilized by hundreds of users daily and reduced load time of event calendar widget by 85%</li>
+                      <li class="job-point">Assisted production deployment and provide post-production support and troubleshooting on an on-call basis</li>
+                      <li class="job-point">Wrote clean code in a testable and reliable way</li>
+                      <li class="job-point">Participated in agile development practices including routine standups, code reviews and testing</li>
+                    </ul>
+                    <h6 class="card-title">Technologies</h6>
+                    <div class="tech-list">
+                      <div class="tech-box">
+                        <img class="tech-img" src="../media/experience/technologies/python.png" alt="Python">
+                      </div>
+                      <div class="tech-box">
+                        <img class="tech-img" src="../media/experience/technologies/django.jpg" alt="Django">
+                      </div>
+                      <div class="tech-box">
+                        <img class="tech-img" src="../media/experience/technologies/angularjs.png" alt="AngularJS">
+                      </div>
+                      <div class="tech-box">
+                        <img class="tech-img" src="../media/experience/technologies/postgresql.png" alt="PostgreSQL">
+                      </div>
                     </div>
-                    <div class="tech-box d-flex align-items-center">
-                      <img class="tech-img" src="../media/experience/technologies/django.jpg" alt="" style="height:50px; width: auto;">
-                    </div>
-                    <div class="tech-box d-flex align-items-center">
-                      <img class="tech-img" src="../media/experience/technologies/angularjs.png" alt="" style="height: 50px; width: auto;">
-                    </div>
-                    <div class="tech-box d-flex align-items-center">
-                      <img class="tech-img" src="../media/experience/technologies/postgresql.png" alt="" style="height: 50px; width: auto;">
-                    </div>
-                  </div>
-                </div>
-                
-              </div>
-            </div>
-          </div>
-          <div class="col"> <div class="card shadow-sm">
-            <h5 class="card-header">Software Developer Intern</h5>
-            <div class="card-body d-inline-flex p-3">
-              <img src="../media/experience/arcurve.png" class="card-title company-img" alt="">
-              <img src="../media/experience/arcurve-long.png" class="card-title company-img-long" alt="">
-              <div class="job-description">
-                <div class="job-heading d-flex align-items-center">
-                  <div class>
-                    <h5 class="card-title">Arcurve</h5>
-                    <h6 class="card-title internship">Internship</h6>
-                    <h6 class="card-title duration">June 2020 - May 2021</h6>
-                  </div>
-                </div>
-                
-                <ul class="card-text lead">
-                  <li class="job-point">Designed, developed, and deployed new company website <a href="https://www.arcurve.com/">arcurve.com</a></li>
-                  <li class="job-point">Worked closely with UX and UI designers in carrying out extensive user research and design planning to maximize contacts with potential clients by creating personas and journey mappings</li>
-                  <li class="job-point">Shifted company to new CMS and consolidated all dynamic content uploaded to website into one easily operated form</li>
-                  <li class="job-point">Received an offer and transitioned to a permanent part-time position over the 2020-2021 school year</li>
-                </ul>
-                <h6 class="card-title">Technologies</h6>
-                  <div class="tech-list d-flex justify-content-between">
-                    <div class="tech-box d-flex align-items-center">
-                      <img class="tech-img" src="../media/experience/technologies/js.png" alt="" style="height:50px; width: auto;">
-                    </div>
-                    <div class="tech-box d-flex align-items-center">
-                      <img class="tech-img" src="../media/experience/technologies/html.png" alt="" style="height:50px; width: auto;">
-                    </div>
-                    <div class="tech-box d-flex align-items-center">
-                      <img class="tech-img" src="../media/experience/technologies/css.png" alt="" style="height:50px; width: auto;">
-                    </div>
-                    <div class="tech-box d-flex align-items-center">
-                      <img class="tech-img" src="../media/experience/technologies/xd.png" alt="" style="height:50px; width: auto;">
-                    </div>
-                  </div>
-              </div>
-              
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <h5 class="card-header">Software Developer Intern</h5>
-            <div class="card-body d-inline-flex p-3">
-              <img src="../media/experience/4iiii.jpg" class="card-title company-img" alt="">
-              <img src="../media/experience/4iiii-long.jpg" class="card-title company-img-long" alt="" style="height: 100px; width: auto;">
-              <div class="job-description">
-                <div class="job-heading d-flex align-items-center">
-                  <div class>
-                    <h5 class="card-title">4iiii Innovations Inc.</h5>
-                    <h6 class="card-title internship">Internship</h6>
-                    <h6 class="card-title duration">May 2018 - August 2018</h6>
-                  </div>
-                </div>
-                
-                <ul class="card-text lead">
-                  <li class="job-point">Sole developer of vehicle roof rack obstruction detection sensors/software from concept level to physical prototype</li>
-                  <li class="job-point">Analyzed large data sets to produce understandable and actionable visualizations</li>
-                  <li class="job-point">Hardware protoype received commercial interest from multiple industry leading cycling companies</li>
-                  <li class="job-point">Presented research analysis in marketable fashion to clients.</li>
-                </ul>
-                <h6 class="card-title">Technologies</h6>
-                <div class="tech-list d-flex justify-content-between">
-                  <div class="tech-box d-flex align-items-center">
-                    <img class="tech-img" src="../media/experience/technologies/python.png" alt="" style="height:40px; width: auto;">
-                  </div>
-                  <div class="tech-box d-flex align-items-center">
-                    <img class="tech-img" src="../media/experience/technologies/pandas.png" alt="" style="height:60px; width: auto;">
-                  </div>
-                  <div class="tech-box d-flex align-items-center">
-                    <img class="tech-img" src="../media/experience/technologies/matplotlib.png" alt="" style="height:55px; width: auto;">
-                  </div>
-                  <div class="tech-box d-flex align-items-center">
-                    <img class="tech-img" src="../media/experience/technologies/raspi.jpg" alt="" style="height:55px; width: auto;">
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+
+          <!-- Arcurve - Software Developer Intern -->
+          <div class="row">
+            <div class="col">
+              <div class="experience-card card">
+                <h5 class="card-header">Software Developer Intern</h5>
+                <div class="card-body d-inline-flex p-4">
+                  <img src="../media/experience/arcurve.png" class="company-img" alt="Arcurve Logo">
+                  <img src="../media/experience/arcurve-long.png" class="company-img-long" alt="Arcurve">
+                  <div class="job-description">
+                    <div class="job-heading">
+                      <h5 class="card-title">Arcurve</h5>
+                      <h6 class="card-title internship">Internship</h6>
+                      <h6 class="card-title duration">June 2020 - May 2021</h6>
+                    </div>
+                    
+                    <ul class="card-text lead">
+                      <li class="job-point">Designed, developed, and deployed new company website <a href="https://www.arcurve.com/" target="_blank" rel="noopener">arcurve.com</a></li>
+                      <li class="job-point">Worked closely with UX and UI designers in carrying out extensive user research and design planning to maximize contacts with potential clients by creating personas and journey mappings</li>
+                      <li class="job-point">Shifted company to new CMS and consolidated all dynamic content uploaded to website into one easily operated form</li>
+                      <li class="job-point">Received an offer and transitioned to a permanent part-time position over the 2020-2021 school year</li>
+                    </ul>
+                    <h6 class="card-title">Technologies</h6>
+                    <div class="tech-list">
+                      <div class="tech-box">
+                        <img class="tech-img" src="../media/experience/technologies/js.png" alt="JavaScript">
+                      </div>
+                      <div class="tech-box">
+                        <img class="tech-img" src="../media/experience/technologies/html.png" alt="HTML">
+                      </div>
+                      <div class="tech-box">
+                        <img class="tech-img" src="../media/experience/technologies/css.png" alt="CSS">
+                      </div>
+                      <div class="tech-box">
+                        <img class="tech-img" src="../media/experience/technologies/xd.png" alt="Adobe XD">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4iiii - Software Developer Intern -->
+          <div class="row">
+            <div class="col">
+              <div class="experience-card card">
+                <h5 class="card-header">Software Developer Intern</h5>
+                <div class="card-body d-inline-flex p-4">
+                  <img src="../media/experience/4iiii.jpg" class="company-img" alt="4iiii Logo">
+                  <img src="../media/experience/4iiii-long.jpg" class="company-img-long" alt="4iiii Innovations">
+                  <div class="job-description">
+                    <div class="job-heading">
+                      <h5 class="card-title">4iiii Innovations Inc.</h5>
+                      <h6 class="card-title internship">Internship</h6>
+                      <h6 class="card-title duration">May 2018 - August 2018</h6>
+                    </div>
+                    
+                    <ul class="card-text lead">
+                      <li class="job-point">Sole developer of vehicle roof rack obstruction detection sensors/software from concept level to physical prototype</li>
+                      <li class="job-point">Analyzed large data sets to produce understandable and actionable visualizations</li>
+                      <li class="job-point">Hardware prototype received commercial interest from multiple industry leading cycling companies</li>
+                      <li class="job-point">Presented research analysis in marketable fashion to clients</li>
+                    </ul>
+                    <h6 class="card-title">Technologies</h6>
+                    <div class="tech-list">
+                      <div class="tech-box">
+                        <img class="tech-img" src="../media/experience/technologies/python.png" alt="Python">
+                      </div>
+                      <div class="tech-box">
+                        <img class="tech-img" src="../media/experience/technologies/pandas.png" alt="Pandas">
+                      </div>
+                      <div class="tech-box">
+                        <img class="tech-img" src="../media/experience/technologies/matplotlib.png" alt="Matplotlib">
+                      </div>
+                      <div class="tech-box">
+                        <img class="tech-img" src="../media/experience/technologies/raspi.jpg" alt="Raspberry Pi">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
 
-      <div class="album py-5" id="projects">
-        <h1 class="fw-light text-center">Projects</h1>
+      <section class="section" id="projects">
         <div class="container">
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-
-            <div class="col">
-              <div class="card shadow-sm">
-                <img class ="p0-thumbnail" src="../media/pokemon.png">
-
-                <div class="card-body">
-                  <h3>Pokémon: The "Extended" Pokédex</h3>
-                  <p class="card-text">
-                    This dashboard is a centralized location where knowledgeable players can go to search out and compare two different Pokémon and their attributes. Received an A+ on final project.
-                    <br>  <strong>Made with: JavaScript, HTML/CSS, D3.js</strong> 
-                  </p>
-                  <div
-                    class="d-flex justify-content-between align-items-center"
-                  >
-                    <div class="btn-group">
-                    
-                      <button
-                        id="go-pokemon"
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                      >
-                        Check it out
-                      </button>
-                    </div>
+          <h1 class="section-title">Projects</h1>
+          <div class="projects-grid">
+            <div class="project-card card">
+              <img class="p0-thumbnail" src="../media/pokemon.png" alt="Pokémon Dashboard">
+              <div class="card-body">
+                <h3>Pokémon: The "Extended" Pokédex</h3>
+                <p class="card-text">
+                  This dashboard is a centralized location where knowledgeable players can go to search out and compare two different Pokémon and their attributes. Received an A+ on final project.
+                  <br><strong>Made with: JavaScript, HTML/CSS, D3.js</strong> 
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button id="go-pokemon" type="button" class="btn btn-outline-secondary">
+                      Check it out
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="col">
-              <div class="card shadow-sm">
-                <img class ="p0-thumbnail" src="../media/olb.JPG">
-
-                <div class="card-body">
-                  <h3>openLeaderboard</h3>
-                  <p class="card-text">
-                    Versatile leaderboard management mobile application. Create your own leagues and submit
-                    the matches you participate in. Activity is tracked and rankings are determined through the ELO rating system. <br>  <strong>Made with: Swift, Python, PostgreSQL, Flask.</strong> 
-                
-                  </p>
-                  <div
-                    class="d-flex justify-content-between align-items-center"
-                  >
-                    <div class="btn-group">
-                      <button
-                        id="go-olb"
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                      >
-                        Check it out
-                      </button>
-                    </div>
+            <div class="project-card card">
+              <img class="p0-thumbnail" src="../media/olb.JPG" alt="openLeaderboard App">
+              <div class="card-body">
+                <h3>openLeaderboard</h3>
+                <p class="card-text">
+                  Versatile leaderboard management mobile application. Create your own leagues and submit
+                  the matches you participate in. Activity is tracked and rankings are determined through the ELO rating system.
+                  <br><strong>Made with: Swift, Python, PostgreSQL, Flask.</strong> 
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button id="go-olb" type="button" class="btn btn-outline-secondary">
+                      Check it out
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="col">
-              <div class="card shadow-sm">
-                <img class ="p0-thumbnail" src="../media/landing-page.PNG">
-
-                <div class="card-body">
-                  <h3>Website Redesign</h3>
-                  <p class="card-text">
-                    During my internship at Arcurve, I was tasked with redesigning the company website so that it felt modern and more accurately reflected their culture and services.
-                    <br>  <strong>Made with: JavaScript, HTML/CSS, Adobe XD, Webflow.</strong> 
-                  </p>
-                  <div
-                    class="d-flex justify-content-between align-items-center"
-                  >
-                    <div class="btn-group">
-                    
-                      <button
-                        id="go-arcurve"
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                      >
-                        Check it out
-                      </button>
-                    </div>
+            <div class="project-card card">
+              <img class="p0-thumbnail" src="../media/landing-page.PNG" alt="Website Redesign">
+              <div class="card-body">
+                <h3>Website Redesign</h3>
+                <p class="card-text">
+                  During my internship at Arcurve, I was tasked with redesigning the company website so that it felt modern and more accurately reflected their culture and services.
+                  <br><strong>Made with: JavaScript, HTML/CSS, Adobe XD, Webflow.</strong> 
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button id="go-arcurve" type="button" class="btn btn-outline-secondary">
+                      Check it out
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="col">
-              <div class="card shadow-sm">
-                <img class ="p0-thumbnail" src="../media/p0-thumbnail.JPG">
-
-                <div class="card-body">
-                  <h3> Abigayle's Creed</h3>
-                  <p class="card-text">
-                    A cute 2D sidescrolling game that highlights what I learned about a classmate through a personal interview. Viewed best on desktop.
-                    <br>  <strong>Made with: JavaScript, HTML/CSS.</strong> 
-                  </p>
-                  <div
-                    class="d-flex justify-content-between align-items-center"
-                  >
-                    <div class="btn-group">
-                    
-                      <button
-                        id="go-p0"
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                      >
-                        Check it out
-                      </button>
-                      <button
-                        id="src-p0"
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                      >
-                        Source
-                      </button>
-                      <button
-                        id="det-p0"
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                      >
-                        Details
-                      </button>
-                    </div>
+            <div class="project-card card">
+              <img class="p0-thumbnail" src="../media/p0-thumbnail.JPG" alt="Abigayle's Creed Game">
+              <div class="card-body">
+                <h3>Abigayle's Creed</h3>
+                <p class="card-text">
+                  A cute 2D sidescrolling game that highlights what I learned about a classmate through a personal interview. Viewed best on desktop.
+                  <br><strong>Made with: JavaScript, HTML/CSS.</strong> 
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button id="go-p0" type="button" class="btn btn-outline-secondary">
+                      Check it out
+                    </button>
+                    <button id="src-p0" type="button" class="btn btn-outline-secondary">
+                      Source
+                    </button>
+                    <button id="det-p0" type="button" class="btn btn-outline-secondary">
+                      Details
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col">
-              <div class="card shadow-sm">
-                <img class ="p0-thumbnail" src="../media/p1_details/p1_thumbnail.JPG">
 
-                <div class="card-body">
-                  <h3> ActionShot</h3>
-                  <p class="card-text">
-                    A photo application that takes a photo through a microphone volume-based trigger. Set up your phone during the big game and when your team scores and you cheer, ActionShot will capture the magic!
-                    <br>  <strong>Made with: JavaScript, HTML/CSS.</strong> 
-                  </p>
-                  <div
-                    class="d-flex justify-content-between align-items-center"
-                  >
-                    <div class="btn-group">
-                      <button
-                        id="go-p1"
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                        
-                      >
-                        Check it out
-                      </button>
-                      <button
-                        id="src-p1"
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                      >
-                        Source
-                      </button>
-                      <button
-                        id="det-p1"
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                      >
-                        Details
-                      </button>
-                    </div>
+            <div class="project-card card">
+              <img class="p0-thumbnail" src="../media/p1_details/p1_thumbnail.JPG" alt="ActionShot App">
+              <div class="card-body">
+                <h3>ActionShot</h3>
+                <p class="card-text">
+                  A photo application that takes a photo through a microphone volume-based trigger. Set up your phone during the big game and when your team scores and you cheer, ActionShot will capture the magic!
+                  <br><strong>Made with: JavaScript, HTML/CSS.</strong> 
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button id="go-p1" type="button" class="btn btn-outline-secondary">
+                      Check it out
+                    </button>
+                    <button id="src-p1" type="button" class="btn btn-outline-secondary">
+                      Source
+                    </button>
+                    <button id="det-p1" type="button" class="btn btn-outline-secondary">
+                      Details
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col">
-              <div class="card shadow-sm">
-                <img class ="p0-thumbnail" src="../media/p2_details/p2-thumbnail.JPG">
-                <div class="card-body">
-                  <h3>Peek-a-Boo with You</h3>
-                  <p class="card-text">
-                    A two-way video conferencing application that is designed to foster a closer relationship between those who can't be together in person. Designed specifically
-                    with the COVID-19 pandemic in mind, this application allows grandparents to interact in a meaningful way with their young grandchildren.
-                    <br>  <strong>Made with: JavaScript, WebRTC, HTML/CSS.</strong> 
-                  </p>
-                  <div
-                    class="d-flex justify-content-between align-items-center"
-                  >
-                    <div class="btn-group">
-                      <button
-                        id="go-p2"
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                      >
-                        Check it out
-                      </button>
-                      <button
-                        id="det-p2"
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                      >
-                        Details
-                      </button>
-                    </div>
+
+            <div class="project-card card">
+              <img class="p0-thumbnail" src="../media/p2_details/p2-thumbnail.JPG" alt="Peek-a-Boo with You App">
+              <div class="card-body">
+                <h3>Peek-a-Boo with You</h3>
+                <p class="card-text">
+                  A two-way video conferencing application that is designed to foster a closer relationship between those who can't be together in person. Designed specifically
+                  with the COVID-19 pandemic in mind, this application allows grandparents to interact in a meaningful way with their young grandchildren.
+                  <br><strong>Made with: JavaScript, WebRTC, HTML/CSS.</strong> 
+                </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button id="go-p2" type="button" class="btn btn-outline-secondary">
+                      Check it out
+                    </button>
+                    <button id="det-p2" type="button" class="btn btn-outline-secondary">
+                      Details
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="album py-5" id="blog">
-        <h1 class="fw-light text-center">Blog</h1>
+      </section>
+      <section class="section" id="blog">
         <div class="container">
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="blog-container">
+          <h1 class="section-title">Blog</h1>
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4" id="blog-container">
           </div>
-
         </div>
-      </div>
+      </section>
     </main>
 
-    <footer class="text-muted py-5">
+    <footer>
       <div class="container">
         <p class="mb-1">Brought to you by &copy;Parksters.</p>
       </div>
@@ -497,7 +446,6 @@
     <!-- Load Scripts-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> 
     <script src="../scripts/index.js"></script>
 
     

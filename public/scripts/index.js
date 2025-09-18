@@ -1,12 +1,57 @@
 const URL = location.origin; // root domain
 
 $(document).ready(function() {
-  $("#profile-pic").animate({ //be sure to change the class of your element to "header"
-      left:'250px',
-      opacity:'1.0',
-      height:'248px',
-      width:'248px'
-  }, 1000);
+  // Smooth profile picture animation
+  $("#profile-pic").css({
+    'opacity': '0',
+    'transform': 'scale(0.8)'
+  }).animate({
+    'opacity': '1'
+  }, 1000).css('transform', 'scale(1)');
+  
+  // Add scroll animations with intersection observer for better performance
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, observerOptions);
+
+  // Observe all cards for animation
+  $('.card').each(function() {
+    $(this).css({
+      'opacity': '0',
+      'transform': 'translateY(30px)',
+      'transition': 'all 0.6s ease-out'
+    });
+    observer.observe(this);
+  });
+
+  // Navbar scroll effect
+  $(window).scroll(function() {
+    if ($(this).scrollTop() > 50) {
+      $('.navbar').addClass('scrolled');
+    } else {
+      $('.navbar').removeClass('scrolled');
+    }
+  });
+
+  // Smooth hover effects for tech icons
+  $('.tech-img').hover(
+    function() {
+      $(this).parent().addClass('tech-hover');
+    },
+    function() {
+      $(this).parent().removeClass('tech-hover');
+    }
+  );
 });
 
 
@@ -62,118 +107,16 @@ $("#go-olb").on("click", e => {
 })
 
 
-// Particle JS specs
-particlesJS("particles-js", 
-{
-    "particles": {
-      "number": {
-        "value": 50,
-        "density": {
-          "enable": true,
-          "value_area": 800
-        }
-      },
-      "color": {
-        "value": "#212529"
-      },
-      "shape": {
-        "type": "circle",
-        "stroke": {
-          "width": 2,
-          "color": "#212529"
-        },
-        "polygon": {
-          "nb_sides": 6
-        },
-        "image": {
-          "src": "img/github.svg",
-          "width": 100,
-          "height": 100
-        }
-      },
-      "opacity": {
-        "value": 0.11,
-        "random": false,
-        "anim": {
-          "enable": false,
-          "speed": 1,
-          "opacity_min": 0.1,
-          "sync": false
-        }
-      },
-      "size": {
-        "value": 2,
-        "random": true,
-        "anim": {
-          "enable": false,
-          "speed": 50.547598989048005,
-          "size_min": 7.5821398483572,
-          "sync": false
-        }
-      },
-      "line_linked": {
-        "enable": true,
-        "distance": 150,
-        "color": "#212529",
-        "opacity": 0.4,
-        "width": 1
-      },
-      "move": {
-        "enable": true,
-        "speed": 4,
-        "direction": "none",
-        "random": false,
-        "straight": false,
-        "out_mode": "out",
-        "bounce": false,
-        "attract": {
-          "enable": false,
-          "rotateX": 600,
-          "rotateY": 1200
-        }
-      }
-    },
-    "interactivity": {
-      "detect_on": "canvas",
-      "events": {
-        "onhover": {
-          "enable": true,
-          "mode": "repulse"
-        },
-        "onclick": {
-          "enable": true,
-          "mode": "remove"
-        },
-        "resize": true
-      },
-      "modes": {
-        "grab": {
-          "distance": 400,
-          "line_linked": {
-            "opacity": 1
-          }
-        },
-        "bubble": {
-          "distance": 400,
-          "size": 40,
-          "duration": 2,
-          "opacity": 8,
-          "speed": 3
-        },
-        "repulse": {
-          "distance": 200,
-          "duration": 0.4
-        },
-        "push": {
-          "particles_nb": 4
-        },
-        "remove": {
-          "particles_nb": 2
-        }
-      }
-    },
-    "retina_detect": true
-  });
+// Modern smooth scrolling for navigation
+$('a[href^="#"]').on('click', function(event) {
+    var target = $(this.getAttribute('href'));
+    if( target.length ) {
+        event.preventDefault();
+        $('html, body').stop().animate({
+            scrollTop: target.offset().top - 80
+        }, 1000);
+    }
+});
 
 
   // Education slideshow slide change animations
