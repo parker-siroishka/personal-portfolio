@@ -4,6 +4,8 @@
   "description": "CPSC 581 Portfolio",
   "main": "web.js",
   "scripts": {
+    "start": "node web.js",
+    "dev": "PORT=3000 node web.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Parker Siroishka",

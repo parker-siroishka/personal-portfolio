@@ -217,59 +217,86 @@ data.then(function(res){
 
   blogDiv = document.getElementById('blog-container');
   res.items.forEach(post => {
-    // console.log([post.title]);
-    // var postDiv = document.createElement('div');
-    // postDiv.appendChild(document.createTextNode(post.title));
-    // thumbnail = document.createElement('img');
-    // thumbnail.src = post.thumbnail;
-    // thumbnail.style.width = "100%";
-    // postDiv.appendChild(thumbnail);
-    // postDiv.style.width = "33.3%";
-    // blogDiv.appendChild(postDiv);
-
     var col = document.createElement('div');
     col.classList.add('col');
 
     var card = document.createElement('div');
     card.classList.add('shadow-sm', 'card');
 
-    var cardBody = document.createElement('div');
-    cardBody.classList.add('card-body');
-
     var thumbnail = document.createElement('img');
     thumbnail.classList.add('p0-thumbnail');
-    thumbnail.src = post.thumbnail;
+    
+    // Extract image from content if thumbnail is empty
+    var imageSrc = post.thumbnail;
+    if (!imageSrc || imageSrc === '') {
+      // Look for the first image in the content
+      var imgMatch = post.content.match(/<img[^>]+src="([^"]+)"/);
+      if (imgMatch) {
+        imageSrc = imgMatch[1];
+      } else {
+        // Fallback to a default image or the feed image
+        imageSrc = res.feed.image || 'https://via.placeholder.com/400x225/cccccc/666666?text=No+Image';
+      }
+    }
+    
+    thumbnail.src = imageSrc;
     thumbnail.style.width = '100%';
+    thumbnail.style.height = '225px';
+    thumbnail.style.objectFit = 'cover';
+    thumbnail.alt = post.title;
+    
+    // Handle image load errors
+    thumbnail.onerror = function() {
+      this.src = 'https://via.placeholder.com/400x225/cccccc/666666?text=Image+Not+Available';
+    };
+
+    var cardBody = document.createElement('div');
+    cardBody.classList.add('card-body');
 
     var title = document.createElement('h3');
     title.textContent = post.title;
     title.style.borderBottom = '2px solid #F5CB5C';
     title.style.paddingBottom = '10px';
+    title.style.marginBottom = '15px';
 
-    var date = document.createElement('strong');
+    var date = document.createElement('p');
     date.classList.add('card-text');
-    date.textContent = post.pubDate;
-    date.style.st
-
-    var link = document.createElement('a');
-    link.href = post.link;
-    link.style.textDecoration = 'none';
+    date.style.fontSize = '0.9em';
+    date.style.color = '#666';
+    date.style.marginBottom = '15px';
+    
+    // Format the date nicely
+    var pubDate = new Date(post.pubDate);
+    date.textContent = pubDate.toLocaleDateString('en-US', { 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric' 
+    });
 
     var teaser = document.createElement('p');
     var str = post.content;
-    if(str.length > 250) str = (str.substring(0,250) + '...');
-    teaser.innerHTML = str;
-    teaser.width = '100%';
+    // Remove HTML tags and clean up the content
+    str = str.replace(/<[^>]*>/g, '');
+    if(str.length > 200) str = (str.substring(0,200) + '...');
+    teaser.textContent = str;
+    teaser.classList.add('card-text');
+    teaser.style.marginBottom = '15px';
 
-    link.appendChild(card);
+    var readMore = document.createElement('a');
+    readMore.href = post.link;
+    readMore.textContent = 'Read More →';
+    readMore.style.color = '#F5CB5C';
+    readMore.style.textDecoration = 'none';
+    readMore.style.fontWeight = 'bold';
+
+    // Assemble the card structure
     card.appendChild(thumbnail);
     cardBody.appendChild(title);
-    cardBody.appendChild(teaser);
     cardBody.appendChild(date);
-    
-
+    cardBody.appendChild(teaser);
+    cardBody.appendChild(readMore);
     card.appendChild(cardBody);
-    col.appendChild(link);
+    col.appendChild(card);
     blogDiv.appendChild(col);
 
   });
