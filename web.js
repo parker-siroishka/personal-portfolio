@@ -1,7 +1,7 @@
 const path = require('path'); 		// some convenient dir/path functions
 const express = require('express');	// use the express module
 const ws = require("ws");
-const PORT = process.env.PORT || 5000 // Port should be 5000 by default
+const PORT = process.env.PORT || 5432 // Port should be 5000 by default
 const DOMAIN = "https://parker-siroishka-portfolio.herokuapp.com/";
 
 var app = express();			// this is our express.js instance

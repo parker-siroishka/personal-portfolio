@@ -27,8 +27,8 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <div class="navbar-nav ms-auto">
-              <a href="#education" class="nav-link">Education</a>
               <a href="#experience" class="nav-link">Experience</a>
+              <a href="#education" class="nav-link">Education</a>
               <a href="#projects" class="nav-link">Projects</a>
               <a href="#blog" class="nav-link">Blog</a>
             </div>
@@ -42,11 +42,11 @@
           <div class="row py-lg-5">
             <div class="col-lg-8 col-md-10 mx-auto">
               <div class="hero-content text-center">
-                <img src="../media/profile_picture.jpg" id="profile-pic" alt="Parker Siroishka">
-                <h1 id="greeting">Hey! I'm Parker</h1>
+                <img src="../media/profile_picture.png" id="profile-pic" alt="Parker Siroishka">
+                <h1 class="page-title">Hey! I'm Parker</h1>
                 <p class="hero-description">
-                  I'm a passionate Software Developer from Calgary who thrives on challenges and continuous learning. 
-                  With a natural curiosity for technology, I can quickly pick up and master any programming language or framework. 
+                  I'm a passionate Software Developer from Calgary who thrives on continuous learning and creating truly useful products.
+                  With a natural curiosity for technology, I can quickly pick up and thrive with any programming language or framework. 
                   While I love the technical side of development, I also have a keen eye for design, creating beautiful and functional 
                   user interfaces that deliver exceptional user experiences.
                 </p>
@@ -55,58 +55,6 @@
           </div>
         </div>
       </section>
-      <section class="section" id="education">
-        <div class="container">
-          <h1 class="section-title">Education</h1>
-          <div class="row">
-            <div class="col-lg-10 mx-auto">
-              <div class="education-card card">
-                <h5 class="card-header">University of Calgary</h5>
-                <div class="card-body d-inline-flex p-4">
-                  <img src="../media/University-Of-Calgary-Logo.png" class="company-img" alt="University of Calgary Logo">
-                  <img src="../media/education/university-of-calgary-long.png" class="company-img-long" alt="University of Calgary">
-                  <div class="job-description">
-                    <div class="job-heading">
-                      <h5 class="card-title">Bachelor of Science - B.Sc</h5>
-                      <h6 class="card-title duration">Computer Science, Minor in Data Science</h6>
-                      <h6 class="card-title duration">September 2016 - April 2022</h6>
-                    </div>
-                    
-                    <ul class="card-text lead">
-                      <li><a href="https://godinos.com/news/2020/12/1/athletics-news-record-210-dinos-earn-2019-20-academic-honours.aspx" target="_blank" rel="noopener">Academic All-Canadian</a> Student Athlete (2018 - 2021)</li>
-                      <li><a href="https://godinos.com/news/2014/4/3/GEN_0403145857.aspx" target="_blank" rel="noopener">Dinos LEAD</a> - Leadership Development Course (2019)</li>
-                      <li>Varsity Athlete - Men's Volleyball</li>
-                      <li>Summer Volleyball Coach and Camp Leader</li>
-                      <li>Competitive Programming Club Member</li>
-                    </ul>
-                  </div>
-                  <div id="slideshow">
-                    <div>
-                      <img src="../media/education/academic-all-canadian.jpg" alt="Academic All-Canadian">
-                    </div>
-                    <div>
-                      <img src="../media/education/vball_4.jpg" alt="Volleyball Action">
-                    </div>
-                    <div>
-                      <img src="../media/education/vball_5.jpg" alt="Volleyball Team">
-                    </div>
-                    <div>
-                      <img src="../media/education/vball_3.jpg" alt="Volleyball Match">
-                    </div>
-                    <div>
-                      <img src="../media/education/vball_2.jpg" alt="Volleyball Training">
-                    </div>
-                    <div>
-                      <img src="../media/education/vball_1.jpg" alt="Volleyball Team Photo">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section class="section" id="experience">
         <div class="container">
           <h1 class="section-title">Experience</h1>
@@ -122,11 +70,18 @@
                   <div class="job-description">
                     <div class="job-heading">
                       <h5 class="card-title">Arcurve</h5>
-                      <h6 class="card-title internship">Fulltime</h6>
-                      <h6 class="card-title duration">September 2022 - July 2025</h6>
+                      <div class="job-meta">
+                        <h6 class="card-title internship">Fulltime</h6>
+                        <h6 class="card-title duration">September 2022 - July 2025</h6>
+                      </div>
                     </div>
                     
-                    <h6 class="card-title">September 2022 - May 2024 (Shaw/Rogers)</h6>
+                    <h6 class="card-title">April 2025 - July 2025 (LivingWorks)</h6>
+                    <ul class="card-text lead">
+                      <li class="job-point">Developed a course management feature for a suicide prevention mobile application, including a paginated user profile list showing course status, drill-down class views, and detailed class pages using React Native</li>
+                      <li class="job-point">Designed backend data models and API endpoints in .NET via ABP.io to support course tracking, including authentication integration with Microsoft Entra ID for the administration portal</li>
+                    </ul>
+                    <h6 class="card-title">September 2022 - April 2025 (Shaw/Rogers)</h6>
                     <ul class="card-text lead">
                       <li class="job-point">Implemented a major re-branding initiative, overhauling the UI of the flagship Shaw Communications web application to Rogers branding. Ensuring zero bugs or app downtime during post-acquisition launch</li>
                       <li class="job-point">Implemented a highly visible modal feature aimed at facilitating the transition from paper billing to electronic billing. Eliminating paper billing for thousands of customers</li>
@@ -141,7 +96,7 @@
                       <li class="job-point">Full Stack development using C#, Blazor, Mudblazor, and .NET 6 on an internal project management portal</li>
                       <li class="job-point">Spearheaded the shift to more extensive unit testing, creating a more robust and fault tolerant application</li>
                     </ul>
-                    <h6 class="card-title">Technologies</h6>
+                    <h6 class="card-title tech-title">Technologies</h6>
                     <div class="tech-list">
                       <div class="tech-box">
                         <img class="tech-img" src="../media/experience/technologies/React-icon.png" alt="React">
@@ -179,8 +134,10 @@
                   <div class="job-description">
                     <div class="job-heading">
                       <h5 class="card-title">Showpass</h5>
-                      <h6 class="card-title internship">Internship</h6>
-                      <h6 class="card-title duration">May 2021 - Aug 2021 · 4 mos</h6>
+                      <div class="job-meta">
+                        <h6 class="card-title internship">Internship</h6>
+                        <h6 class="card-title duration">May 2021 - Aug 2021 · 4 mos</h6>
+                      </div>
                     </div>
                     
                     <ul class="card-text lead">
@@ -190,7 +147,7 @@
                       <li class="job-point">Wrote clean code in a testable and reliable way</li>
                       <li class="job-point">Participated in agile development practices including routine standups, code reviews and testing</li>
                     </ul>
-                    <h6 class="card-title">Technologies</h6>
+                    <h6 class="card-title tech-title">Technologies</h6>
                     <div class="tech-list">
                       <div class="tech-box">
                         <img class="tech-img" src="../media/experience/technologies/python.png" alt="Python">
@@ -222,8 +179,10 @@
                   <div class="job-description">
                     <div class="job-heading">
                       <h5 class="card-title">Arcurve</h5>
-                      <h6 class="card-title internship">Internship</h6>
-                      <h6 class="card-title duration">June 2020 - May 2021</h6>
+                      <div class="job-meta">
+                        <h6 class="card-title internship">Internship</h6>
+                        <h6 class="card-title duration">June 2020 - May 2021</h6>
+                      </div>
                     </div>
                     
                     <ul class="card-text lead">
@@ -232,8 +191,14 @@
                       <li class="job-point">Shifted company to new CMS and consolidated all dynamic content uploaded to website into one easily operated form</li>
                       <li class="job-point">Received an offer and transitioned to a permanent part-time position over the 2020-2021 school year</li>
                     </ul>
-                    <h6 class="card-title">Technologies</h6>
+                    <h6 class="card-title tech-title">Technologies</h6>
                     <div class="tech-list">
+                      <div class="tech-box">
+                        <img class="tech-img" src="../media/experience/technologies/webflow.png" alt="Webflow" style="width: 160px; height: 90px;">
+                      </div>
+                      <div class="tech-box">
+                        <img class="tech-img" src="../media/experience/technologies/xd.png" alt="Adobe XD">
+                      </div>
                       <div class="tech-box">
                         <img class="tech-img" src="../media/experience/technologies/js.png" alt="JavaScript">
                       </div>
@@ -242,9 +207,6 @@
                       </div>
                       <div class="tech-box">
                         <img class="tech-img" src="../media/experience/technologies/css.png" alt="CSS">
-                      </div>
-                      <div class="tech-box">
-                        <img class="tech-img" src="../media/experience/technologies/xd.png" alt="Adobe XD">
                       </div>
                     </div>
                   </div>
@@ -264,8 +226,10 @@
                   <div class="job-description">
                     <div class="job-heading">
                       <h5 class="card-title">4iiii Innovations Inc.</h5>
-                      <h6 class="card-title internship">Internship</h6>
-                      <h6 class="card-title duration">May 2018 - August 2018</h6>
+                      <div class="job-meta">
+                        <h6 class="card-title internship">Internship</h6>
+                        <h6 class="card-title duration">May 2018 - August 2018</h6>
+                      </div>
                     </div>
                     
                     <ul class="card-text lead">
@@ -274,19 +238,19 @@
                       <li class="job-point">Hardware prototype received commercial interest from multiple industry leading cycling companies</li>
                       <li class="job-point">Presented research analysis in marketable fashion to clients</li>
                     </ul>
-                    <h6 class="card-title">Technologies</h6>
+                    <h6 class="card-title tech-title">Technologies</h6>
                     <div class="tech-list">
                       <div class="tech-box">
                         <img class="tech-img" src="../media/experience/technologies/python.png" alt="Python">
                       </div>
                       <div class="tech-box">
-                        <img class="tech-img" src="../media/experience/technologies/pandas.png" alt="Pandas">
+                        <img class="tech-img" src="../media/experience/technologies/pandas.png" alt="Pandas" style="width: 70px; height: 70px;">
                       </div>
                       <div class="tech-box">
-                        <img class="tech-img" src="../media/experience/technologies/matplotlib.png" alt="Matplotlib">
+                        <img class="tech-img" src="../media/experience/technologies/matplotlib.png" alt="Matplotlib" style="width: 70px; height: 70px;">
                       </div>
                       <div class="tech-box">
-                        <img class="tech-img" src="../media/experience/technologies/raspi.jpg" alt="Raspberry Pi">
+                        <img class="tech-img" src="../media/experience/technologies/raspi.jpg" alt="Raspberry Pi" style="width: 90px; height: 90px;">
                       </div>
                     </div>
                   </div>
@@ -297,24 +261,121 @@
         </div>
       </section>
 
+      <section class="section" id="education">
+        <div class="container">
+          <h1 class="section-title">Education</h1>
+          <div class="row">
+            <div class="col-lg-10 mx-auto">
+              <div class="education-card card">
+                <h5 class="card-header">University of Calgary</h5>
+                <div class="card-body d-inline-flex p-4">
+                  <img src="../media/University-Of-Calgary-Logo.png" class="company-img" alt="University of Calgary Logo">
+                  <img src="../media/education/university-of-calgary-long.png" class="company-img-long" alt="University of Calgary">
+                  <div class="job-description">
+                    <div class="job-heading">
+                      <h5 class="card-title">Bachelor of Science - B.Sc</h5>
+                      <h6 class="card-title duration">Computer Science, Minor in Data Science</h6>
+                      <h6 class="card-title duration">September 2016 - April 2022</h6>
+                    </div>
+                    
+                    <ul class="card-text lead">
+                      <li><a href="https://godinos.com/news/2020/12/1/athletics-news-record-210-dinos-earn-2019-20-academic-honours.aspx" target="_blank" rel="noopener">Academic All-Canadian</a> Student Athlete (2018 - 2021)</li>
+                      <li><a href="https://godinos.com/news/2014/4/3/GEN_0403145857.aspx" target="_blank" rel="noopener">Dinos LEAD</a> - Leadership Development Course (2019)</li>
+                      <li>Varsity Athlete - Captain of the Men's Volleyball team on full athletic scholarship</li>
+                      <li>Summer Volleyball Coach and Camp Leader</li>
+                      <li>Competitive Programming Club Member</li>
+                    </ul>
+                  </div>
+                  <div id="slideshow">
+                    <div>
+                      <img src="../media/education/academic-all-canadian.jpg" alt="Academic All-Canadian">
+                    </div>
+                    <div>
+                      <img src="../media/education/vball_4.jpg" alt="Volleyball Action">
+                    </div>
+                    <div>
+                      <img src="../media/education/vball_5.jpg" alt="Volleyball Team">
+                    </div>
+                    <div>
+                      <img src="../media/education/vball_3.jpg" alt="Volleyball Match">
+                    </div>
+                    <div>
+                      <img src="../media/education/vball_2.jpg" alt="Volleyball Training">
+                    </div>
+                    <div>
+                      <img src="../media/education/vball_1.jpg" alt="Volleyball Team Photo">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section class="section" id="projects">
         <div class="container">
           <h1 class="section-title">Projects</h1>
           <div class="projects-grid">
             <div class="project-card card">
+              <img class="p0-thumbnail" src="../media/linda-olsen.png" alt="Linda Olsen Personal Brand Website">
+              <div class="card-body">
+                <h3>Personal Brand Website for a Media Professional in Career Transition</h3>
+                <p class="card-text">
+                  Designed and developed a personal brand website for a media professional transitioning careers, showcasing their portfolio and professional experience.
+                </p>
+                <div class="project-tech-list">
+                  <img src="../media/experience/technologies/webflow_sm.svg" alt="Webflow" title="Webflow">
+                  <img src="../media/experience/technologies/js.png" alt="JavaScript" title="JavaScript">
+                  <img src="../media/experience/technologies/html.png" alt="HTML" title="HTML">
+                  <img src="../media/experience/technologies/css.png" alt="CSS" title="CSS">
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button id="go-linda" type="button" class="btn-sm">Visit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card card">
+              <img class="p0-thumbnail" src="../media/landing-page.PNG" alt="Website Redesign">
+              <div class="card-body">
+                <h3>Arcurve Website Redesign</h3>
+                <p class="card-text">
+                  During my internship at Arcurve, I was tasked with redesigning the company website so that it felt modern and more accurately reflected their culture and services.
+                </p>
+                <div class="project-tech-list">
+                  <img src="../media/experience/technologies/webflow_sm.svg" alt="Webflow" title="Webflow">
+                  <img src="../media/experience/technologies/xd.png" alt="Adobe XD" title="Adobe XD">
+                  <img src="../media/experience/technologies/js.png" alt="JavaScript" title="JavaScript">
+                  <img src="../media/experience/technologies/html.png" alt="HTML" title="HTML">
+                  <img src="../media/experience/technologies/css.png" alt="CSS" title="CSS">
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button id="go-arcurve" type="button" class="btn-sm">Visit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card card">
               <img class="p0-thumbnail" src="../media/pokemon.png" alt="Pokémon Dashboard">
               <div class="card-body">
                 <h3>Pokémon: The "Extended" Pokédex</h3>
                 <p class="card-text">
                   This dashboard is a centralized location where knowledgeable players can go to search out and compare two different Pokémon and their attributes. Received an A+ on final project.
-                  <br><strong>Made with: JavaScript, HTML/CSS, D3.js</strong> 
                 </p>
+                <div class="project-tech-list">
+                  <img src="../media/experience/technologies/js.png" alt="JavaScript" title="JavaScript">
+                  <img src="../media/experience/technologies/html.png" alt="HTML" title="HTML">
+                  <img src="../media/experience/technologies/css.png" alt="CSS" title="CSS">
+                  <img src="../media/experience/technologies/d3.png" alt="D3.js" title="D3.js">
+                </div>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button id="go-pokemon" type="button" class="btn btn-outline-secondary">
-                      Check it out
-                    </button>
+                    <button id="go-pokemon" type="button" class="btn-sm">Source</button>
                   </div>
                 </div>
               </div>
@@ -327,31 +388,16 @@
                 <p class="card-text">
                   Versatile leaderboard management mobile application. Create your own leagues and submit
                   the matches you participate in. Activity is tracked and rankings are determined through the ELO rating system.
-                  <br><strong>Made with: Swift, Python, PostgreSQL, Flask.</strong> 
                 </p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button id="go-olb" type="button" class="btn btn-outline-secondary">
-                      Check it out
-                    </button>
-                  </div>
+                <div class="project-tech-list">
+                  <img src="../media/experience/technologies/swift.png" alt="Swift" title="Swift">
+                  <img src="../media/experience/technologies/python.png" alt="Python" title="Python">
+                  <img src="../media/experience/technologies/postgresql.png" alt="PostgreSQL" title="PostgreSQL">
+                  <img src="../media/experience/technologies/flask.png" alt="Flask" title="Flask">
                 </div>
-              </div>
-            </div>
-
-            <div class="project-card card">
-              <img class="p0-thumbnail" src="../media/landing-page.PNG" alt="Website Redesign">
-              <div class="card-body">
-                <h3>Website Redesign</h3>
-                <p class="card-text">
-                  During my internship at Arcurve, I was tasked with redesigning the company website so that it felt modern and more accurately reflected their culture and services.
-                  <br><strong>Made with: JavaScript, HTML/CSS, Adobe XD, Webflow.</strong> 
-                </p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button id="go-arcurve" type="button" class="btn btn-outline-secondary">
-                      Check it out
-                    </button>
+                    <button id="go-olb" type="button" class="btn-sm">Source</button>
                   </div>
                 </div>
               </div>
@@ -362,20 +408,17 @@
               <div class="card-body">
                 <h3>Abigayle's Creed</h3>
                 <p class="card-text">
-                  A cute 2D sidescrolling game that highlights what I learned about a classmate through a personal interview. Viewed best on desktop.
-                  <br><strong>Made with: JavaScript, HTML/CSS.</strong> 
+                  A 2D sidescrolling game that was made to reflect personality and character traits of a classmate I conducted a user interview with. Desktop only.
                 </p>
+                <div class="project-tech-list">
+                  <img src="../media/experience/technologies/js.png" alt="JavaScript" title="JavaScript">
+                  <img src="../media/experience/technologies/html.png" alt="HTML" title="HTML">
+                  <img src="../media/experience/technologies/css.png" alt="CSS" title="CSS">
+                </div>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button id="go-p0" type="button" class="btn btn-outline-secondary">
-                      Check it out
-                    </button>
-                    <button id="src-p0" type="button" class="btn btn-outline-secondary">
-                      Source
-                    </button>
-                    <button id="det-p0" type="button" class="btn btn-outline-secondary">
-                      Details
-                    </button>
+                    <button id="go-p0" type="button" class="btn-sm">Try it</button>
+                    <button id="det-p0" type="button" class="btn-sm">Details</button>
                   </div>
                 </div>
               </div>
@@ -387,19 +430,17 @@
                 <h3>ActionShot</h3>
                 <p class="card-text">
                   A photo application that takes a photo through a microphone volume-based trigger. Set up your phone during the big game and when your team scores and you cheer, ActionShot will capture the magic!
-                  <br><strong>Made with: JavaScript, HTML/CSS.</strong> 
                 </p>
+                <div class="project-tech-list">
+                  <img src="../media/experience/technologies/js.png" alt="JavaScript" title="JavaScript">
+                  <img src="../media/experience/technologies/html.png" alt="HTML" title="HTML">
+                  <img src="../media/experience/technologies/css.png" alt="CSS" title="CSS">
+                </div>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button id="go-p1" type="button" class="btn btn-outline-secondary">
-                      Check it out
-                    </button>
-                    <button id="src-p1" type="button" class="btn btn-outline-secondary">
-                      Source
-                    </button>
-                    <button id="det-p1" type="button" class="btn btn-outline-secondary">
-                      Details
-                    </button>
+                    <button id="go-p1" type="button" class="btn-sm">Try it</button>
+                    <button id="src-p1" type="button" class="btn-sm">Source</button>
+                    <button id="det-p1" type="button" class="btn-sm">Details</button>
                   </div>
                 </div>
               </div>
@@ -412,16 +453,17 @@
                 <p class="card-text">
                   A two-way video conferencing application that is designed to foster a closer relationship between those who can't be together in person. Designed specifically
                   with the COVID-19 pandemic in mind, this application allows grandparents to interact in a meaningful way with their young grandchildren.
-                  <br><strong>Made with: JavaScript, WebRTC, HTML/CSS.</strong> 
                 </p>
+                <div class="project-tech-list">
+                  <img src="../media/experience/technologies/js.png" alt="JavaScript" title="JavaScript">
+                  <img src="../media/experience/technologies/webrtc.png" alt="WebRTC" title="WebRTC">
+                  <img src="../media/experience/technologies/html.png" alt="HTML" title="HTML">
+                  <img src="../media/experience/technologies/css.png" alt="CSS" title="CSS">
+                </div>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button id="go-p2" type="button" class="btn btn-outline-secondary">
-                      Check it out
-                    </button>
-                    <button id="det-p2" type="button" class="btn btn-outline-secondary">
-                      Details
-                    </button>
+                    <button id="go-p2" type="button" class="btn-sm">Try it</button>
+                    <button id="det-p2" type="button" class="btn-sm">Details</button>
                   </div>
                 </div>
               </div>

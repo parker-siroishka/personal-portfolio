@@ -98,6 +98,10 @@ $("#go-arcurve").on("click", e => {
   window.location.assign(`https://www.arcurve.com/`);
 })
 
+$("#go-linda").on("click", e => {
+  window.location.assign(`https://www.lindaolsen.org/`);
+})
+
 $("#go-pokemon").on("click", e => {
   window.location.assign(`https://github.com/parker-siroishka/Pokemon-Data-Dashboard`);
 })
@@ -184,7 +188,7 @@ data.then(function(res){
     
     thumbnail.src = imageSrc;
     thumbnail.style.width = '100%';
-    thumbnail.style.height = '225px';
+    thumbnail.style.height = '160px';
     thumbnail.style.objectFit = 'cover';
     thumbnail.alt = post.title;
     
@@ -198,15 +202,15 @@ data.then(function(res){
 
     var title = document.createElement('h3');
     title.textContent = post.title;
-    title.style.borderBottom = '2px solid #F5CB5C';
+    title.style.borderBottom = '2px solid #2d2d2d';
     title.style.paddingBottom = '10px';
     title.style.marginBottom = '15px';
 
     var date = document.createElement('p');
     date.classList.add('card-text');
-    date.style.fontSize = '0.9em';
+    date.style.fontSize = '0.85em';
     date.style.color = '#666';
-    date.style.marginBottom = '15px';
+    date.style.marginBottom = '10px';
     
     // Format the date nicely
     var pubDate = new Date(post.pubDate);
@@ -223,12 +227,12 @@ data.then(function(res){
     if(str.length > 200) str = (str.substring(0,200) + '...');
     teaser.textContent = str;
     teaser.classList.add('card-text');
-    teaser.style.marginBottom = '15px';
+    teaser.style.marginBottom = '10px';
 
     var readMore = document.createElement('a');
     readMore.href = post.link;
     readMore.textContent = 'Read More →';
-    readMore.style.color = '#F5CB5C';
+    readMore.style.color = '#2d2d2d';
     readMore.style.textDecoration = 'none';
     readMore.style.fontWeight = 'bold';
 
