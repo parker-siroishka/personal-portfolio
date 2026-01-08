@@ -1,275 +1,994 @@
 <!DOCTYPE html>
-<!-- Based on Bootstrap Album Template-->
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Describe this page." />
-    <title>Details | Peek-a-Boo with You</title>
+    <meta name="description" content="Project 2 - CPSC 581 Details" />
+    <link rel="icon" href="../favicon.ico?" type="image/x-icon">
+    <title>Parker Siroishka - Project 2</title>
 
-    <!-- Bootstrap core CSS -->
     <link href="../dist/css/bootstrap.min.css" rel="stylesheet" />
-    <!-- Custom CSS -->
     <link href="../stylesheets/custom.css" rel="stylesheet" />
     <link href="../stylesheets/home.css" rel="stylesheet" />
-    <link href="../stylesheets/p0Details.css" rel="stylesheet" />
-    <link href="../stylesheets/p1Details.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../stylesheets/p2Details.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+      /* Details Page Specific Styles */
+      main {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 2rem 1rem 4rem;
+      }
+
+      .page-header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+        padding-top: 2rem;
+      }
+
+      .page-header h1 {
+        font-family: var(--font-heading);
+        font-size: 2rem;
+        font-weight: 600;
+        background: var(--primary-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 1rem;
+      }
+
+      .page-header .intro {
+        font-size: 1rem;
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin: 0 auto 1.5rem;
+        line-height: 1.6;
+      }
+
+      .thumbnail {
+        max-width: 450px;
+        width: 100%;
+        border-radius: 15px;
+        box-shadow: var(--shadow-medium);
+        margin-bottom: 2rem;
+      }
+
+      /* Video Section */
+      .video-section {
+        background: white;
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: var(--shadow-light);
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      .video-section h2 {
+        font-family: var(--font-heading);
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+      }
+
+      .video-section p {
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        line-height: 1.7;
+        max-width: 700px;
+        margin: 0 auto 1rem;
+        text-align: left;
+      }
+
+      .video-section p:last-of-type {
+        margin-bottom: 1.5rem;
+      }
+
+      .video-wrapper {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        border-radius: 15px;
+        box-shadow: var(--shadow-medium);
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .video-wrapper iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      /* Tab Navigation */
+      .nav-tabs-wrapper {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2rem;
+      }
+
+      .nav-tabs {
+        display: flex;
+        gap: 0.5rem;
+        background: white;
+        padding: 0.5rem;
+        border-radius: 15px;
+        border: none;
+        box-shadow: var(--shadow-light);
+      }
+
+      .nav-tabs .nav-link {
+        background: transparent;
+        border: none;
+        color: var(--text-secondary);
+        font-family: var(--font-primary);
+        font-size: 0.9rem;
+        font-weight: 500;
+        padding: 0.6rem 1.25rem;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .nav-tabs .nav-link:hover {
+        color: var(--text-primary);
+        background: rgba(45, 45, 45, 0.05);
+      }
+
+      .nav-tabs .nav-link.active {
+        background: var(--primary-gradient);
+        color: white;
+      }
+
+      /* Tab Content */
+      .tab-content {
+        background: white;
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: var(--shadow-light);
+      }
+
+      .tab-pane h2 {
+        font-family: var(--font-heading);
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+        color: var(--text-primary);
+        text-align: center;
+      }
+
+      .tab-pane > p {
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+        text-align: center;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Clean Carousel Styling */
+      .clean-carousel {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .carousel-slide {
+        display: none;
+        animation: fadeIn 0.4s ease;
+      }
+
+      .carousel-slide.active {
+        display: block;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .slide-content {
+        background: var(--light-gradient);
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: var(--shadow-light);
+      }
+
+      .slide-image-wrapper {
+        position: relative;
+        cursor: pointer;
+        overflow: hidden;
+      }
+
+      .slide-image-wrapper img {
+        width: 100%;
+        height: auto;
+        display: block;
+        max-height: 450px;
+        object-fit: contain;
+        background: #f8f9fa;
+        transition: transform 0.3s ease;
+      }
+
+      .slide-image-wrapper:hover img {
+        transform: scale(1.02);
+      }
+
+      /* Expand Icon */
+      .expand-icon {
+        position: absolute;
+        bottom: 12px;
+        right: 12px;
+        width: 36px;
+        height: 36px;
+        background: rgba(0, 0, 0, 0.6);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0.7;
+        transition: all 0.3s ease;
+        pointer-events: none;
+      }
+
+      .expand-icon svg {
+        width: 18px;
+        height: 18px;
+        fill: white;
+      }
+
+      .slide-image-wrapper:hover .expand-icon {
+        opacity: 1;
+        background: rgba(0, 0, 0, 0.8);
+      }
+
+      .slide-text {
+        padding: 1.25rem 1.5rem;
+        border-top: 1px solid rgba(45, 45, 45, 0.1);
+      }
+
+      .slide-text h3 {
+        font-family: var(--font-heading);
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .slide-text p {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      /* Carousel Navigation */
+      .carousel-nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 1.25rem;
+      }
+
+      .carousel-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 1.5px solid #2d2d2d;
+        background: transparent;
+        color: #2d2d2d;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+      }
+
+      .carousel-btn:hover {
+        background: #2d2d2d;
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(45, 45, 45, 0.15);
+      }
+
+      .carousel-counter {
+        font-family: var(--font-primary);
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--text-secondary);
+        min-width: 60px;
+        text-align: center;
+      }
+
+      /* Carousel Dots */
+      .carousel-dots {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+
+      .carousel-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(45, 45, 45, 0.2);
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding: 0;
+      }
+
+      .carousel-dot.active {
+        background: var(--primary-color);
+        transform: scale(1.2);
+      }
+
+      .carousel-dot:hover {
+        background: rgba(45, 45, 45, 0.4);
+      }
+
+      /* Lightbox */
+      .lightbox {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 9999;
+        justify-content: center;
+        align-items: center;
+        cursor: zoom-out;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .lightbox.active {
+        display: flex;
+        opacity: 1;
+      }
+
+      .lightbox img {
+        max-width: 90%;
+        max-height: 90%;
+        object-fit: contain;
+        border-radius: 10px;
+        box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+        transform: scale(0.9);
+        transition: transform 0.3s ease;
+      }
+
+      .lightbox.active img {
+        transform: scale(1);
+      }
+
+      .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        font-size: 2rem;
+        color: white;
+        cursor: pointer;
+        opacity: 0.7;
+        transition: opacity 0.2s ease;
+      }
+
+      .lightbox-close:hover {
+        opacity: 1;
+      }
+
+      /* Back button styling */
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 500;
+        color: var(--text-primary) !important;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .back-link:hover {
+        transform: translateX(-3px);
+      }
+
+      .back-link img {
+        width: 16px;
+        opacity: 1;
+        filter: brightness(0);
+      }
+
+      /* Tech Stack Pills */
+      .tech-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin: 1.5rem 0;
+        justify-content: center;
+      }
+
+      .tech-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--light-gradient);
+        border-radius: 50px;
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--text-primary);
+        box-shadow: var(--shadow-light);
+        transition: all 0.3s ease;
+      }
+
+      .tech-pill:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-medium);
+      }
+
+      .tech-pill img {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .nav-tabs {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .nav-tabs .nav-link {
+          font-size: 0.8rem;
+          padding: 0.5rem 1rem;
+        }
+
+        .tab-content {
+          padding: 1.5rem;
+        }
+
+        .page-header h1 {
+          font-size: 1.6rem;
+        }
+
+        .slide-image-wrapper img {
+          max-height: 300px;
+        }
+
+        .carousel-dots {
+          flex-wrap: wrap;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .slide-text {
+          padding: 1rem;
+        }
+
+        .slide-text h3 {
+          font-size: 0.9rem;
+        }
+
+        .slide-text p {
+          font-size: 0.85rem;
+        }
+
+        .expand-icon {
+          width: 30px;
+          height: 30px;
+          bottom: 8px;
+          right: 8px;
+        }
+
+        .expand-icon svg {
+          width: 14px;
+          height: 14px;
+        }
+      }
+    </style>
   </head>
   <body>
-    <div class="navbar navbar-dark bg-dark shadow-sm sticky-top" id="top">
-      <div class="container text-center">
-        <a href="https://www.sirparker.com/#projects" class="navbar-brand d-flex align-items-center yellow">
-          <img src="../media/general-icons/back-arrow.png" style="width: 20px; margin-right: 10px;">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="top">
+      <div class="container">
+        <a href="https://www.sirparker.com/#projects" class="back-link">
+          <img src="../media/general-icons/back-arrow.png" alt="Back">
           Home
         </a>
       </div>
-    </div>
+    </nav>
 
     <main>
-      <section class="py-5 text-center container">
-        <div class="row lg-5">
-          <div class="col-lg-6 col-md-8 mx-auto" style="margin-bottom: 138px;">
-            <h1 class="fw-light">Project 2 - CPSC 581</h1>
-            
-            
-            <p class="lead text-muted">
-                This was an interesting project to work on because the clients main focus was an interaction with a user that doesn't have a complete understanding of how computers
-                acutally function and who cannot really interact with them in the traditional way. So I had to change my mindset to answer the question: <em>How do I design for a toddler?</em>
-            </p>
-              <img class ="p0-thumbnail-details p1-thumbnail-details" src="../media/p2_details/p2-thumbnail.JPG">
-              <p class="lead text-muted"><br><br><strong>Learn alllll about it right here &darr;</strong></p>
-              <h1 class="display-4" id="promo-title">Promo Video</h1>
-              <!-- <iframe id="p1-vid" width="560" height="315" src="https://www.youtube.com/watch?v=ywyNBgCVELo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-              <iframe id="p1-vid" width="560" height="315" src="https://www.youtube.com/embed/ywyNBgCVELo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              <div class="py-5 text-center container" >
-                <p class="lead text-muted"><br><br>When I brainstormed interactions between grandparents and young children I found myself consistently falling back to the idea of 
-                  peek-a-boo, hide and seek, and generally the idea of using an underdeveloped sense of object permanence to bring joy to a young child. <br>
-                  I thought it wouldn't be an immersive experience to just create a video call application and have the grandparents cover their own face with their hands because that felt
-                  superficial when they know they are behind a screen and not in person. I wanted the grandparents (Oma & Opa) to be able to have contorl over things that appear on the child's (Rhys) screen. <br>
-                  I believed that would make Oma and Opa feel like they were that much closer to their grandson Rhys. <br> <br>
-                  And alongside having the ability to play virtual peek-a-boo, Oma & Opa can get Rhys's attention by <em>virtually</em> shaking one of his favourite toys. And once his attention is on them, they can snap
-                  a quick photo of him to document the visit!
-                </p>
-                <p class="lead text-danger" style="margin-bottom: 5%; font-size: 16px;">Sketch caption obscuring your view? Just hover your mouse over it or tap on it to make it dissapear.</p>
-                <h1 class="display-4">Sketches</h1>
-                
-              </div>
-              
-            </div>
-              <div class="py-5 text-center container slider">
-                <div id="sketches" class="carousel slide" data-interval="false">
-                  <ol class="carousel-indicators">
-                    <li data-target="#sketches" data-slide-to="0" class="active"></li>
-                    <li data-target="#sketches" data-slide-to="1"></li>
-                    <li data-target="#sketches" data-slide-to="2"></li>
-                    <li data-target="#sketches" data-slide-to="3"></li>
-                    <li data-target="#sketches" data-slide-to="4"></li>
-                    <li data-target="#sketches" data-slide-to="5"></li>
-                    <li data-target="#sketches" data-slide-to="6"></li>
-                    <li data-target="#sketches" data-slide-to="7"></li>
-                    <li data-target="#sketches" data-slide-to="8"></li>
-                    <li data-target="#sketches" data-slide-to="9"></li>
-                  </ol>
-                  <div class="carousel-inner">
-                    <div class="carousel-item active text-center">
-                      <img class="d-block slide" src="../media/p2_details/sketch_1.JPG" alt="First slide">
-                      <div class="carousel-caption d-none d-md-block">
-                        <h5>Sketch 1</h5>
-                        <p>Rhys is a chaotic good baby. Therfore, how could he resist being <em>encouraged</em> to smack the keyboard!</p>
-                      </div>
-                    </div>
-                    <div class="carousel-item text-center">
-                      <img class="d-block slide" src="../media/p2_details/sketch_2.JPG" alt="First slide">
-                      <div class="carousel-caption d-none d-md-block">
-                        <h5>Sketch 2</h5>
-                        <p>Underdeveloped object permanence is a quality that can be exploited for the greater good!</p>
-                      </div>
-                    </div>
-                    <div class="carousel-item text-center">
-                      <img class="d-block slide" src="../media/p2_details/sketch_3.JPG" alt="First slide">
-                      <div class="carousel-caption d-none d-md-block">
-                        <h5>Sketch 3</h5>
-                        <p>Rhys loves smacking things. What could be more satisfying than laying a beatdown on a keyboard while squashing some of his favourite animals?</p>
-                      </div>
-                    </div>
-                    <div class="carousel-item text-center">
-                      <img class="d-block slide" src="../media/p2_details/sketch_4.JPG" alt="First slide">
-                      <div class="carousel-caption d-none d-md-block">
-                        <h5>Sketch 4</h5>
-                        <p>I made an exhaustive list of things that could bring Rhys some joy and wonder in his interactions with his Grandparents (Top). A first draft idea of combining lots of interactions into one screen (Bottom).</p>
-                      </div>
-                    </div>
-                    <div class="carousel-item text-center">
-                      <img class="d-block slide" src="../media/p2_details/sketch_5.JPG" alt="First slide">
-                      <div class="carousel-caption d-none d-md-block">
-                        <h5>Sketch 5</h5>
-                        <p>Even though babies don't ever know the lyrics, they love making mindless music with their mouths. This could be an opportunity for Oma & Opa to share their favourite songs
-                            with Rhys.
-                        </p>
-                      </div>
-                    </div>
-                    <div class="carousel-item text-center">
-                      <img class="d-block slide" src="../media/p2_details/sketch_6.JPG" alt="First slide">
-                      <div class="carousel-caption d-none d-md-block">
-                        <h5>Sketch 6</h5>
-                        <p>Very similar to the Dancing Elves Christmas E-Mails you can send to your coworkers. This would superimpose Oma & Opas faces onto a silly dancing scene.</p>
-                      </div>
-                    </div>
-                    <div class="carousel-item text-center">
-                      <img class="d-block slide" src="../media/p2_details/sketch_7.JPG" alt="First slide">
-                      <div class="carousel-caption d-none d-md-block">
-                        <h5>Sketch 7</h5>
-                        <p>Kind of like the wack-a-mole game in a previous sketch however, Oma & Opa have more control over the object is seeking to destroy!</p>
-                      </div>
-                    </div>
-                    <div class="carousel-item text-center">
-                      <img class="d-block slide" src="../media/p2_details/sketch_8.JPG" alt="First slide">
-                      <div class="carousel-caption d-none d-md-block">
-                        <h5>Sketch 8</h5>
-                        <p>This idea shoots to connect Oma and Opa in a more physical sense with Rhys's surroundings. It's almost like they're there playing with him.</p>
-                      </div>
-                    </div>
-                    <div class="carousel-item text-center">
-                        <img class="d-block slide" src="../media/p2_details/sketch_9.JPG" alt="First slide">
-                        <div class="carousel-caption d-none d-md-block">
-                          <h5>Sketch 9</h5>
-                          <p>Stemming from a youtube video I watched, this is aimed to give Rhys an experience that he most definitley hasn't had yet in his early life. A Rollercoaster!</p>
-                        </div>
-                      </div>
-                      <div class="carousel-item text-center">
-                        <img class="d-block slide" src="../media/p2_details/sketch_10.JPG" alt="First slide">
-                        <div class="carousel-caption d-none d-md-block">
-                          <h5>Sketch 10</h5>
-                          <p>You have to keep your mind sharp while being bored locked at home. What better way to do that than have an at-home geometry lesson from Oma & Opa!</p>
-                        </div>
-                      </div>
-                  </div>
-                  <a class="carousel-control-prev" href="#sketches" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  </a>
-                  <a class="carousel-control-next" href="#sketches" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  </a>
-                </div>
-              </div>
-              <p class="lead text-muted"><br><br><strong>And then after deciding on the idea of <strong>Peek-a-Boo with You</strong>, I started creating some</strong></p>
-              <h1 class="display-4">Variations</h1>
-
-              <div class="py-5 text-center container slider">
-                <div id="variations" class="carousel slide" data-interval="false">
-                  <ol class="carousel-indicators">
-                    <li data-target="#variations" data-slide-to="0" class="active"></li>
-                    <li data-target="#variations" data-slide-to="1"></li>
-                    <li data-target="#variations" data-slide-to="2"></li>
-                    <li data-target="#variations" data-slide-to="3"></li>
-                    <li data-target="#variations" data-slide-to="4"></li>
-                    <li data-target="#variations" data-slide-to="5"></li>
-                    <li data-target="#variations" data-slide-to="6"></li>
-                    <li data-target="#variations" data-slide-to="7"></li>
-                    <li data-target="#variations" data-slide-to="8"></li>
-                    <li data-target="#variations" data-slide-to="9"></li>
-                  </ol>
-                  <div class="carousel-inner">
-                    <div class="carousel-item active text-center">
-                      <img class="d-block slide" src="../media/p2_details/variation_1.JPG" alt="First slide">
-                      <div class="carousel-caption d-none d-md-block">
-                        <h5>Variation 1</h5>
-                        <p>Brainstorming a possible UI layouts.</p>
-                      </div>
-                    </div>
-                    <div class="carousel-item text-center">
-                      <img class="d-block slide" src="../media/p2_details/variation_2.JPG" alt="First slide">
-                      <div class="carousel-caption d-none d-md-block">
-                        <h5>Variation 2</h5>
-                        <p>Virtual hide-and-seek has Oma and Opa picking a location for their video feed to be stuck behind. Rhys has to find them.</p>
-                      </div>
-                    </div>
-                    <div class="carousel-item text-center">
-                      <img class="d-block slide" src="../media/p2_details/variation_3.JPG" alt="First slide">
-                      <div class="carousel-caption d-none d-md-block">
-                        <h5>Variation 3</h5>
-                        <p>Connects with the chaotic destruction inside Rhys! To see Oma and Opa again, Rhys must tear down the block wall obstructing his view of them.</p>
-                      </div>
-                    </div>
-                    <div class="carousel-item text-center">
-                      <img class="d-block slide" src="../media/p2_details/variation_4.JPG" alt="First slide">
-                      <div class="carousel-caption d-none d-md-block">
-                        <h5>Variation 4</h5>
-                        <p>Very simple Peek-a-Boo but with the ability to customize it with the appendages of Rhys's favourite animals.</p>
-                      </div>
-                    </div>
-                    <div class="carousel-item text-center">
-                      <img class="d-block slide" src="../media/p2_details/variation_5.JPG" alt="First slide">
-                      <div class="carousel-caption d-none d-md-block">
-                        <h5>Variation 5</h5>
-                        <p>Instead of an animation that moves the hands, Oma and Opa can move the hands around the screen with their mouse.</p>
-                      </div>
-                    </div>
-                    <div class="carousel-item text-center">
-                      <img class="d-block slide" src="../media/p2_details/variation_6.JPG" alt="First slide">
-                      <div class="carousel-caption d-none d-md-block">
-                        <h5>Variation 6</h5>
-                        <p>No video feed here for Rhys. Oma and Opa can see him however, while he is scrambling to get out of the view of the camera.</p>
-                      </div>
-                    </div>
-                    <div class="carousel-item text-center">
-                      <img class="d-block slide" src="../media/p2_details/variation_7.JPG" alt="First slide">
-                      <div class="carousel-caption d-none d-md-block">
-                        <h5>Variation 7</h5>
-                        <p>Peek-a-Boo but instead of a set of hands covering the screen, the audio visualization from a song being played covers Rhys's screen. Oma and Opa can choose which song it is.</p>
-                      </div>
-                    </div>
-                    <div class="carousel-item text-center">
-                      <img class="d-block slide" src="../media/p2_details/variation_8.JPG" alt="First slide">
-                      <div class="carousel-caption d-none d-md-block">
-                        <h5>Variation 8</h5>
-                        <p>Babies are so hard to get good pictures of. This one gets the baby to look right at the camera!</p>
-                      </div>
-                    </div>
-                    <div class="carousel-item text-center">
-                        <img class="d-block slide" src="../media/p2_details/variation_9.JPG" alt="First slide">
-                        <div class="carousel-caption d-none d-md-block">
-                          <h5>Variation 9</h5>
-                          <p>An easy way to let Rhys express himself vocally. Experimenting with different volume ranges to see what happens with the voice controlled hands.</p>
-                        </div>
-                      </div>
-                      <div class="carousel-item text-center">
-                        <img class="d-block slide" src="../media/p2_details/variation_10.JPG" alt="First slide">
-                        <div class="carousel-caption d-none d-md-block">
-                          <h5>Variation 10</h5>
-                          <p>Where's Waldo-esque vibes here. Let Rhys tap random objects in a virtual room and see the results applied to his own video feed.</p>
-                        </div>
-                      </div>
-                  </div>
-                  <a class="carousel-control-prev" href="#variations" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  </a>
-                  <a class="carousel-control-next" href="#variations" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  </a>
-                </div>
-
-          </div>
+      <div class="page-header" style="padding-top: 80px;">
+        <h1>Project 2 - CPSC 581</h1>
+        <p class="intro">
+          This was an interesting project to work on because the client's main focus was an interaction with a user that doesn't have a complete understanding of how computers actually function and who cannot really interact with them in the traditional way.
+        </p>
+        <p class="intro" style="margin-top: 0;">
+          So I had to change my mindset to answer the question: <em>How do I design for a toddler?</em>
+        </p>
+        <img class="thumbnail" src="../media/p2_details/p2-thumbnail.JPG" alt="Project thumbnail">
         
-      </section>      
+        <div class="tech-stack">
+          <div class="tech-pill">
+            <img src="../media/experience/technologies/js.png" alt="JavaScript">
+            JavaScript
+          </div>
+          <div class="tech-pill">
+            <img src="../media/experience/technologies/webrtc.png" alt="WebRTC">
+            WebRTC
+          </div>
+          <div class="tech-pill">
+            <img src="../media/experience/technologies/html.png" alt="HTML">
+            HTML5
+          </div>
+          <div class="tech-pill">
+            <img src="../media/experience/technologies/css.png" alt="CSS">
+            CSS3
+          </div>
+        </div>
+      </div>
 
-      
-      
+      <!-- Video Section -->
+      <div class="video-section">
+        <h2>Promo Video</h2>
+        <p>
+          When I brainstormed interactions between grandparents and young children I found myself consistently falling back to the idea of peek-a-boo, hide and seek, and generally the idea of using an underdeveloped sense of object permanence to bring joy to a young child.
+        </p>
+        <p>
+          I thought it wouldn't be an immersive experience to just create a video call application and have the grandparents cover their own face with their hands because that felt superficial when they know they are behind a screen and not in person. I wanted the grandparents (Oma & Opa) to be able to have control over things that appear on the child's (Rhys) screen.
+        </p>
+        <p>
+          I believed that would make Oma and Opa feel like they were that much closer to their grandson Rhys.
+        </p>
+        <p>
+          And alongside having the ability to play virtual peek-a-boo, Oma & Opa can get Rhys's attention by <em>virtually</em> shaking one of his favourite toys. And once his attention is on them, they can snap a quick photo of him to document the visit!
+        </p>
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/ywyNBgCVELo" title="Peek-a-Boo with You Promo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
 
+      <!-- Tab Navigation -->
+      <div class="nav-tabs-wrapper">
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="nav-item">
+            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#sketches" type="button">Sketches</button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#variations" type="button">Variations</button>
+          </li>
+        </ul>
+      </div>
 
+      <!-- Tab Content -->
+      <div class="tab-content">
+        <!-- Sketches Tab -->
+        <div class="tab-pane fade show active" id="sketches" role="tabpanel">
+          <h2>Sketches</h2>
+          <p>Exploring different ways to create meaningful interactions between grandparents and their toddler grandchild during video calls.</p>
+          
+          <div class="clean-carousel" id="sketches-carousel">
+            <div class="carousel-slide active">
+              <div class="slide-content">
+                <div class="slide-image-wrapper" onclick="openLightbox(this)">
+                  <img src="../media/p2_details/sketch_1.JPG" alt="Sketch 1">
+                  <div class="expand-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 11V3h-8l3.29 3.29-10 10L3 13v8h8l-3.29-3.29 10-10z"/></svg>
+                  </div>
+                </div>
+                <div class="slide-text">
+                  <h3>Sketch 1</h3>
+                  <p>Rhys is a chaotic good baby. Therefore, how could he resist being <em>encouraged</em> to smack the keyboard!</p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-content">
+                <div class="slide-image-wrapper" onclick="openLightbox(this)">
+                  <img src="../media/p2_details/sketch_2.JPG" alt="Sketch 2">
+                  <div class="expand-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 11V3h-8l3.29 3.29-10 10L3 13v8h8l-3.29-3.29 10-10z"/></svg>
+                  </div>
+                </div>
+                <div class="slide-text">
+                  <h3>Sketch 2</h3>
+                  <p>Underdeveloped object permanence is a quality that can be exploited for the greater good!</p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-content">
+                <div class="slide-image-wrapper" onclick="openLightbox(this)">
+                  <img src="../media/p2_details/sketch_3.JPG" alt="Sketch 3">
+                  <div class="expand-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 11V3h-8l3.29 3.29-10 10L3 13v8h8l-3.29-3.29 10-10z"/></svg>
+                  </div>
+                </div>
+                <div class="slide-text">
+                  <h3>Sketch 3</h3>
+                  <p>Rhys loves smacking things. What could be more satisfying than laying a beatdown on a keyboard while squashing some of his favourite animals?</p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-content">
+                <div class="slide-image-wrapper" onclick="openLightbox(this)">
+                  <img src="../media/p2_details/sketch_4.JPG" alt="Sketch 4">
+                  <div class="expand-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 11V3h-8l3.29 3.29-10 10L3 13v8h8l-3.29-3.29 10-10z"/></svg>
+                  </div>
+                </div>
+                <div class="slide-text">
+                  <h3>Sketch 4</h3>
+                  <p>I made an exhaustive list of things that could bring Rhys some joy and wonder in his interactions with his Grandparents (Top). A first draft idea of combining lots of interactions into one screen (Bottom).</p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-content">
+                <div class="slide-image-wrapper" onclick="openLightbox(this)">
+                  <img src="../media/p2_details/sketch_5.JPG" alt="Sketch 5">
+                  <div class="expand-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 11V3h-8l3.29 3.29-10 10L3 13v8h8l-3.29-3.29 10-10z"/></svg>
+                  </div>
+                </div>
+                <div class="slide-text">
+                  <h3>Sketch 5</h3>
+                  <p>Even though babies don't ever know the lyrics, they love making mindless music with their mouths. This could be an opportunity for Oma & Opa to share their favourite songs with Rhys.</p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-content">
+                <div class="slide-image-wrapper" onclick="openLightbox(this)">
+                  <img src="../media/p2_details/sketch_6.JPG" alt="Sketch 6">
+                  <div class="expand-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 11V3h-8l3.29 3.29-10 10L3 13v8h8l-3.29-3.29 10-10z"/></svg>
+                  </div>
+                </div>
+                <div class="slide-text">
+                  <h3>Sketch 6</h3>
+                  <p>Very similar to the Dancing Elves Christmas E-Mails you can send to your coworkers. This would superimpose Oma & Opa's faces onto a silly dancing scene.</p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-content">
+                <div class="slide-image-wrapper" onclick="openLightbox(this)">
+                  <img src="../media/p2_details/sketch_7.JPG" alt="Sketch 7">
+                  <div class="expand-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 11V3h-8l3.29 3.29-10 10L3 13v8h8l-3.29-3.29 10-10z"/></svg>
+                  </div>
+                </div>
+                <div class="slide-text">
+                  <h3>Sketch 7</h3>
+                  <p>Kind of like the whack-a-mole game in a previous sketch however, Oma & Opa have more control over the object Rhys is seeking to destroy!</p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-content">
+                <div class="slide-image-wrapper" onclick="openLightbox(this)">
+                  <img src="../media/p2_details/sketch_8.JPG" alt="Sketch 8">
+                  <div class="expand-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 11V3h-8l3.29 3.29-10 10L3 13v8h8l-3.29-3.29 10-10z"/></svg>
+                  </div>
+                </div>
+                <div class="slide-text">
+                  <h3>Sketch 8</h3>
+                  <p>This idea shoots to connect Oma and Opa in a more physical sense with Rhys's surroundings. It's almost like they're there playing with him.</p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-content">
+                <div class="slide-image-wrapper" onclick="openLightbox(this)">
+                  <img src="../media/p2_details/sketch_9.JPG" alt="Sketch 9">
+                  <div class="expand-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 11V3h-8l3.29 3.29-10 10L3 13v8h8l-3.29-3.29 10-10z"/></svg>
+                  </div>
+                </div>
+                <div class="slide-text">
+                  <h3>Sketch 9</h3>
+                  <p>Stemming from a YouTube video I watched, this is aimed to give Rhys an experience that he most definitely hasn't had yet in his early life. A Rollercoaster!</p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-content">
+                <div class="slide-image-wrapper" onclick="openLightbox(this)">
+                  <img src="../media/p2_details/sketch_10.JPG" alt="Sketch 10">
+                  <div class="expand-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 11V3h-8l3.29 3.29-10 10L3 13v8h8l-3.29-3.29 10-10z"/></svg>
+                  </div>
+                </div>
+                <div class="slide-text">
+                  <h3>Sketch 10</h3>
+                  <p>You have to keep your mind sharp while being bored locked at home. What better way to do that than have an at-home geometry lesson from Oma & Opa!</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="carousel-nav">
+              <button class="carousel-btn" onclick="changeSlide('sketches-carousel', -1)">←</button>
+              <span class="carousel-counter"><span class="current">1</span> / <span class="total">10</span></span>
+              <button class="carousel-btn" onclick="changeSlide('sketches-carousel', 1)">→</button>
+            </div>
+            <div class="carousel-dots"></div>
+          </div>
+        </div>
 
+        <!-- Variations Tab -->
+        <div class="tab-pane fade" id="variations" role="tabpanel">
+          <h2>Variations</h2>
+          <p>After deciding on Peek-a-Boo with You, I explored different ways to implement the core concept.</p>
+          
+          <div class="clean-carousel" id="variations-carousel">
+            <div class="carousel-slide active">
+              <div class="slide-content">
+                <div class="slide-image-wrapper" onclick="openLightbox(this)">
+                  <img src="../media/p2_details/variation_1.JPG" alt="Variation 1">
+                  <div class="expand-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 11V3h-8l3.29 3.29-10 10L3 13v8h8l-3.29-3.29 10-10z"/></svg>
+                  </div>
+                </div>
+                <div class="slide-text">
+                  <h3>Variation 1</h3>
+                  <p>Brainstorming possible UI layouts.</p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-content">
+                <div class="slide-image-wrapper" onclick="openLightbox(this)">
+                  <img src="../media/p2_details/variation_2.JPG" alt="Variation 2">
+                  <div class="expand-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 11V3h-8l3.29 3.29-10 10L3 13v8h8l-3.29-3.29 10-10z"/></svg>
+                  </div>
+                </div>
+                <div class="slide-text">
+                  <h3>Variation 2</h3>
+                  <p>Virtual hide-and-seek has Oma and Opa picking a location for their video feed to be stuck behind. Rhys has to find them.</p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-content">
+                <div class="slide-image-wrapper" onclick="openLightbox(this)">
+                  <img src="../media/p2_details/variation_3.JPG" alt="Variation 3">
+                  <div class="expand-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 11V3h-8l3.29 3.29-10 10L3 13v8h8l-3.29-3.29 10-10z"/></svg>
+                  </div>
+                </div>
+                <div class="slide-text">
+                  <h3>Variation 3</h3>
+                  <p>Connects with the chaotic destruction inside Rhys! To see Oma and Opa again, Rhys must tear down the block wall obstructing his view of them.</p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-content">
+                <div class="slide-image-wrapper" onclick="openLightbox(this)">
+                  <img src="../media/p2_details/variation_4.JPG" alt="Variation 4">
+                  <div class="expand-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 11V3h-8l3.29 3.29-10 10L3 13v8h8l-3.29-3.29 10-10z"/></svg>
+                  </div>
+                </div>
+                <div class="slide-text">
+                  <h3>Variation 4</h3>
+                  <p>Very simple Peek-a-Boo but with the ability to customize it with the appendages of Rhys's favourite animals.</p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-content">
+                <div class="slide-image-wrapper" onclick="openLightbox(this)">
+                  <img src="../media/p2_details/variation_5.JPG" alt="Variation 5">
+                  <div class="expand-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 11V3h-8l3.29 3.29-10 10L3 13v8h8l-3.29-3.29 10-10z"/></svg>
+                  </div>
+                </div>
+                <div class="slide-text">
+                  <h3>Variation 5</h3>
+                  <p>Instead of an animation that moves the hands, Oma and Opa can move the hands around the screen with their mouse.</p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-content">
+                <div class="slide-image-wrapper" onclick="openLightbox(this)">
+                  <img src="../media/p2_details/variation_6.JPG" alt="Variation 6">
+                  <div class="expand-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 11V3h-8l3.29 3.29-10 10L3 13v8h8l-3.29-3.29 10-10z"/></svg>
+                  </div>
+                </div>
+                <div class="slide-text">
+                  <h3>Variation 6</h3>
+                  <p>No video feed here for Rhys. Oma and Opa can see him however, while he is scrambling to get out of the view of the camera.</p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-content">
+                <div class="slide-image-wrapper" onclick="openLightbox(this)">
+                  <img src="../media/p2_details/variation_7.JPG" alt="Variation 7">
+                  <div class="expand-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 11V3h-8l3.29 3.29-10 10L3 13v8h8l-3.29-3.29 10-10z"/></svg>
+                  </div>
+                </div>
+                <div class="slide-text">
+                  <h3>Variation 7</h3>
+                  <p>Peek-a-Boo but instead of a set of hands covering the screen, the audio visualization from a song being played covers Rhys's screen. Oma and Opa can choose which song it is.</p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-content">
+                <div class="slide-image-wrapper" onclick="openLightbox(this)">
+                  <img src="../media/p2_details/variation_8.JPG" alt="Variation 8">
+                  <div class="expand-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 11V3h-8l3.29 3.29-10 10L3 13v8h8l-3.29-3.29 10-10z"/></svg>
+                  </div>
+                </div>
+                <div class="slide-text">
+                  <h3>Variation 8</h3>
+                  <p>Babies are so hard to get good pictures of. This one gets the baby to look right at the camera!</p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-content">
+                <div class="slide-image-wrapper" onclick="openLightbox(this)">
+                  <img src="../media/p2_details/variation_9.JPG" alt="Variation 9">
+                  <div class="expand-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 11V3h-8l3.29 3.29-10 10L3 13v8h8l-3.29-3.29 10-10z"/></svg>
+                  </div>
+                </div>
+                <div class="slide-text">
+                  <h3>Variation 9</h3>
+                  <p>An easy way to let Rhys express himself vocally. Experimenting with different volume ranges to see what happens with the voice controlled hands.</p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-content">
+                <div class="slide-image-wrapper" onclick="openLightbox(this)">
+                  <img src="../media/p2_details/variation_10.JPG" alt="Variation 10">
+                  <div class="expand-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 11V3h-8l3.29 3.29-10 10L3 13v8h8l-3.29-3.29 10-10z"/></svg>
+                  </div>
+                </div>
+                <div class="slide-text">
+                  <h3>Variation 10</h3>
+                  <p>Where's Waldo-esque vibes here. Let Rhys tap random objects in a virtual room and see the results applied to his own video feed.</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="carousel-nav">
+              <button class="carousel-btn" onclick="changeSlide('variations-carousel', -1)">←</button>
+              <span class="carousel-counter"><span class="current">1</span> / <span class="total">10</span></span>
+              <button class="carousel-btn" onclick="changeSlide('variations-carousel', 1)">→</button>
+            </div>
+            <div class="carousel-dots"></div>
+          </div>
+        </div>
+      </div>
     </main>
 
-    <footer class="text-muted py-5">
+    <footer>
       <div class="container">
         <p class="mb-1">Brought to you by &copy;Parksters.</p>
       </div>
     </footer>
-    <!-- Load Scripts-->
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+      <span class="lightbox-close">&times;</span>
+      <img src="" alt="Full size image" id="lightbox-img">
+    </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script src="../scripts/index.js"></script>
+    <script>
+      // Initialize carousels
+      document.addEventListener('DOMContentLoaded', function() {
+        initCarousel('sketches-carousel');
+        initCarousel('variations-carousel');
+      });
+
+      function initCarousel(carouselId) {
+        const carousel = document.getElementById(carouselId);
+        const slides = carousel.querySelectorAll('.carousel-slide');
+        const dotsContainer = carousel.querySelector('.carousel-dots');
+        const counter = carousel.querySelector('.carousel-counter');
+        
+        // Create dots
+        slides.forEach((_, index) => {
+          const dot = document.createElement('button');
+          dot.className = 'carousel-dot' + (index === 0 ? ' active' : '');
+          dot.onclick = () => goToSlide(carouselId, index);
+          dotsContainer.appendChild(dot);
+        });
+        
+        // Update counter
+        counter.querySelector('.total').textContent = slides.length;
+      }
+
+      function changeSlide(carouselId, direction) {
+        const carousel = document.getElementById(carouselId);
+        const slides = carousel.querySelectorAll('.carousel-slide');
+        const currentIndex = [...slides].findIndex(slide => slide.classList.contains('active'));
+        let newIndex = currentIndex + direction;
+        
+        if (newIndex < 0) newIndex = slides.length - 1;
+        if (newIndex >= slides.length) newIndex = 0;
+        
+        goToSlide(carouselId, newIndex);
+      }
+
+      function goToSlide(carouselId, index) {
+        const carousel = document.getElementById(carouselId);
+        const slides = carousel.querySelectorAll('.carousel-slide');
+        const dots = carousel.querySelectorAll('.carousel-dot');
+        const counter = carousel.querySelector('.carousel-counter');
+        
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+        counter.querySelector('.current').textContent = index + 1;
+      }
+
+      // Keyboard navigation
+      document.addEventListener('keydown', function(e) {
+        // Close lightbox on escape
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+          closeLightbox();
+          return;
+        }
+
+        const activeTab = document.querySelector('.tab-pane.show.active');
+        if (!activeTab) return;
+        
+        const carouselId = activeTab.querySelector('.clean-carousel')?.id;
+        if (!carouselId) return;
+        
+        if (e.key === 'ArrowLeft') changeSlide(carouselId, -1);
+        if (e.key === 'ArrowRight') changeSlide(carouselId, 1);
+      });
+
+      // Lightbox functionality
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxClose = document.querySelector('.lightbox-close');
+
+      function openLightbox(wrapper) {
+        const img = wrapper.querySelector('img');
+        lightboxImg.src = img.src;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      lightbox.addEventListener('click', closeLightbox);
+      lightboxClose.addEventListener('click', closeLightbox);
+    </script>
   </body>
 </html>

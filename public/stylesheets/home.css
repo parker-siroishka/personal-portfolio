@@ -425,15 +425,39 @@ strong {
     box-shadow: var(--shadow-heavy);
 }
 
-.p0-thumbnail {
+.thumbnail-wrapper {
+    position: relative;
     width: 100%;
     height: 250px;
-    object-fit: cover;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+}
+
+.thumbnail-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: inherit;
+    filter: blur(15px);
+    transform: scale(1.1);
+    z-index: 0;
+}
+
+.p0-thumbnail {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
     transition: all 0.3s ease;
+    z-index: 1;
 }
 
 .project-card:hover .p0-thumbnail {
-    transform: scale(1.05);
+    transform: scale(1.02);
 }
 
 .project-card .card-body {
@@ -449,6 +473,76 @@ strong {
     font-weight: 600;
     color: var(--text-primary);
     margin-bottom: 1rem;
+}
+
+/* Project Tags (Chiclets) */
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.project-tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 50px;
+    transition: all 0.2s ease;
+}
+
+.project-tag:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Tag Color Variants */
+.tag-game {
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    color: white;
+}
+
+.tag-webapp {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: white;
+}
+
+.tag-mobile {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+}
+
+.tag-website {
+    background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+    color: white;
+}
+
+.tag-dataviz {
+    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+    color: white;
+}
+
+.tag-realtime {
+    background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+    color: white;
+}
+
+.tag-uxresearch {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    color: #1a1a1a;
+}
+
+.tag-academic {
+    background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%);
+    color: white;
+}
+
+.tag-professional {
+    background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+    color: white;
 }
 
 .project-card .card-text {
@@ -524,6 +618,13 @@ strong {
     color: white;
     transform: translateY(-2px);
     box-shadow: var(--shadow-light);
+}
+
+/* Project card divider */
+.project-divider {
+    border: none;
+    border-top: 1px solid rgba(45, 45, 45, 0.1);
+    margin: 1.25rem 0;
 }
 
 /* Project card buttons */

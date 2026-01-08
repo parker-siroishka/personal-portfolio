@@ -102,12 +102,21 @@ $("#go-linda").on("click", e => {
   window.location.assign(`https://www.lindaolsen.org/`);
 })
 
+$("#det-linda").on("click", e => {
+  window.location.assign(`${URL}/pages/lindaOlsenDetails.html`);
+})
+
 $("#go-pokemon").on("click", e => {
   window.location.assign(`https://github.com/parker-siroishka/Pokemon-Data-Dashboard`);
 })
 
 $("#go-olb").on("click", e => {
   window.location.assign(`https://github.com/openLeaderboard/olb-ios`);
+})
+
+$("#go-trekka").on("click", e => {
+  // TODO: Add Trekka source URL
+  window.location.assign(`#`);
 })
 
 
