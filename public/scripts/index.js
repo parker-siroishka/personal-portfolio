@@ -119,6 +119,10 @@ $("#go-trekka").on("click", e => {
   window.location.assign(`#`);
 })
 
+$("#det-trekka").on("click", e => {
+  window.location.assign(`${URL}/pages/trekkaDetails.html`);
+})
+
 
 // Modern smooth scrolling for navigation
 $('a[href^="#"]').on('click', function(event) {

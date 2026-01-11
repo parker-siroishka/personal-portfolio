@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Trekka - iOS Fitness App Details" />
+    <link rel="icon" href="../favicon.ico?" type="image/x-icon">
+    <title>Parker Siroishka - Trekka</title>
+
+    <link href="../dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../stylesheets/custom.css" rel="stylesheet" />
+    <link href="../stylesheets/home.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+      /* Details Page Specific Styles */
+      main {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 2rem 1rem 4rem;
+      }
+
+      .page-header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+        padding-top: 2rem;
+      }
+
+      .page-header h1 {
+        font-family: var(--font-heading);
+        font-size: 2rem;
+        font-weight: 600;
+        background: var(--primary-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 1rem;
+      }
+
+      .page-header .intro {
+        font-size: 1rem;
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin: 0 auto 1.5rem;
+        line-height: 1.6;
+      }
+
+      .thumbnail {
+        max-width: 400px;
+        width: 100%;
+        border-radius: 15px;
+        box-shadow: var(--shadow-medium);
+        margin-bottom: 2rem;
+      }
+
+      /* Tab Navigation */
+      .nav-tabs-wrapper {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2rem;
+      }
+
+      .nav-tabs {
+        display: flex;
+        gap: 0.5rem;
+        background: white;
+        padding: 0.5rem;
+        border-radius: 15px;
+        border: none;
+        box-shadow: var(--shadow-light);
+      }
+
+      .nav-tabs .nav-link {
+        background: transparent;
+        border: none;
+        color: var(--primary-color);
+        font-family: var(--font-primary);
+        font-size: 0.9rem;
+        font-weight: 500;
+        padding: 0.6rem 1.25rem;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .nav-tabs .nav-link:hover {
+        background: var(--accent-orange);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 2px 6px rgba(217, 119, 87, 0.1);
+      }
+
+      .nav-tabs .nav-link.active {
+        background: var(--accent-orange);
+        color: white;
+      }
+
+      /* Tab Content */
+      .tab-content {
+        background: white;
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: var(--shadow-light);
+      }
+
+      .tab-pane h2 {
+        font-family: var(--font-heading);
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+      }
+
+      .tab-pane p {
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        margin-bottom: 1rem;
+        line-height: 1.6;
+      }
+
+      .tab-pane ul {
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        padding-left: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .tab-pane ul li {
+        margin-bottom: 0.4rem;
+        line-height: 1.5;
+      }
+
+      /* Highlight box for key info */
+      .highlight-box {
+        background: var(--light-gradient);
+        border-radius: 15px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        border-left: 4px solid var(--primary-color);
+      }
+
+      .highlight-box h3 {
+        font-family: var(--font-heading);
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .highlight-box p {
+        margin-bottom: 0;
+      }
+
+      /* Tech Stack Pills */
+      .tech-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin: 1.5rem 0;
+        justify-content: center;
+      }
+
+      .tech-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--light-gradient);
+        border-radius: 50px;
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--text-primary);
+        box-shadow: var(--shadow-light);
+        transition: all 0.3s ease;
+      }
+
+      .tech-pill:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-medium);
+      }
+
+      .tech-pill img {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+      }
+
+      /* Key Features List */
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+        margin: 1.5rem 0;
+      }
+
+      .feature-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 1rem;
+        background: var(--light-gradient);
+        border-radius: 12px;
+        transition: all 0.3s ease;
+      }
+
+      .feature-item:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-light);
+      }
+
+      .feature-icon {
+        width: 32px;
+        height: 32px;
+        background: var(--primary-gradient);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1rem;
+        flex-shrink: 0;
+      }
+
+      .feature-item span {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        line-height: 1.4;
+      }
+
+      /* Back button styling */
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 500;
+        color: var(--text-primary) !important;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .back-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 50%;
+        background: var(--accent-orange);
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+      }
+
+      .back-link:hover {
+        transform: translateX(-3px);
+      }
+
+      .back-link:hover::after {
+        width: 100%;
+      }
+
+      .back-link img {
+        width: 16px;
+        opacity: 1;
+        filter: brightness(0);
+      }
+
+      /* Source Button */
+      .source-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 1rem;
+        background: linear-gradient(135deg, #141413 0%, #0d0d0c 100%);
+        color: #ffffff;
+        text-decoration: none;
+        padding: 1.25rem 3rem;
+        border-radius: 60px;
+        font-family: var(--font-heading);
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin: 1rem auto;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .source-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+        transition: left 0.5s ease;
+      }
+
+      .source-button:hover {
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        color: #ffffff;
+      }
+
+      .source-button:hover::before {
+        left: 100%;
+      }
+
+      .source-button:active {
+        transform: translateY(-2px) scale(0.98);
+      }
+
+      .source-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 50%;
+        font-size: 1.25rem;
+        color: #ffffff;
+        transition: all 0.3s ease;
+      }
+
+      .source-button:hover .source-icon {
+        background: rgba(255, 255, 255, 0.25);
+        transform: scale(1.1);
+      }
+
+      .source-text {
+        letter-spacing: 0.5px;
+        color: #ffffff;
+      }
+
+      .source-button-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 2rem 0;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .nav-tabs {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .nav-tabs .nav-link {
+          font-size: 0.8rem;
+          padding: 0.5rem 1rem;
+        }
+
+        .tab-content {
+          padding: 1.5rem;
+        }
+
+        .page-header h1 {
+          font-size: 1.6rem;
+        }
+
+        .features-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .source-button {
+          padding: 1rem 2rem;
+          font-size: 1.2rem;
+        }
+
+        .source-icon {
+          width: 40px;
+          height: 40px;
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="top">
+      <div class="container">
+        <a href="index.html#projects" class="back-link">
+          <img src="../media/general-icons/back-arrow.png" alt="Back">
+          Home
+        </a>
+      </div>
+    </nav>
+
+    <main>
+      <div class="page-header" style="padding-top: 80px;">
+        <h1>Trekka</h1>
+        <p class="intro">
+          An iOS native app centered around gamifying movement and fitness. Allowing you to see where your steps <em>could</em> take you. Start a marathon and see how far you can make it! Or traverse the Great Wall of China.
+        </p>
+        <img class="thumbnail" src="../media/trekka.png" alt="Trekka App">
+        
+        <div class="tech-stack">
+          <div class="tech-pill">
+            <img src="../media/experience/technologies/swift.png" alt="Swift">
+            Swift
+          </div>
+          <div class="tech-pill">
+            <img src="../media/experience/technologies/net.png" alt=".NET">
+            .NET
+          </div>
+          <div class="tech-pill">
+            <img src="../media/experience/technologies/postgresql.png" alt="PostgreSQL">
+            PostgreSQL
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab Navigation -->
+      <div class="nav-tabs-wrapper">
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="nav-item">
+            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#overview" type="button">Overview</button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#features" type="button">Features</button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#technologies" type="button">Technologies</button>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Tab Content -->
+      <div class="tab-content">
+        <!-- Overview Tab -->
+        <div class="tab-pane fade show active" id="overview" role="tabpanel">
+          <h2>Project Overview</h2>
+          
+          <div class="highlight-box">
+            <h3>The Concept</h3>
+            <p>Trekka transforms everyday walking into an adventure by gamifying fitness through virtual journeys. Instead of just counting steps, users can embark on virtual treks to famous landmarks and destinations around the world.</p>
+          </div>
+
+          <p>
+            Trekka is designed to make fitness more engaging and motivating by connecting physical activity with virtual exploration. The app tracks your daily steps and converts them into progress along real-world routes, from local marathons to iconic landmarks like the Great Wall of China.
+          </p>
+
+          <p>
+            By gamifying movement, Trekka encourages users to be more active while providing a sense of achievement and adventure. The app combines real-time step tracking with an engaging user interface to create a unique fitness experience.
+          </p>
+
+        </div>
+
+        <!-- Features Tab -->
+        <div class="tab-pane fade" id="features" role="tabpanel">
+          <h2>Key Features</h2>
+          
+          <div class="features-grid">
+            <div class="feature-item">
+              <div class="feature-icon">🚶</div>
+              <span><strong>Step Tracking:</strong> Automatically tracks your daily steps using iOS HealthKit integration</span>
+            </div>
+            
+            <div class="feature-item">
+              <div class="feature-icon">🗺️</div>
+              <span><strong>Virtual Journeys:</strong> Choose from a variety of real-world routes and landmarks to traverse</span>
+            </div>
+            
+            <div class="feature-item">
+              <div class="feature-icon">📊</div>
+              <span><strong>Progress Visualization:</strong> See your progress along each route with detailed maps and statistics</span>
+            </div>
+            
+            <div class="feature-item">
+              <div class="feature-icon">🏆</div>
+              <span><strong>Achievements:</strong> Unlock achievements as you complete different routes and milestones</span>
+            </div>
+            
+            <div class="feature-item">
+              <div class="feature-icon">📱</div>
+              <span><strong>Native iOS:</strong> Built with Swift for optimal performance and native iOS experience</span>
+            </div>
+            
+            <div class="feature-item">
+              <div class="feature-icon">☁️</div>
+              <span><strong>Cloud Sync:</strong> Your progress is saved and synced across devices via the backend</span>
+            </div>
+          </div>
+
+          <p>
+            The app provides a seamless experience that makes fitness fun and engaging. Users can start multiple journeys simultaneously, track their progress in real-time, and celebrate milestones as they complete each virtual adventure.
+          </p>
+        </div>
+
+        <!-- Technologies Tab -->
+        <div class="tab-pane fade" id="technologies" role="tabpanel">
+          <h2>Technology Stack</h2>
+          
+          <div class="highlight-box">
+            <h3>Frontend - iOS Native</h3>
+            <p><strong>Swift:</strong> The app is built entirely in Swift, leveraging native iOS frameworks for optimal performance and user experience. Swift's modern syntax and strong typing ensure a robust and maintainable codebase.</p>
+          </div>
+
+          <div class="highlight-box">
+            <h3>Backend - .NET</h3>
+            <p><strong>.NET Framework:</strong> The backend API is built using .NET, providing a robust and scalable server-side solution. The API handles user authentication, progress tracking, route management, and data synchronization.</p>
+          </div>
+
+          <div class="highlight-box">
+            <h3>Database - PostgreSQL</h3>
+            <p><strong>PostgreSQL:</strong> A powerful relational database system stores user data, journey progress, route information, and achievements. PostgreSQL's reliability and performance make it ideal for handling complex queries and data relationships.</p>
+          </div>
+
+          <h2>Architecture</h2>
+          <p>
+            Trekka follows a client-server architecture where the iOS app communicates with a .NET backend API. The backend manages all business logic, data persistence, and route calculations, while the iOS app focuses on providing an excellent user experience and seamless step tracking integration.
+          </p>
+
+          <p>
+            The app integrates with iOS HealthKit to access step count data, ensuring accurate tracking without requiring additional hardware or permissions beyond standard health data access.
+          </p>
+        </div>
+      </div>
+
+      <div class="source-button-container">
+        <a href="#" id="source-link" class="source-button">
+          <span class="source-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg>
+          </span>
+          <span class="source-text">View Source Code</span>
+        </a>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p class="mb-1">Brought to you by &copy;Parksters.</p>
+      </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Handle source link click
+      document.getElementById('source-link').addEventListener('click', function(e) {
+        e.preventDefault();
+        // This will be handled by the index.js redirect
+        const URL = location.origin;
+        window.location.assign(`${URL}/pages/index.html#projects`);
+      });
+    </script>
+  </body>
+</html>
+
