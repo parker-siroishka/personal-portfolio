@@ -6,35 +6,46 @@
 }
 
 :root {
-    /* Modern Color Palette - Charcoal Theme */
-    --primary-gradient: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
-    --secondary-gradient: linear-gradient(135deg, #3d3d3d 0%, #2d2d2d 100%);
-    --accent-gradient: linear-gradient(135deg, #4a4a4a 0%, #3a3a3a 100%);
-    --dark-gradient: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
-    --light-gradient: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    /* Brand Color Palette */
+    --primary-gradient: linear-gradient(135deg, #141413 0%, #0d0d0c 100%);
+    --secondary-gradient: linear-gradient(135deg, #2a2a28 0%, #141413 100%);
+    --accent-gradient: linear-gradient(135deg, #d97757 0%, #c66847 100%);
+    --dark-gradient: linear-gradient(135deg, #141413 0%, #0a0a09 100%);
+    --light-gradient: linear-gradient(135deg, #faf9f5 0%, #e8e6dc 100%);
     
     /* Solid Colors */
-    --primary-color: #2d2d2d;
-    --secondary-color: #3d3d3d;
-    --accent-color: #4a4a4a;
-    --dark-color: #1a1a1a;
-    --light-color: #f8f9fa;
-    --text-primary: #2d2d2d;
-    --text-secondary: #6c757d;
-    --text-light: #ffffff;
-    --shadow-light: 0 2px 10px rgba(0,0,0,0.1);
-    --shadow-medium: 0 4px 20px rgba(0,0,0,0.15);
-    --shadow-heavy: 0 8px 30px rgba(0,0,0,0.2);
+    --primary-color: #141413;
+    --secondary-color: #2a2a28;
+    --accent-color: #d97757;
+    --dark-color: #141413;
+    --light-color: #faf9f5;
+    --text-primary: #141413;
+    --text-secondary: #7a7870;
+    --text-light: #faf9f5;
+    
+    /* Accent Colors */
+    --accent-orange: #d97757;
+    --accent-blue: #6a9bcc;
+    --accent-green: #788c5d;
+    
+    /* Mid/Light Grays */
+    --mid-gray: #b0aea5;
+    --light-gray: #e8e6dc;
+    
+    /* Shadows */
+    --shadow-light: 0 1px 3px rgba(20,20,19,0.03);
+    --shadow-medium: 0 2px 6px rgba(20,20,19,0.05);
+    --shadow-heavy: 0 3px 10px rgba(20,20,19,0.08);
     
     /* Typography */
-    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-primary: 'Lora', Georgia, serif;
+    --font-heading: 'Poppins', Arial, sans-serif;
     --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 }
 
 body {
     font-family: var(--font-primary);
-    background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 50%, #dee2e6 100%);
+    background: linear-gradient(180deg, #faf9f5 0%, #e8e6dc 50%, #e8e6dc 100%);
     background-attachment: fixed;
     color: var(--text-primary);
     line-height: 1.6;
@@ -50,17 +61,9 @@ html {
 
 /* Modern Navigation */
 .navbar {
-    background: rgba(255, 255, 255, 0.95) !important;
     backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: var(--shadow-light);
+    border-bottom: 1px solid rgba(232, 230, 220, 0.3);
     transition: all 0.3s ease;
-}
-
-.navbar.scrolled {
-    background: rgba(255, 255, 255, 0.98) !important;
-    box-shadow: var(--shadow-medium);
-    backdrop-filter: blur(25px);
 }
 
 .navbar-brand {
@@ -93,7 +96,7 @@ html {
     height: 2px;
     bottom: -5px;
     left: 50%;
-    background: var(--primary-gradient);
+    background: var(--accent-orange);
     transition: all 0.3s ease;
     transform: translateX(-50%);
 }
@@ -108,11 +111,11 @@ html {
 }
 
 .navbar-toggler:focus {
-    box-shadow: 0 0 0 0.25rem rgba(45, 45, 45, 0.25);
+    box-shadow: 0 0 0 0.25rem rgba(20, 20, 19, 0.1);
 }
 
 .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(45, 45, 45, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(20, 20, 19, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important;
 }
 
 /* Hero Section */
@@ -120,7 +123,8 @@ html {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background: var(--light-gradient);
+    background: linear-gradient(180deg, #faf9f5 0%, #e8e6dc 50%, #e8e6dc 100%);
+    background-attachment: fixed;
     position: relative;
     overflow: hidden;
 }
@@ -143,9 +147,32 @@ html {
     z-index: 1;
 }
 
-#profile-pic {
+.profile-pic-wrapper {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    margin: 0 auto 2rem;
+    display: inline-block;
+}
+
+.profile-pic-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 120%;
     border-radius: 50%;
-    border: 4px solid transparent;
+    object-fit: cover;
+    filter: blur(20px);
+    opacity: 0.6;
+    z-index: 0;
+    pointer-events: none;
+}
+
+#profile-pic {
+    position: relative;
+    border-radius: 50%;
     background: var(--primary-gradient);
     background-clip: padding-box;
     width: 280px;
@@ -153,13 +180,18 @@ html {
     object-fit: cover;
     box-shadow: var(--shadow-heavy);
     transition: all 0.3s ease;
-    margin: 0 auto 2rem;
     display: block;
+    z-index: 1;
 }
 
 #profile-pic:hover {
     transform: scale(1.05);
-    box-shadow: 0 12px 40px rgba(45, 45, 45, 0.3);
+    box-shadow: 0 4px 15px rgba(20, 20, 19, 0.08);
+}
+
+.profile-pic-wrapper:hover .profile-pic-background {
+    opacity: 0.8;
+    filter: blur(25px);
 }
 
 .page-title {
@@ -223,6 +255,11 @@ html {
     margin-bottom: 2rem;
 }
 
+/* Ensure experience cards don't get white background from .card */
+.experience-card.card {
+    background: #e3dacc !important;
+}
+
 .card:hover {
     transform: translateY(-10px);
     box-shadow: var(--shadow-heavy);
@@ -235,6 +272,7 @@ html {
 
 .experience-card .card-body {
     padding: 2.5rem 3rem;
+    background: transparent;
 }
 
 .card-header {
@@ -245,6 +283,14 @@ html {
     font-family: var(--font-heading);
     font-weight: 600;
     font-size: 1.1rem;
+}
+
+/* Experience card header styling */
+.experience-card .card-header {
+    background: #e3dacc !important;
+    color: var(--text-primary) !important;
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
 /* Technology Icons */
@@ -295,7 +341,7 @@ strong {
 
 /* Experience Section */
 .experience-card {
-    background: white;
+    background: #e3dacc !important;
     border-radius: 20px;
     box-shadow: var(--shadow-light);
     transition: all 0.3s ease;
@@ -380,6 +426,12 @@ strong {
     margin-bottom: 0;
 }
 
+.job-description > h6.card-title:not(.tech-title) {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+}
+
 .job-point {
     margin-bottom: 0.4rem;
     color: var(--text-primary);
@@ -389,7 +441,7 @@ strong {
 }
 
 .tech-title {
-    border-top: 1px solid rgba(45, 45, 45, 0.1);
+    border-top: 1px solid rgba(20, 20, 19, 0.1);
     padding-top: 1rem;
     margin-top: 1rem;
 }
@@ -418,6 +470,39 @@ strong {
     height: 100%;
     display: flex;
     flex-direction: column;
+}
+
+/* Pastel backgrounds for project cards based on project */
+.project-card[data-project="linda-olsen"] {
+    background: linear-gradient(135deg, #faf8f5 0%, #f0ede8 100%);
+}
+
+.project-card[data-project="trekka"] {
+    background: linear-gradient(135deg, #f0f5f8 0%, #e3eaf0 100%);
+}
+
+.project-card[data-project="arcurve-website"] {
+    background: linear-gradient(135deg, #f5f3f0 0%, #e8e6e2 100%);
+}
+
+.project-card[data-project="pokemon"] {
+    background: linear-gradient(135deg, #fff5f0 0%, #f8ebe3 100%);
+}
+
+.project-card[data-project="olb"] {
+    background: linear-gradient(135deg, #f5f0f8 0%, #e8e3f0 100%);
+}
+
+.project-card[data-project="abigayles-creed"] {
+    background: linear-gradient(135deg, #f8f5f0 0%, #f0ebe3 100%);
+}
+
+.project-card[data-project="actionshot"] {
+    background: linear-gradient(135deg, #f0f8f5 0%, #e3f0e8 100%);
+}
+
+.project-card[data-project="peekaboo"] {
+    background: linear-gradient(135deg, #faf5f0 0%, #f5ede3 100%);
 }
 
 .project-card:hover {
@@ -465,6 +550,7 @@ strong {
     display: flex;
     flex-direction: column;
     padding: 2rem;
+    background: transparent;
 }
 
 .project-card h3 {
@@ -496,22 +582,22 @@ strong {
 
 .project-tag:hover {
     transform: translateY(-1px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
 }
 
-/* Tag Color Variants */
+/* Tag Color Variants - Using Brand Accent Colors */
 .tag-game {
     background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
     color: white;
 }
 
 .tag-webapp {
-    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    background: linear-gradient(135deg, var(--accent-blue) 0%, #5a8bbc 100%);
     color: white;
 }
 
 .tag-mobile {
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    background: linear-gradient(135deg, var(--accent-green) 0%, #687c4d 100%);
     color: white;
 }
 
@@ -521,7 +607,7 @@ strong {
 }
 
 .tag-dataviz {
-    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+    background: linear-gradient(135deg, var(--accent-orange) 0%, #c66847 100%);
     color: white;
 }
 
@@ -531,17 +617,17 @@ strong {
 }
 
 .tag-uxresearch {
-    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-    color: #1a1a1a;
+    background: linear-gradient(135deg, #d4a855 0%, #c49a45 100%);
+    color: var(--text-primary);
 }
 
 .tag-academic {
-    background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%);
+    background: linear-gradient(135deg, var(--mid-gray) 0%, #9a9890 100%);
     color: white;
 }
 
 .tag-professional {
-    background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+    background: linear-gradient(135deg, var(--primary-color) 0%, #0d0d0c 100%);
     color: white;
 }
 
@@ -623,7 +709,7 @@ strong {
 /* Project card divider */
 .project-divider {
     border: none;
-    border-top: 1px solid rgba(45, 45, 45, 0.1);
+    border-top: 1px solid rgba(20, 20, 19, 0.1);
     margin: 1.25rem 0;
 }
 
@@ -634,7 +720,7 @@ strong {
     flex-wrap: wrap;
 }
 
-.project-card .btn-sm {
+.btn-sm {
     padding: 0.4rem 1rem;
     font-size: 0.85rem;
     border-radius: 10px;
@@ -646,11 +732,12 @@ strong {
     font-weight: 500;
 }
 
-.project-card .btn-sm:hover {
-    background: var(--primary-color);
+.btn-sm:hover {
+    background: var(--accent-orange);
+    border-color: var(--accent-orange);
     color: white;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(45, 45, 45, 0.15);
+    box-shadow: 0 2px 6px rgba(217, 119, 87, 0.1);
 }
 
 /* Animations */
@@ -772,6 +859,11 @@ strong {
         padding: 2rem 0;
     }
 
+    .profile-pic-wrapper {
+        width: 200px;
+        height: 200px;
+    }
+    
     #profile-pic {
         width: 200px;
         height: 200px;
@@ -809,6 +901,11 @@ strong {
         min-height: 70vh;
     }
 
+    .profile-pic-wrapper {
+        width: 150px;
+        height: 150px;
+    }
+    
     #profile-pic {
         width: 150px;
         height: 150px;
@@ -834,16 +931,36 @@ strong {
 
 /* Education Section */
 .education-card {
-    background: white;
+    background: #e3dacc !important;
     border-radius: 20px;
     box-shadow: var(--shadow-light);
+    transition: all 0.3s ease;
     overflow: hidden;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .education-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-medium);
+}
+
+.education-card.card {
+    background: #e3dacc !important;
+}
+
+.education-card .card-body {
+    padding: 2.5rem 3rem;
+    background: transparent;
+}
+
+.education-card .card-header {
+    background: #e3dacc !important;
+    color: var(--text-primary) !important;
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
 .education-card .job-heading {
@@ -871,8 +988,12 @@ strong {
 }
 
 #slideshow > div { 
-    position: absolute;  
-    box-shadow: var(--shadow-medium);
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    box-shadow: 0 0 15px rgba(217, 119, 87, 0.6), var(--shadow-medium);
     border-radius: 15px;
     overflow: hidden;
 }
@@ -881,10 +1002,12 @@ strong {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
 /* Blog Section */
 #blog-container .card {
+    background: #e3dacc !important;
     transition: all 0.3s ease;
     height: 100%;
     border-radius: 20px;
@@ -902,6 +1025,12 @@ strong {
     flex-direction: column;
     height: 100%;
     padding: 1.25rem;
+    background: transparent;
+}
+
+#blog-container .btn-sm {
+    align-self: flex-start;
+    width: auto;
 }
 
 #blog-container .card-text {
@@ -1002,13 +1131,16 @@ canvas {
 }
 
 /* Additional Modern Enhancements */
-.hero-section {
-    background-attachment: fixed;
-}
 
 .card {
     backdrop-filter: blur(10px);
     background: rgba(255, 255, 255, 0.95);
+}
+
+/* Ensure experience cards maintain their background color */
+.experience-card.card {
+    background: #e3dacc !important;
+    backdrop-filter: none;
 }
 
 /* Loading animation for images */

@@ -211,7 +211,7 @@ data.then(function(res){
 
     var title = document.createElement('h3');
     title.textContent = post.title;
-    title.style.borderBottom = '2px solid #2d2d2d';
+    title.style.borderBottom = '2px solid #141413';
     title.style.paddingBottom = '10px';
     title.style.marginBottom = '15px';
 
@@ -238,12 +238,12 @@ data.then(function(res){
     teaser.classList.add('card-text');
     teaser.style.marginBottom = '10px';
 
-    var readMore = document.createElement('a');
-    readMore.href = post.link;
-    readMore.textContent = 'Read More →';
-    readMore.style.color = '#2d2d2d';
-    readMore.style.textDecoration = 'none';
-    readMore.style.fontWeight = 'bold';
+    var readMore = document.createElement('button');
+    readMore.classList.add('btn-sm');
+    readMore.textContent = 'Read More';
+    readMore.onclick = function() {
+      window.open(post.link, '_blank');
+    };
 
     // Assemble the card structure
     card.appendChild(thumbnail);

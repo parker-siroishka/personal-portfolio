@@ -13,7 +13,7 @@
     <!-- Custom CSS -->
     <link href="../stylesheets/custom.css" rel="stylesheet" />
     <link href="../stylesheets/home.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   </head>
   <body>
@@ -42,7 +42,10 @@
           <div class="row py-lg-5">
             <div class="col-lg-8 col-md-10 mx-auto">
               <div class="hero-content text-center">
-                <img src="../media/profile_picture.png" id="profile-pic" alt="Parker Siroishka">
+                <div class="profile-pic-wrapper">
+                  <img src="../media/profile_picture.png" class="profile-pic-background" alt="">
+                  <img src="../media/profile_picture.png" id="profile-pic" alt="Parker Siroishka">
+                </div>
                 <h1 class="page-title">Hey! I'm Parker</h1>
                 <p class="hero-description">
                   I'm a passionate Software Developer from Calgary who thrives on continuous learning and creating truly useful products.
@@ -62,7 +65,7 @@
           <!-- Arcurve - Software Developer -->
           <div class="row">
             <div class="col">
-              <div class="experience-card card">
+              <div class="experience-card card" data-company="arcurve">
                 <h5 class="card-header">Software Developer</h5>
                 <div class="card-body d-inline-flex p-4">
                   <img src="../media/experience/arcurve.png" class="company-img" alt="Arcurve Logo">
@@ -126,7 +129,7 @@
           <!-- Showpass - Full Stack Developer Intern -->
           <div class="row">
             <div class="col">
-              <div class="experience-card card">
+              <div class="experience-card card" data-company="showpass">
                 <h5 class="card-header">Full Stack Developer Intern</h5>
                 <div class="card-body d-inline-flex p-4">
                   <img src="../media/experience/showpass.webp" class="company-img" alt="Showpass Logo">
@@ -171,7 +174,7 @@
           <!-- Arcurve - Software Developer Intern -->
           <div class="row">
             <div class="col">
-              <div class="experience-card card">
+              <div class="experience-card card" data-company="arcurve-intern">
                 <h5 class="card-header">Software Developer Intern</h5>
                 <div class="card-body d-inline-flex p-4">
                   <img src="../media/experience/arcurve.png" class="company-img" alt="Arcurve Logo">
@@ -218,7 +221,7 @@
           <!-- 4iiii - Software Developer Intern -->
           <div class="row">
             <div class="col">
-              <div class="experience-card card">
+              <div class="experience-card card" data-company="4iiii">
                 <h5 class="card-header">Software Developer Intern</h5>
                 <div class="card-body d-inline-flex p-4">
                   <img src="../media/experience/4iiii.jpg" class="company-img" alt="4iiii Logo">
@@ -317,7 +320,7 @@
         <div class="container">
           <h1 class="section-title">Projects</h1>
           <div class="projects-grid">
-            <div class="project-card card">
+            <div class="project-card card" data-project="linda-olsen">
               <div class="thumbnail-wrapper" style="background-image: url('../media/linda-olsen.png');">
                 <img class="p0-thumbnail" src="../media/linda-olsen.png" alt="Linda Olsen Personal Brand Website">
               </div>
@@ -346,7 +349,7 @@
               </div>
             </div>
 
-            <div class="project-card card">
+            <div class="project-card card" data-project="trekka">
               <div class="thumbnail-wrapper" style="background-image: url('../media/trekka.png');">
                 <img class="p0-thumbnail" src="../media/trekka.png" alt="Trekka App">
               </div>
@@ -372,7 +375,7 @@
               </div>
             </div>
 
-            <div class="project-card card">
+            <div class="project-card card" data-project="arcurve-website">
               <div class="thumbnail-wrapper" style="background-image: url('../media/landing-page.PNG');">
                 <img class="p0-thumbnail" src="../media/landing-page.PNG" alt="Website Redesign">
               </div>
@@ -402,7 +405,7 @@
               </div>
             </div>
 
-            <div class="project-card card">
+            <div class="project-card card" data-project="pokemon">
               <div class="thumbnail-wrapper" style="background-image: url('../media/pokemon.png');">
                 <img class="p0-thumbnail" src="../media/pokemon.png" alt="Pokémon Dashboard">
               </div>
@@ -431,7 +434,7 @@
               </div>
             </div>
 
-            <div class="project-card card">
+            <div class="project-card card" data-project="olb">
               <div class="thumbnail-wrapper" style="background-image: url('../media/olb.JPG');">
                 <img class="p0-thumbnail" src="../media/olb.JPG" alt="openLeaderboard App">
               </div>
@@ -459,7 +462,7 @@
               </div>
             </div>
 
-            <div class="project-card card">
+            <div class="project-card card" data-project="abigayles-creed">
               <div class="thumbnail-wrapper" style="background-image: url('../media/p0-thumbnail.JPG');">
                 <img class="p0-thumbnail" src="../media/p0-thumbnail.JPG" alt="Abigayle's Creed Game">
               </div>
@@ -488,7 +491,7 @@
               </div>
             </div>
 
-            <div class="project-card card">
+            <div class="project-card card" data-project="actionshot">
               <div class="thumbnail-wrapper" style="background-image: url('../media/p1_details/p1_thumbnail.JPG');">
                 <img class="p0-thumbnail" src="../media/p1_details/p1_thumbnail.JPG" alt="ActionShot App">
               </div>
@@ -518,7 +521,7 @@
               </div>
             </div>
 
-            <div class="project-card card">
+            <div class="project-card card" data-project="peekaboo">
               <div class="thumbnail-wrapper" style="background-image: url('../media/p2_details/p2-thumbnail.JPG');">
                 <img class="p0-thumbnail" src="../media/p2_details/p2-thumbnail.JPG" alt="Peek-a-Boo with You App">
               </div>
