@@ -340,6 +340,201 @@
         margin: 2rem 0;
       }
 
+      /* Clean Carousel Styling */
+      .clean-carousel {
+        position: relative;
+        max-width: 800px;
+        margin: 2rem auto;
+      }
+
+      .carousel-slide {
+        display: none;
+        animation: fadeIn 0.4s ease;
+      }
+
+      .carousel-slide.active {
+        display: block;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .slide-content {
+        background: var(--light-gradient);
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: var(--shadow-light);
+      }
+
+      .slide-image-wrapper {
+        position: relative;
+        cursor: pointer;
+        overflow: hidden;
+      }
+
+      .slide-image-wrapper img {
+        width: 100%;
+        height: auto;
+        display: block;
+        max-height: 450px;
+        object-fit: contain;
+        background: #f8f9fa;
+        transition: transform 0.3s ease;
+      }
+
+      .slide-image-wrapper:hover img {
+        transform: scale(1.02);
+      }
+
+      /* Expand Icon */
+      .expand-icon {
+        position: absolute;
+        bottom: 12px;
+        right: 12px;
+        width: 36px;
+        height: 36px;
+        background: rgba(0, 0, 0, 0.6);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0.7;
+        transition: all 0.3s ease;
+        pointer-events: none;
+      }
+
+      .expand-icon svg {
+        width: 18px;
+        height: 18px;
+        fill: white;
+      }
+
+      .slide-image-wrapper:hover .expand-icon {
+        opacity: 1;
+        background: rgba(0, 0, 0, 0.8);
+      }
+
+      /* Carousel Navigation */
+      .carousel-nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 1.25rem;
+      }
+
+      .carousel-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 1.5px solid #141413;
+        background: transparent;
+        color: #141413;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+      }
+
+      .carousel-btn:hover {
+        background: #141413;
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(45, 45, 45, 0.15);
+      }
+
+      .carousel-counter {
+        font-family: var(--font-primary);
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--text-secondary);
+        min-width: 60px;
+        text-align: center;
+      }
+
+      /* Carousel Dots */
+      .carousel-dots {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+
+      .carousel-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(45, 45, 45, 0.2);
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding: 0;
+      }
+
+      .carousel-dot.active {
+        background: var(--primary-color);
+        transform: scale(1.2);
+      }
+
+      .carousel-dot:hover {
+        background: rgba(45, 45, 45, 0.4);
+      }
+
+      /* Lightbox */
+      .lightbox {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 9999;
+        justify-content: center;
+        align-items: center;
+        cursor: zoom-out;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .lightbox.active {
+        display: flex;
+        opacity: 1;
+      }
+
+      .lightbox img {
+        max-width: 90%;
+        max-height: 90%;
+        object-fit: contain;
+        border-radius: 10px;
+        box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+        transform: scale(0.9);
+        transition: transform 0.3s ease;
+      }
+
+      .lightbox.active img {
+        transform: scale(1);
+      }
+
+      .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        font-size: 2rem;
+        color: white;
+        cursor: pointer;
+        opacity: 0.7;
+        transition: opacity 0.2s ease;
+      }
+
+      .lightbox-close:hover {
+        opacity: 1;
+      }
+
       /* Responsive */
       @media (max-width: 768px) {
         .nav-tabs {
@@ -362,6 +557,14 @@
 
         .features-grid {
           grid-template-columns: 1fr;
+        }
+
+        .slide-image-wrapper img {
+          max-height: 300px;
+        }
+
+        .carousel-dots {
+          flex-wrap: wrap;
         }
 
         .source-button {
@@ -391,7 +594,7 @@
       <div class="page-header" style="padding-top: 80px;">
         <h1>Trekka</h1>
         <p class="intro">
-          An iOS native app centered around gamifying movement and fitness. Allowing you to see where your steps <em>could</em> take you. Start a marathon and see how far you can make it! Or traverse the Great Wall of China.
+          A production‑minded iOS fitness app focused on turning everyday movement into structured, usable routes. Built end‑to‑end with a focus on performance, battery efficiency, and scalability.
         </p>
         <img class="thumbnail" src="../media/trekka.png" alt="Trekka App">
         
@@ -432,18 +635,67 @@
         <div class="tab-pane fade show active" id="overview" role="tabpanel">
           <h2>Project Overview</h2>
           
-          <div class="highlight-box">
-            <h3>The Concept</h3>
-            <p>Trekka transforms everyday walking into an adventure by gamifying fitness through virtual journeys. Instead of just counting steps, users can embark on virtual treks to famous landmarks and destinations around the world.</p>
+          <p>
+            This project is a production‑minded iOS fitness app focused on turning everyday movement into structured, usable routes. The core problem it addresses is that most step‑ or activity‑tracking apps either overwhelm users with raw data or lock meaningful insights behind proprietary ecosystems. My goal was to build a clean, fast, and extensible app that encourages walking and running through curated routes while remaining technically robust and scalable.
+          </p>
+
+          <p>
+            The app allows users to browse predefined routes, view them on a map, and track progress as they move through the route in real time. Performance, payload size, and battery efficiency were key design constraints from the start, reflecting real‑world mobile conditions rather than idealized demos. The project was built end‑to‑end by me, covering iOS client development, backend API design, geospatial data handling, and deployment considerations.
+          </p>
+
+          <p>
+            This app also serves as a learning and proving ground for full‑stack mobile development: integrating native iOS frameworks, geospatial algorithms, and a cloud‑hosted .NET backend into a cohesive, shippable product.
+          </p>
+
+          <div class="clean-carousel" id="trekka-carousel">
+            <div class="carousel-slide active">
+              <div class="slide-content">
+                <div class="slide-image-wrapper" onclick="openLightbox(this)">
+                  <img src="../media/trekkaDetails/IMG_2777.PNG" alt="Trekka App Screenshot 1">
+                  <div class="expand-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 11V3h-8l3.29 3.29-10 10L3 13v8h8l-3.29-3.29 10-10z"/></svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-content">
+                <div class="slide-image-wrapper" onclick="openLightbox(this)">
+                  <img src="../media/trekkaDetails/IMG_2776.PNG" alt="Trekka App Screenshot 2">
+                  <div class="expand-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 11V3h-8l3.29 3.29-10 10L3 13v8h8l-3.29-3.29 10-10z"/></svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-content">
+                <div class="slide-image-wrapper" onclick="openLightbox(this)">
+                  <img src="../media/trekkaDetails/IMG_2778.PNG" alt="Trekka App Screenshot 3">
+                  <div class="expand-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 11V3h-8l3.29 3.29-10 10L3 13v8h8l-3.29-3.29 10-10z"/></svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-slide">
+              <div class="slide-content">
+                <div class="slide-image-wrapper" onclick="openLightbox(this)">
+                  <img src="../media/trekkaDetails/IMG_2779.PNG" alt="Trekka App Screenshot 4">
+                  <div class="expand-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 11V3h-8l3.29 3.29-10 10L3 13v8h8l-3.29-3.29 10-10z"/></svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="carousel-nav">
+              <button class="carousel-btn" onclick="changeSlide('trekka-carousel', -1)">←</button>
+              <span class="carousel-counter"><span class="current">1</span> / <span class="total">4</span></span>
+              <button class="carousel-btn" onclick="changeSlide('trekka-carousel', 1)">→</button>
+            </div>
+            <div class="carousel-dots"></div>
           </div>
-
-          <p>
-            Trekka is designed to make fitness more engaging and motivating by connecting physical activity with virtual exploration. The app tracks your daily steps and converts them into progress along real-world routes, from local marathons to iconic landmarks like the Great Wall of China.
-          </p>
-
-          <p>
-            By gamifying movement, Trekka encourages users to be more active while providing a sense of achievement and adventure. The app combines real-time step tracking with an engaging user interface to create a unique fitness experience.
-          </p>
 
         </div>
 
@@ -453,39 +705,29 @@
           
           <div class="features-grid">
             <div class="feature-item">
-              <div class="feature-icon">🚶</div>
-              <span><strong>Step Tracking:</strong> Automatically tracks your daily steps using iOS HealthKit integration</span>
+              <span><strong>Curated Route Library</strong><br>Users can browse a list of predefined walking and running routes, each with metadata such as distance, category, and description.</span>
             </div>
             
             <div class="feature-item">
-              <div class="feature-icon">🗺️</div>
-              <span><strong>Virtual Journeys:</strong> Choose from a variety of real-world routes and landmarks to traverse</span>
+              <span><strong>Map‑Based Route Visualization</strong><br>Routes are rendered using Apple MapKit with clear visual distinction between completed and remaining segments, supporting both light and dark mode.</span>
             </div>
             
             <div class="feature-item">
-              <div class="feature-icon">📊</div>
-              <span><strong>Progress Visualization:</strong> See your progress along each route with detailed maps and statistics</span>
+              <span><strong>Real‑Time Progress Tracking</strong><br>As users move, their progress along the route is calculated using geospatial distance algorithms, enabling accurate distance tracking without excessive battery drain.</span>
             </div>
             
             <div class="feature-item">
-              <div class="feature-icon">🏆</div>
-              <span><strong>Achievements:</strong> Unlock achievements as you complete different routes and milestones</span>
+              <span><strong>Optimized Network Payloads</strong><br>Route data is carefully structured to minimize download size, reducing initial payloads from hundreds of kilobytes to lightweight, mobile‑friendly responses.</span>
             </div>
             
             <div class="feature-item">
-              <div class="feature-icon">📱</div>
-              <span><strong>Native iOS:</strong> Built with Swift for optimal performance and native iOS experience</span>
+              <span><strong>Offline‑Friendly Design Principles</strong><br>Core route data is cached locally so users can continue tracking even with limited connectivity.</span>
             </div>
             
             <div class="feature-item">
-              <div class="feature-icon">☁️</div>
-              <span><strong>Cloud Sync:</strong> Your progress is saved and synced across devices via the backend</span>
+              <span><strong>Scalable Backend Architecture</strong><br>Routes are served from a centralized API, allowing new routes, categories, or user‑generated content to be added without app updates.</span>
             </div>
           </div>
-
-          <p>
-            The app provides a seamless experience that makes fitness fun and engaging. Users can start multiple journeys simultaneously, track their progress in real-time, and celebrate milestones as they complete each virtual adventure.
-          </p>
         </div>
 
         <!-- Technologies Tab -->
@@ -504,7 +746,7 @@
 
           <div class="highlight-box">
             <h3>Database - PostgreSQL</h3>
-            <p><strong>PostgreSQL:</strong> A powerful relational database system stores user data, journey progress, route information, and achievements. PostgreSQL's reliability and performance make it ideal for handling complex queries and data relationships.</p>
+            <p><strong>PostgreSQL:</strong> A relational database system storing user data, journey progress, route information, and achievements. PostGIS is used for geospatial data handling.</p>
           </div>
 
           <h2>Architecture</h2>
@@ -517,17 +759,6 @@
           </p>
         </div>
       </div>
-
-      <div class="source-button-container">
-        <a href="#" id="source-link" class="source-button">
-          <span class="source-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-            </svg>
-          </span>
-          <span class="source-text">View Source Code</span>
-        </a>
-      </div>
     </main>
 
     <footer>
@@ -536,16 +767,109 @@
       </div>
     </footer>
 
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+      <span class="lightbox-close">&times;</span>
+      <img src="" alt="Full size image" id="lightbox-img">
+    </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../dist/js/bootstrap.bundle.min.js"></script>
     <script>
-      // Handle source link click
-      document.getElementById('source-link').addEventListener('click', function(e) {
-        e.preventDefault();
-        // This will be handled by the index.js redirect
-        const URL = location.origin;
-        window.location.assign(`${URL}/pages/index.html#projects`);
+      // Initialize carousel
+      document.addEventListener('DOMContentLoaded', function() {
+        initCarousel('trekka-carousel');
       });
+
+      function initCarousel(carouselId) {
+        const carousel = document.getElementById(carouselId);
+        const slides = carousel.querySelectorAll('.carousel-slide');
+        const dotsContainer = carousel.querySelector('.carousel-dots');
+        const counter = carousel.querySelector('.carousel-counter');
+        
+        // Create dots
+        slides.forEach((_, index) => {
+          const dot = document.createElement('button');
+          dot.className = 'carousel-dot' + (index === 0 ? ' active' : '');
+          dot.onclick = () => goToSlide(carouselId, index);
+          dotsContainer.appendChild(dot);
+        });
+        
+        // Update counter
+        counter.querySelector('.total').textContent = slides.length;
+      }
+
+      function changeSlide(carouselId, direction) {
+        const carousel = document.getElementById(carouselId);
+        const slides = carousel.querySelectorAll('.carousel-slide');
+        const currentIndex = [...slides].findIndex(slide => slide.classList.contains('active'));
+        let newIndex = currentIndex + direction;
+        
+        if (newIndex < 0) newIndex = slides.length - 1;
+        if (newIndex >= slides.length) newIndex = 0;
+        
+        goToSlide(carouselId, newIndex);
+      }
+
+      function goToSlide(carouselId, index) {
+        const carousel = document.getElementById(carouselId);
+        const slides = carousel.querySelectorAll('.carousel-slide');
+        const dots = carousel.querySelectorAll('.carousel-dot');
+        const counter = carousel.querySelector('.carousel-counter');
+        
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+        counter.querySelector('.current').textContent = index + 1;
+      }
+
+      // Keyboard navigation
+      document.addEventListener('keydown', function(e) {
+        // Close lightbox on escape
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+          closeLightbox();
+          return;
+        }
+
+        const carousel = document.getElementById('trekka-carousel');
+        if (!carousel) return;
+        
+        if (e.key === 'ArrowLeft') changeSlide('trekka-carousel', -1);
+        if (e.key === 'ArrowRight') changeSlide('trekka-carousel', 1);
+      });
+
+      // Lightbox functionality
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxClose = document.querySelector('.lightbox-close');
+
+      function openLightbox(wrapper) {
+        const img = wrapper.querySelector('img');
+        lightboxImg.src = img.src;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      lightbox.addEventListener('click', closeLightbox);
+      lightboxClose.addEventListener('click', closeLightbox);
+
+      // Handle source link click
+      const sourceLink = document.getElementById('source-link');
+      if (sourceLink) {
+        sourceLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          // This will be handled by the index.js redirect
+          const URL = location.origin;
+          window.location.assign(`${URL}/pages/index.html#projects`);
+        });
+      }
     </script>
   </body>
 </html>

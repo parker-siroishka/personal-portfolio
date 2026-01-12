@@ -229,6 +229,27 @@ html {
     margin-bottom: 1.5rem;
 }
 
+.typing-cursor {
+    display: inline-block;
+    animation: blink 1s infinite;
+    color: var(--accent-orange) !important;
+    font-weight: 300;
+    margin-left: 2px;
+    -webkit-text-fill-color: var(--accent-orange) !important;
+    background: none !important;
+    background-clip: unset !important;
+    -webkit-background-clip: unset !important;
+}
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
+}
+
 .hero-description {
     font-size: 1.2rem;
     color: var(--text-secondary);
@@ -296,7 +317,7 @@ html {
 }
 
 .experience-card .card-body {
-    padding: 2.5rem 3rem;
+    padding: 1.5rem 2rem;
     background: transparent;
 }
 
@@ -316,12 +337,13 @@ html {
     color: var(--text-primary) !important;
     font-size: 1.5rem;
     font-weight: 700;
+    padding: 0.75rem 1.5rem;
 }
 
 /* Technology Icons */
 .tech-img {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     object-fit: contain;
     transition: all 0.3s ease;
     opacity: 0.8;
@@ -402,7 +424,7 @@ strong {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: var(--primary-gradient);
+    background: var(--accent-orange);
     border: 4px solid #e3dacc;
     z-index: 1;
     box-shadow: 0 0 0 3px rgba(20, 20, 19, 0.1);
@@ -543,19 +565,19 @@ strong {
 
 /* Pastel backgrounds for project cards based on project */
 .project-card[data-project="linda-olsen"] {
-    background: linear-gradient(135deg, #faf8f5 0%, #f0ede8 100%);
+    background: rgba(198, 174, 228, 0.35);
 }
 
 .project-card[data-project="trekka"] {
-    background: linear-gradient(135deg, #f0f5f8 0%, #e3eaf0 100%);
+    background: rgba(196, 212, 197, 0.35);
 }
 
 .project-card[data-project="arcurve-website"] {
-    background: linear-gradient(135deg, #f5f3f0 0%, #e8e6e2 100%);
+    background: rgba(249, 250, 251, 0.35);
 }
 
 .project-card[data-project="pokemon"] {
-    background: linear-gradient(135deg, #fff5f0 0%, #f8ebe3 100%);
+    background: rgba(194, 254, 255, 0.35);
 }
 
 .project-card[data-project="olb"] {
@@ -563,15 +585,15 @@ strong {
 }
 
 .project-card[data-project="abigayles-creed"] {
-    background: linear-gradient(135deg, #f8f5f0 0%, #f0ebe3 100%);
+    background: rgba(218, 210, 211, 0.35);
 }
 
 .project-card[data-project="actionshot"] {
-    background: linear-gradient(135deg, #f0f8f5 0%, #e3f0e8 100%);
+    background: rgba(249, 232, 180, 0.35);
 }
 
 .project-card[data-project="peekaboo"] {
-    background: linear-gradient(135deg, #faf5f0 0%, #f5ede3 100%);
+    background: rgba(146, 240, 242, 0.35);
 }
 
 .project-card:hover {
@@ -861,7 +883,7 @@ strong {
 
     .job-description {
         margin-left: 0;
-        margin-top: 1.5rem;
+        margin-top: 0rem;
     }
 
     .timeline-container {
@@ -887,6 +909,39 @@ strong {
     .tech-list {
         width: 100%;
         justify-content: center;
+        gap: 0.75rem;
+    }
+
+    .tech-box {
+        min-height: 60px;
+        min-width: 60px;
+    }
+
+    .tech-img {
+        width: 35px;
+        height: 35px;
+    }
+
+    .job-heading .card-title {
+        margin-bottom: 0.5rem;
+    }
+
+    .job-meta {
+        margin-bottom: 0.75rem;
+    }
+
+    .job-description > h6.card-title:not(.tech-title) {
+        margin-bottom: 0.25rem;
+        margin-top: 0.75rem;
+    }
+
+    .job-point {
+        margin-bottom: 0.3rem;
+    }
+
+    .tech-title {
+        padding-top: 0.75rem;
+        margin-top: 0.75rem;
     }
 
     .hero-content {
@@ -909,8 +964,6 @@ strong {
     }
 
     .navbar-nav {
-        background: rgba(255, 255, 255, 0.6);
-        backdrop-filter: blur(15px);
         border-radius: 15px;
         padding: 1rem;
         margin-top: 1rem;
@@ -1008,6 +1061,63 @@ strong {
         padding: 1.5rem;
     }
 
+    .experience-card .card-body {
+        padding: 1rem 0.75rem;
+    }
+
+    .experience-card .card-header {
+        padding: 0.5rem 1rem;
+        font-size: 1.25rem;
+    }
+
+    .tech-list {
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+    }
+
+    .tech-box {
+        min-height: 50px;
+        min-width: 50px;
+        padding: 0.4rem;
+    }
+
+    .tech-img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .job-heading .card-title {
+        margin-bottom: 0.4rem;
+        font-size: 1.1rem;
+    }
+
+    .job-meta {
+        margin-bottom: 0.5rem;
+        gap: 0.25rem;
+    }
+
+    .job-description > h6.card-title:not(.tech-title) {
+        margin-bottom: 0.2rem;
+        margin-top: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .job-point {
+        margin-bottom: 0.25rem;
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+
+    .tech-title {
+        padding-top: 0.5rem;
+        margin-top: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .timeline-item {
+        margin-bottom: 2rem;
+    }
+
     .hero-section {
         padding: 2rem 0;
         min-height: 70vh;
@@ -1088,6 +1198,17 @@ strong {
     margin-bottom: 0.4rem;
 }
 
+.education-card .card-text a {
+    color: var(--accent-orange);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.education-card .card-text a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
 #slideshow { 
     margin: 1rem auto; 
     position: relative; 
@@ -1101,10 +1222,10 @@ strong {
 
 #slideshow > div { 
     position: absolute;
-    top: 15px;
-    left: 15px;
-    right: 15px;
-    bottom: 15px;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
     box-shadow: 0 0 15px rgba(217, 119, 87, 0.6), var(--shadow-medium);
     border-radius: 15px;
     overflow: hidden;

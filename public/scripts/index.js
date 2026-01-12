@@ -9,6 +9,42 @@ $(document).ready(function() {
     'opacity': '1'
   }, 1000).css('transform', 'scale(1)');
   
+  // Typing animation for the title
+  function typeWriter(element, text, speed = 100) {
+    let i = 0;
+    const cursor = '<span class="typing-cursor">|</span>';
+    
+    function type() {
+      if (i < text.length) {
+        // Variable speed - faster for spaces, slower for punctuation
+        let charSpeed = speed;
+        if (text[i] === ' ') {
+          charSpeed = speed * 0.3;
+        } else if (text[i] === '!' || text[i] === '.' || text[i] === ',') {
+          charSpeed = speed * 2;
+        } else if (text[i] === "'") {
+          charSpeed = speed * 0.5;
+        }
+        
+        element.html(text.substring(0, i + 1) + cursor);
+        i++;
+        setTimeout(type, charSpeed);
+      } else {
+        // Remove cursor after typing is complete
+        setTimeout(() => {
+          element.html(text);
+        }, 1000);
+      }
+    }
+    
+    // Start typing after a short delay
+    setTimeout(type, 500);
+  }
+  
+  // Initialize typing animation
+  const titleText = "Hey! I'm Parker.";
+  typeWriter($("#typing-title"), titleText, 80);
+  
   // Add scroll animations with intersection observer for better performance
   const observerOptions = {
     threshold: 0.1,
@@ -242,6 +278,9 @@ data.then(function(res){
     teaser.classList.add('card-text');
     teaser.style.marginBottom = '10px';
 
+    var divider = document.createElement('hr');
+    divider.classList.add('project-divider');
+
     var readMore = document.createElement('button');
     readMore.classList.add('btn-sm');
     readMore.textContent = 'Read More';
@@ -254,6 +293,7 @@ data.then(function(res){
     cardBody.appendChild(title);
     cardBody.appendChild(date);
     cardBody.appendChild(teaser);
+    cardBody.appendChild(divider);
     cardBody.appendChild(readMore);
     card.appendChild(cardBody);
     col.appendChild(card);
