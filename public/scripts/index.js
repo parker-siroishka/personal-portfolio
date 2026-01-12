@@ -134,6 +134,10 @@ $("#go-arcurve").on("click", e => {
   window.location.assign(`https://www.arcurve.com/`);
 })
 
+$("#det-arcurve").on("click", e => {
+  window.location.assign(`${URL}/pages/arcurveDetails.html`);
+})
+
 $("#go-linda").on("click", e => {
   window.location.assign(`https://www.lindaolsen.org/`);
 })

@@ -258,6 +258,47 @@ html {
     line-height: 1.8;
 }
 
+/* Social Icons */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(232, 230, 220, 0.3);
+    box-shadow: 0 4px 20px rgba(20, 20, 19, 0.1);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-icon img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 25px rgba(20, 20, 19, 0.15);
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.social-icon:hover img {
+    transform: scale(1.1);
+}
+
 /* Section Styling */
 .section {
     padding: 5rem 0;
