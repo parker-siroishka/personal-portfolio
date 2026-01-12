@@ -1329,6 +1329,23 @@ strong {
     object-fit: cover;
 }
 
+/* Blog container responsive layout: 1 column on mobile, 2 columns from tablet up */
+@media (max-width: 767px) {
+    /* Force single column on mobile */
+    #blog-container.row-cols-sm-2 > * {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    /* Force 2 columns from tablet up */
+    #blog-container.row-cols-md-3 > * {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
 /* Footer */
 footer {
     background: var(--dark-gradient);
